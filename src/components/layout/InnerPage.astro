@@ -1,0 +1,33 @@
+---
+interface Props {
+  class?: string;
+  variant?: 'plain' | 'gradient';
+}
+
+const { class: className = '', variant = 'plain' } = Astro.props;
+---
+
+<div
+  class:list={[
+    'min-h-screen relative pt-24 pb-20',
+    variant === 'plain' && 'bg-[#fafafa]',
+    variant === 'gradient' &&
+      'bg-gradient-to-b from-[#fafafa] via-[#fafafa] to-white',
+    className,
+  ]}
+>
+  {
+    variant === 'gradient' && (
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-0 right-0 w-96 h-96 rounded-full opacity-5 bg-brand-gradient"></div>
+        <div
+          class="absolute bottom-0 left-0 w-96 h-96 rounded-full opacity-5"
+          style="background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-orange) 100%);"
+        ></div>
+      </div>
+    )
+  }
+  <div class="relative z-10">
+    <slot />
+  </div>
+</div>

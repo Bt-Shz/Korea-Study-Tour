@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StudentTakeawayCard from '../components/cards/StudentTakeawayCard.astro';
+import Container from '../components/ui/Container.astro';
+import GradientText from '../components/ui/GradientText.astro';
+import InnerPage from '../components/layout/InnerPage.astro';
+import PageIntro from '../components/layout/PageIntro.astro';
+import { studentTakeaways } from '../data/students';
+---
+
+<BaseLayout title="Student Takeaways">
+  <InnerPage>
+    <Container size="wide">
+      <PageIntro
+        eyebrow="Beyond Academics"
+        statValue="25"
+        statLabel="students"
+        dropCap="T"
+        scrollHint="Reflections below"
+      >
+        <Fragment slot="title">
+          Not just a trip.<br />
+          A new <GradientText>perspective</GradientText>
+        </Fragment>
+        <Fragment slot="lead">
+          he Seoul Tech &amp; Culture Tour 2026 wasn't just about visiting labs and museums &mdash;
+          it was about expanding perspectives, building global networks, and experiencing firsthand
+          how innovation ecosystems thrive at the intersection of technology, culture, and
+          collaboration.
+        </Fragment>
+        <p slot="body">
+          Students returned not only with new knowledge, but with a renewed sense of what's possible
+          in their own academic and professional journeys. What follows are their words &mdash;
+          unfiltered, personal, and varied.
+        </p>
+      </PageIntro>
+
+      <div class="columns-1 md:columns-2 lg:columns-3" style="column-gap: 24px;">
+        {
+          studentTakeaways.map((student, index) => (
+            <StudentTakeawayCard
+              {...student}
+              variant={(index + 1) % 7 === 0 ? 'featured' : 'default'}
+            />
+          ))
+        }
+      </div>
+    </Container>
+  </InnerPage>
+</BaseLayout>

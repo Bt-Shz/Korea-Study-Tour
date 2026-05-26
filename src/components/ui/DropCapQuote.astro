@@ -1,0 +1,24 @@
+---
+interface Props {
+  letter: string;
+  size?: 'md' | 'lg';
+  class?: string;
+}
+
+const { letter, size = 'lg', class: className = '' } = Astro.props;
+---
+
+<div class:list={['relative pl-8 lg:pl-10', className]}>
+  <div class="absolute left-0 top-2 bottom-2 w-1 rounded-full border-brand-gradient-v"></div>
+  <p class="text-gray-700 leading-relaxed text-lg md:text-xl">
+    <span
+      class:list={[
+        'drop-cap float-left mr-3 mt-1 leading-none',
+        size === 'lg' ? 'drop-cap--lg' : 'drop-cap--md',
+      ]}
+    >
+      {letter}
+    </span>
+    <slot />
+  </p>
+</div>

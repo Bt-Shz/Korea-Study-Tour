@@ -1,0 +1,91 @@
+---
+import Icon from '../Icon.astro';
+import SocialPostCard from '../cards/SocialPostCard.astro';
+import DisplayHeading from '../ui/DisplayHeading.astro';
+import SectionEyebrow from '../ui/SectionEyebrow.astro';
+import { platformAccentColor, socialFilters, socialPosts } from '../../data/social';
+
+const defaultFilter = socialFilters[0].key;
+---
+
+<section id="social" class="pt-8 md:pt-10 pb-14 md:pb-20 relative">
+  <div
+    class="absolute top-0 right-0 w-96 h-96 rounded-full opacity-10 pointer-events-none blur-3xl"
+    style="background: var(--brand-red); transform: translate(40%, -40%);"
+  ></div>
+  <div
+    class="absolute bottom-0 left-0 w-96 h-96 rounded-full opacity-10 pointer-events-none blur-3xl"
+    style="background: var(--brand-orange); transform: translate(-40%, 40%);"
+  ></div>
+
+  <div class="relative max-w-7xl mx-auto px-5">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+      <div>
+        <SectionEyebrow class="text-[var(--brand-orange)]">Follow Our Journey</SectionEyebrow>
+        <DisplayHeading class="text-4xl md:text-5xl">
+          Social Media<br />Highlights
+        </DisplayHeading>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="text-gray-400 text-xs tracking-wide uppercase font-medium whitespace-nowrap">
+          Follow us on
+        </span>
+        <div class="flex items-center gap-2">
+          {
+            socialFilters.map((filter) => (
+              <a
+                href={filter.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={filter.label}
+                class="shrink-0 w-9 h-9 rounded-full flex items-center justify-center border border-gray-200 hover:border-gray-300 hover:scale-110 transition-all bg-white shadow-sm"
+                style={`color: ${platformAccentColor(filter.key)};`}
+              >
+                <span class="flex items-center justify-center w-4 h-4">
+                  {filter.key === 'x' ? (
+                    <Icon name="x-brand" size={16} />
+                  ) : (
+                    <Icon name={filter.key} size={16} />
+                  )}
+                </span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="relative flex flex-wrap items-center justify-center gap-2 mb-8">
+      {
+        socialFilters.map((filter, index) => (
+          <button
+            type="button"
+            data-social-filter
+            data-filter={filter.key}
+            data-active={index === 0 ? 'true' : 'false'}
+            aria-pressed={index === 0 ? 'true' : 'false'}
+            class="social-filter-btn flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 border shadow-sm border-gray-200 bg-white hover:bg-gray-50"
+            style={`--filter-color: ${platformAccentColor(filter.key)};`}
+          >
+            {filter.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {
+        socialPosts.map((post) => (
+          <SocialPostCard
+            title={post.title}
+            thumbnail={post.thumbnail}
+            link={post.link}
+            platformKey={post.platformKey}
+            type={post.type}
+            hidden={post.platformKey !== defaultFilter}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

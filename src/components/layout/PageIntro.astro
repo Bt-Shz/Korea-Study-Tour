@@ -1,0 +1,40 @@
+---
+import DropCapQuote from '../ui/DropCapQuote.astro';
+import ScrollHint from '../ui/ScrollHint.astro';
+import SectionEyebrow from '../ui/SectionEyebrow.astro';
+
+interface Props {
+  eyebrow: string;
+  statValue: string;
+  statLabel: string;
+  dropCap: string;
+  scrollHint: string;
+}
+
+const { eyebrow, statValue, statLabel, dropCap, scrollHint } = Astro.props;
+---
+
+<section class="relative mb-14 lg:mb-16 grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+  <div class="lg:col-span-5 relative">
+    <div class="sticky top-28">
+      <SectionEyebrow>{eyebrow}</SectionEyebrow>
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-gray-900">
+        <slot name="title" />
+      </h1>
+      <div class="mt-8 flex items-baseline gap-2">
+        <span class="text-2xl font-black text-gray-900 font-display">{statValue}</span>
+        <span class="text-xs uppercase tracking-[0.2em] text-gray-500">{statLabel}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lg:col-span-7 relative">
+    <DropCapQuote letter={dropCap}>
+      <slot name="lead" />
+    </DropCapQuote>
+    <div class="mt-5 text-gray-600 leading-relaxed">
+      <slot name="body" />
+    </div>
+    <ScrollHint label={scrollHint} />
+  </div>
+</section>

@@ -1,0 +1,58 @@
+---
+import Icon from '../Icon.astro';
+import TeamMemberCard from '../cards/TeamMemberCard.astro';
+import DisplayHeading from '../ui/DisplayHeading.astro';
+import SectionEyebrow from '../ui/SectionEyebrow.astro';
+import { teamMembers } from '../../data/team';
+---
+
+<section id="team" class="py-14 md:py-20 relative">
+  <div
+    class="absolute right-0 top-1/2 -translate-y-1/2 text-[220px] font-black text-[var(--brand-orange)]/[0.04] pointer-events-none select-none leading-none font-display"
+  >
+    CS
+  </div>
+  <div
+    class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-10 pointer-events-none blur-3xl"
+    style="background: var(--brand-orange); transform: translate(30%, -30%);"
+  ></div>
+  <div
+    class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-10 pointer-events-none blur-3xl"
+    style="background: var(--brand-red); transform: translate(-30%, 30%);"
+  ></div>
+  <div
+    class="absolute inset-0 pointer-events-none opacity-[0.03]"
+    style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 24px 24px;"
+  ></div>
+
+  <div class="relative max-w-5xl mx-auto px-5">
+    <div class="text-center mb-10">
+      <SectionEyebrow>People</SectionEyebrow>
+      <DisplayHeading class="text-4xl md:text-5xl">The Visit Team</DisplayHeading>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+      {teamMembers.map((member) => <TeamMemberCard {...member} />)}
+    </div>
+
+    <div class="mt-10 max-w-2xl mx-auto relative z-10">
+      <a
+        href="/student-takeaways"
+        class="block group rounded-2xl p-6 text-center shadow-lg relative overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 bg-brand-gradient"
+      >
+        <div
+          class="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none"
+          style="background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent); transform: skewX(-20deg);"
+        ></div>
+
+        <div class="text-white/70 text-sm mb-1 uppercase tracking-wider font-bold">Plus</div>
+        <div class="text-white text-5xl font-black mb-2 flex items-center justify-center gap-3">
+          25
+          <Icon name="external-link" size={24} class="text-white/50 group-hover:text-white" />
+        </div>
+        <div class="text-white text-lg font-semibold mb-1">Undergraduate Students</div>
+        <div class="text-white/80 text-sm">Read their personal takeaways and reflections &rarr;</div>
+      </a>
+    </div>
+  </div>
+</section>

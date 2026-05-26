@@ -1,0 +1,16 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div
+  class:list={[
+    'w-8 h-8 rounded-lg flex items-center justify-center text-white text-xs font-black bg-brand-gradient',
+    className,
+  ]}
+>
+  CU
+</div>

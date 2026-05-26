@@ -1,14 +1,13 @@
 export const site = {
-  title: 'Korea Visit 2026 (CS)',
-  department: 'Department of Computer Science',
+  title: 'Seoul Tech & Culture Tour 2026',
+  department: 'CityU CS Department',
   university: 'City University of Hong Kong',
   description:
-    'Study tour highlights organized by the Department of Computer Science at City University of Hong Kong.',
+    "A four-day academic immersion into Korea's innovation ecosystem, from world-class universities to Seoul's smart-city control center.",
 } as const;
 
 export const navItems = [
-  { label: 'About', href: '/about' },
-  { label: 'Visit Schedule', href: '/schedule' },
-  { label: 'Experiences', href: '/experiences' },
-  { label: 'The Visit Team', href: '/team' },
+  { label: 'Home', href: '/' },
+  { label: 'Visit Schedule', href: '/visit-schedule' },
+  { label: 'Student Takeaways', href: '/student-takeaways' },
 ] as const;

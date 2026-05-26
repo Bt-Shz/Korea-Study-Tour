@@ -1,0 +1,17 @@
+---
+import Icon from '../Icon.astro';
+
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<div class="mt-8 flex items-center gap-3">
+  <div class="h-px flex-1 bg-gray-200"></div>
+  <span class="text-[11px] font-bold tracking-[0.3em] uppercase text-gray-400">
+    {label}
+  </span>
+  <Icon name="chevron-down" size={16} class="text-primary" />
+</div>

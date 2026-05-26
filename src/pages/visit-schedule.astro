@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ScheduleDayCard from '../components/cards/ScheduleDayCard.astro';
+import Container from '../components/ui/Container.astro';
+import GradientText from '../components/ui/GradientText.astro';
+import InnerPage from '../components/layout/InnerPage.astro';
+import PageIntro from '../components/layout/PageIntro.astro';
+import { visitSchedule } from '../data/schedule';
+---
+
+<BaseLayout title="Visit Schedule">
+  <InnerPage variant="gradient">
+    <Container>
+      <PageIntro
+        eyebrow="Itinerary"
+        statValue="18–21"
+        statLabel="May 2026"
+        dropCap="A"
+        scrollHint="Schedule below"
+      >
+        <Fragment slot="title">
+          Four days.<br />
+          One <GradientText>journey</GradientText>.
+        </Fragment>
+        <Fragment slot="lead">
+          four-day academic immersion across Seoul's leading universities and innovation centers
+          &mdash; from KAIST and SKKU to Yonsei and Korea University, paired with cultural
+          exploration of the city.
+        </Fragment>
+        <p slot="body">
+          Each day blends technical visits, hands-on labs, and meetings with faculty and students,
+          alongside time to experience Seoul's blend of tradition and modernity.
+        </p>
+      </PageIntro>
+
+      <div class="space-y-6" data-schedule>
+        {
+          visitSchedule.map((day, dayIndex) => (
+            <ScheduleDayCard {...day} open={dayIndex === 0} />
+          ))
+        }
+      </div>
+    </Container>
+  </InnerPage>
+</BaseLayout>

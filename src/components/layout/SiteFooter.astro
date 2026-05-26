@@ -1,0 +1,38 @@
+---
+import Icon from '../Icon.astro';
+import BrandLogo from '../ui/BrandLogo.astro';
+import { navItems } from '../../config/site';
+---
+
+<footer class="bg-gray-900 text-white py-8">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <BrandLogo />
+        <div>
+          <div class="font-semibold text-sm">City University of Hong Kong</div>
+          <div class="text-gray-500 text-xs">Department of Computer Science</div>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-6 text-sm">
+        {
+          navItems.map((item) => (
+            <a href={item.href} class="text-gray-400 hover:text-white transition-colors">
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+      <div class="flex items-center gap-4 text-xs">
+        <a
+          href="https://www.cs.cityu.edu.hk"
+          class="text-gray-400 hover:text-gray-300 transition-colors flex items-center gap-1.5"
+        >
+          <Icon name="external-link" size={12} />
+          cs.cityu.edu.hk
+        </a>
+        <span class="text-gray-600">&copy; 2026 CityU CS</span>
+      </div>
+    </div>
+  </div>
+</footer>

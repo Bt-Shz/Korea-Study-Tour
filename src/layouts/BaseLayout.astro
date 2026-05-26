@@ -1,28 +1,17 @@
 ---
-import Header from '../components/Header.astro';
-import Navigation from '../components/Navigation.astro';
-import Breadcrumb from '../components/Breadcrumb.astro';
-import SitemapNav from '../components/SitemapNav.astro';
-import Footer from '../components/Footer.astro';
+import SiteFooter from '../components/layout/SiteFooter.astro';
+import SiteHeader from '../components/layout/SiteHeader.astro';
 import { site } from '../config/site';
-import '../styles/site.css';
+import '../styles/global.css';
 
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
-  breadcrumb?: string;
-  showBreadcrumb?: boolean;
 }
 
-const {
-  title,
-  description = site.description,
-  breadcrumb,
-  showBreadcrumb = !!breadcrumb,
-} = Astro.props;
-
-const pageTitle = `${title} | ${site.title} | ${site.university}`;
-const currentPath = Astro.url.pathname;
+const { title = site.title, description = site.description } = Astro.props;
+const pageTitle = title ? `${title} | ${site.title}` : site.title;
+const isHome = Astro.url.pathname === '/';
 ---
 
 <!doctype html>
@@ -30,67 +19,160 @@ const currentPath = Astro.url.pathname;
   <head>
     <meta charset="utf-8" />
     <title>{pageTitle}</title>
-    <link rel="icon" type="image/x-icon" href="https://www.cityu.edu.hk/favicon.ico" />
-    <link rel="preconnect" href="https://template.cityu.edu.hk" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="author" content={site.university} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://template.cityu.edu.hk/template/v2/css/bootstrap/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="https://template.cityu.edu.hk/template/v2/css/cityu.base.css" />
-    <link
-      rel="stylesheet"
-      href="https://template.cityu.edu.hk/template/v2/css/fontawesome/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
-    />
-    <link rel="stylesheet" href="https://template.cityu.edu.hk/template/v2/css/aos/aos.css" />
-    <link
-      rel="stylesheet"
-      href="https://template.cityu.edu.hk/template/v2/css/animate.css/animate.min.css"
-    />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="author" content={site.university} />
-    <meta name="description" content={description} />
-    <meta name="keywords" content="City University of Hong Kong, City University, CityUHK" />
-    <meta name="robots" content="index, follow" />
   </head>
-  <body
-    class="cityu-template-2 cityu-template-2-1 cityu-base-layout cityu-base-style ct-prod ct-bootstrap-5 ct-touch ct-xxl ct-breadcrumb ct-submenu ct-sitemap"
-  >
-    <Header />
-    <Navigation currentPath={currentPath} />
-    {showBreadcrumb && breadcrumb && <Breadcrumb label={breadcrumb} />}
+  <body class="min-h-screen bg-[#fafafa] text-[#1a1a1a]">
+    <SiteHeader isHome={isHome} />
 
-    <slot name="before-main" />
-
-    <main class="cityu-main" style="min-height: 605px">
+    <main>
       <slot />
     </main>
 
-    <SitemapNav />
-    <Footer />
+    <SiteFooter />
 
-    <script is:inline src="/js/cityu.config.js"></script>
-    <script is:inline src="https://template.cityu.edu.hk/template/v2/js/jquery/jquery.min.js"></script>
-    <script is:inline src="https://template.cityu.edu.hk/template/v2/js/popper.js/popper.min.js"></script>
-    <script is:inline src="https://template.cityu.edu.hk/template/v2/js/bootstrap/bootstrap.min.js"></script>
-    <script is:inline src="https://template.cityu.edu.hk/template/v2/js/cityu.base.js"></script>
-    <script is:inline async src="https://template.cityu.edu.hk/template/v2/js/aos/aos.js"></script>
+    <script is:inline>
+      const header = document.getElementById('site-header');
+      if (header) {
+        const isHome = header.dataset.home === 'true';
+        const setScrolled = () => {
+          const scrolled = !isHome || window.scrollY > 60;
+          header.dataset.scrolled = scrolled ? 'true' : 'false';
+        };
 
-    <button
-      type="button"
-      class="cityu-backtotop"
-      id="btn-back-to-top"
-      aria-label="Back to top"
-      style="display: none"
-    >
-      <i class="fas fa-chevron-up"></i>
-    </button>
+        setScrolled();
+
+        if (isHome) {
+          window.addEventListener('scroll', setScrolled, { passive: true });
+        }
+
+        const menuButton = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = header.querySelector('[data-menu-icon]');
+        const closeIcon = header.querySelector('[data-close-icon]');
+        const setMenu = (open) => {
+          header.dataset.menuOpen = open ? 'true' : 'false';
+          if (menuButton) {
+            menuButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+          }
+          if (mobileMenu) {
+            mobileMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
+            mobileMenu.hidden = !open;
+          }
+          if (menuIcon) {
+            menuIcon.classList.toggle('hidden', open);
+          }
+          if (closeIcon) {
+            closeIcon.classList.toggle('hidden', !open);
+          }
+        };
+
+        setMenu(false);
+
+        if (menuButton) {
+          menuButton.addEventListener('click', () => {
+            const open = header.dataset.menuOpen !== 'true';
+            setMenu(open);
+          });
+        }
+
+        if (mobileMenu) {
+          mobileMenu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => setMenu(false));
+          });
+        }
+      }
+
+      const hero = document.querySelector('[data-hero]');
+      if (hero) {
+        const slides = Array.from(hero.querySelectorAll('[data-hero-slide]'));
+        const dots = Array.from(hero.querySelectorAll('[data-hero-dot]'));
+        const caption = hero.querySelector('[data-hero-caption]');
+        let current = 0;
+
+        const setHero = (next) => {
+          if (!slides.length) return;
+          current = (next + slides.length) % slides.length;
+          slides.forEach((slide, index) => {
+            slide.style.opacity = index === current ? '1' : '0';
+          });
+          dots.forEach((dot, index) => {
+            dot.style.width = index === current ? '24px' : '6px';
+            dot.style.background = index === current ? '#e8411a' : 'rgba(255,255,255,0.4)';
+            dot.setAttribute('aria-pressed', index === current ? 'true' : 'false');
+          });
+          if (caption) {
+            caption.textContent = slides[current].dataset.caption || '';
+          }
+        };
+
+        let timer = window.setInterval(() => setHero(current + 1), 5000);
+        dots.forEach((dot) => {
+          dot.addEventListener('click', () => {
+            const index = Number(dot.dataset.heroIndex || '0');
+            setHero(index);
+            clearInterval(timer);
+            timer = window.setInterval(() => setHero(current + 1), 5000);
+          });
+        });
+      }
+
+      const filters = Array.from(document.querySelectorAll('[data-social-filter]'));
+      const posts = Array.from(document.querySelectorAll('[data-social-card]'));
+      if (filters.length && posts.length) {
+        const setFilter = (key) => {
+          filters.forEach((button) => {
+            const active = button.dataset.filter === key;
+            button.dataset.active = active ? 'true' : 'false';
+            button.setAttribute('aria-pressed', active ? 'true' : 'false');
+          });
+          posts.forEach((card) => {
+            const show = card.dataset.platform === key;
+            card.hidden = !show;
+          });
+        };
+
+        setFilter(filters[0].dataset.filter || 'youtube');
+        filters.forEach((button) => {
+          button.addEventListener('click', () => setFilter(button.dataset.filter));
+        });
+      }
+
+      const schedule = document.querySelector('[data-schedule]');
+      if (schedule) {
+        const items = Array.from(schedule.querySelectorAll('[data-accordion-item]'));
+        let openIndex = items.findIndex((item) => item.dataset.open === 'true');
+        if (openIndex === -1) openIndex = 0;
+
+        const setOpen = (index) => {
+          items.forEach((item, itemIndex) => {
+            const open = itemIndex === index;
+            item.dataset.open = open ? 'true' : 'false';
+            const panel = item.querySelector('[data-accordion-panel]');
+            const icon = item.querySelector('[data-accordion-icon]');
+            if (panel) panel.hidden = !open;
+            if (icon) icon.style.transform = open ? 'rotate(90deg)' : 'rotate(0deg)';
+          });
+        };
+
+        setOpen(openIndex);
+        items.forEach((item, itemIndex) => {
+          const trigger = item.querySelector('[data-accordion-trigger]');
+          if (!trigger) return;
+          trigger.addEventListener('click', () => {
+            if (openIndex === itemIndex) {
+              openIndex = -1;
+              setOpen(-1);
+              return;
+            }
+            openIndex = itemIndex;
+            setOpen(itemIndex);
+          });
+        });
+      }
+    </script>
   </body>
 </html>

@@ -1,0 +1,61 @@
+---
+import Icon from '../Icon.astro';
+import ScheduleEventRow from './ScheduleEventRow.astro';
+
+interface Event {
+  time: string;
+  title: string;
+  location: string;
+  description: string;
+  image: string;
+}
+
+interface Props {
+  date: string;
+  dayNumber: number;
+  summary: string;
+  events: readonly Event[];
+  open?: boolean;
+}
+
+const { date, dayNumber, summary, events, open = false } = Astro.props;
+---
+
+<div
+  class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+  data-accordion-item
+  data-open={open ? 'true' : 'false'}
+>
+  <button
+    type="button"
+    class="w-full flex items-center justify-between px-6 py-5 hover:bg-gray-50 transition-colors text-left"
+    data-accordion-trigger
+  >
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white text-base font-black shrink-0 shadow-sm bg-brand-gradient">
+        {dayNumber}
+      </div>
+      <div>
+        <div class="font-bold text-gray-900 text-base md:text-lg">{date}</div>
+        <div class="text-gray-500 text-sm mt-0.5">{summary}</div>
+      </div>
+    </div>
+    <Icon
+      name="chevron-right"
+      size={20}
+      class="text-gray-400 transition-transform duration-200"
+      data-accordion-icon
+    />
+  </button>
+
+  <div class="border-t border-gray-100 px-6 py-6" data-accordion-panel hidden={!open}>
+    {
+      events.map((event, eventIndex) => (
+        <ScheduleEventRow
+          {...event}
+          showTimeline={eventIndex < events.length - 1}
+        />
+      ))
+    }
+  </div>
+</div>

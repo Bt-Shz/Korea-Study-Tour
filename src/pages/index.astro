@@ -1,36 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageShell from '../components/PageShell.astro';
-import { site } from '../config/site';
+import AboutSection from '../components/sections/AboutSection.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
+import SocialHighlightsSection from '../components/sections/SocialHighlightsSection.astro';
+import TeamSection from '../components/sections/TeamSection.astro';
 ---
 
 <BaseLayout title="Home">
-  <div slot="before-main" class="page-hero">
-    <div class="container">
-      <h1>{site.title}</h1>
-      <p class="lead">
-        Highlights from the study tour organized by the {site.department} at {site.university}.
-      </p>
-    </div>
-  </div>
+  <HeroSection />
 
-  <PageShell heading="Home">
-    <div class="home-intro">
-      <p>
-        Welcome to the study tour website. This site will showcase academic visits, student
-        explorations, and reflections from our journey. Content will be added as the tour
-        progresses.
-      </p>
-      <p>
-        Use the navigation above to learn more about the trip, view the schedule, read student
-        experiences, and meet the visit team.
-      </p>
-    </div>
-    <div class="home-links">
-      <a href="/about">About the Tour</a>
-      <a href="/schedule">Visit Schedule</a>
-      <a href="/experiences">Experiences</a>
-      <a href="/team">The Visit Team</a>
-    </div>
-  </PageShell>
+  <div class="relative overflow-hidden">
+    <AboutSection />
+    <SocialHighlightsSection />
+    <TeamSection />
+  </div>
 </BaseLayout>
