@@ -1,11 +1,36 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageShell from '../components/PageShell.astro';
+import { site } from '../config/site';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout title="Home">
+  <div slot="before-main" class="page-hero">
+    <div class="container">
+      <h1>{site.title}</h1>
+      <p class="lead">
+        Highlights from the study tour organized by the {site.department} at {site.university}.
+      </p>
+    </div>
+  </div>
+
+  <PageShell heading="Home">
+    <div class="home-intro">
+      <p>
+        Welcome to the study tour website. This site will showcase academic visits, student
+        explorations, and reflections from our journey. Content will be added as the tour
+        progresses.
+      </p>
+      <p>
+        Use the navigation above to learn more about the trip, view the schedule, read student
+        experiences, and meet the visit team.
+      </p>
+    </div>
+    <div class="home-links">
+      <a href="/about">About the Tour</a>
+      <a href="/schedule">Visit Schedule</a>
+      <a href="/experiences">Experiences</a>
+      <a href="/team">The Visit Team</a>
+    </div>
+  </PageShell>
+</BaseLayout>

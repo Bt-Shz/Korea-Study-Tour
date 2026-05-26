@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageShell from '../components/PageShell.astro';
+
+const faculty = [
+  { name: 'Faculty lead (TBC)', role: 'Tour organiser' },
+  { name: 'Faculty lead (TBC)', role: 'Tour organiser' },
+];
+
+const students = Array.from({ length: 6 }, (_, i) => ({
+  name: `Student ${i + 1} (TBC)`,
+  role: 'Participant',
+}));
+---
+
+<BaseLayout title="The Visit Team" breadcrumb="The Visit Team">
+  <PageShell
+    heading="The Visit Team"
+    lead="Faculty organisers and student participants on the study tour."
+  >
+    <p>
+      Team profiles and photos will be added before or during the tour. The layout below mirrors
+      the structure of the previous study tour website.
+    </p>
+
+    <h2 class="team-section-title">Faculty</h2>
+    <div class="team-grid">
+      {
+        faculty.map((person) => (
+          <div class="team-card">
+            <div class="placeholder-photo" aria-hidden="true" />
+            <h3>{person.name}</h3>
+            <p class="role">{person.role}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <h2 class="team-section-title">Students</h2>
+    <div class="team-grid">
+      {
+        students.map((person) => (
+          <div class="team-card">
+            <div class="placeholder-photo" aria-hidden="true" />
+            <h3>{person.name}</h3>
+            <p class="role">{person.role}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="placeholder-note mt-4">
+      Replace placeholders with names, photos, and bios when the team is confirmed.
+    </p>
+  </PageShell>
+</BaseLayout>

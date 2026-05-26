@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageShell from '../components/PageShell.astro';
+
+const placeholders = [
+  { name: 'Student reflection 1', quote: 'Reflections from participants will appear here after the tour.' },
+  { name: 'Student reflection 2', quote: 'Share your experience of universities, companies, and cultural visits.' },
+  { name: 'Student reflection 3', quote: 'Quotes and photos will be added as content is collected.' },
+];
+---
+
+<BaseLayout title="Experience and Reflections" breadcrumb="Experience and Reflections">
+  <PageShell
+    heading="Experiences"
+    lead="Comments and reflections from students who joined the study tour."
+  >
+    <p>
+      This page will feature testimonials and reflections from tour participants, similar to the
+      comments carousel on the previous Japan study tour site.
+    </p>
+
+    <div class="experience-grid">
+      {
+        placeholders.map((item) => (
+          <article class="experience-card">
+            <div class="placeholder-avatar" aria-hidden="true" />
+            <h3>{item.name}</h3>
+            <p>"{item.quote}"</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="placeholder-note mt-4">
+      More student experiences will be added after the tour.
+    </p>
+  </PageShell>
+</BaseLayout>

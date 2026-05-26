@@ -1,0 +1,189 @@
+/* Content-area styling — header/footer use CityU template CSS */
+
+.markdown a::after {
+  font-family: "Material Icons";
+  content: " \e89e";
+}
+
+.page-content .markdown a::after {
+  display: none;
+}
+
+.page-content .markdown p a::after {
+  display: inline;
+}
+
+.page-hero {
+  background: linear-gradient(135deg, #1a3a5c 0%, #2d6a8f 45%, #4a9bc4 100%);
+  color: #fff;
+  padding: 3rem 0;
+  margin-bottom: 2rem;
+}
+
+.page-hero h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.page-hero .lead {
+  font-size: 1.1rem;
+  opacity: 0.92;
+  max-width: 42rem;
+  margin: 0;
+}
+
+.content-card {
+  background: #f8fafc;
+  border-left: 4px solid #2d6a8f;
+  border-radius: 0 8px 8px 0;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.content-card h2 {
+  font-size: 1.25rem;
+  color: #1a3a5c;
+  margin: 0 0 0.75rem;
+}
+
+.schedule-day {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  background: #fff;
+}
+
+.schedule-day h3 {
+  color: #2d6a8f;
+  font-size: 1.1rem;
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.schedule-day ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.schedule-day li {
+  margin-bottom: 0.35rem;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.experience-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(26, 58, 92, 0.06);
+}
+
+.experience-card .placeholder-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #cbd5e1, #94a3b8);
+  margin-bottom: 0.75rem;
+}
+
+.experience-card h3 {
+  font-size: 1rem;
+  color: #1a3a5c;
+  margin: 0 0 0.5rem;
+}
+
+.experience-card p {
+  font-size: 0.95rem;
+  color: #475569;
+  margin: 0;
+  font-style: italic;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.team-card {
+  text-align: center;
+  padding: 1.25rem;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.team-card .placeholder-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+  margin: 0 auto 0.75rem;
+}
+
+.team-card h3 {
+  font-size: 1rem;
+  color: #1a3a5c;
+  margin: 0 0 0.25rem;
+}
+
+.team-card .role {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.team-section-title {
+  font-size: 1.35rem;
+  color: #2d6a8f;
+  margin: 2rem 0 0.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.placeholder-note {
+  color: #64748b;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.home-intro {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.home-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.home-links a {
+  display: inline-block;
+  padding: 0.6rem 1.25rem;
+  background: #2d6a8f;
+  color: #fff !important;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.home-links a::after {
+  display: none !important;
+}
+
+.home-links a:hover {
+  background: #1a3a5c;
+  color: #fff !important;
+}

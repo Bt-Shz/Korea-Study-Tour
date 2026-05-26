@@ -1,0 +1,22 @@
+---
+interface Props {
+  heading: string;
+  lead?: string;
+}
+
+const { heading, lead } = Astro.props;
+---
+
+<div class="cityu-main-inner container page-content">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="cityu-content content-color-default">
+        <h1>{heading}</h1>
+      </div>
+    </div>
+    <div class="markdown col-12">
+      {lead && <p class="lead mb-4">{lead}</p>}
+      <slot />
+    </div>
+  </div>
+</div>
