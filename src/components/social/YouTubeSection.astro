@@ -1,0 +1,35 @@
+---
+import { youtubeEmbeds } from '../../data/social-embeds';
+---
+
+<div class="social-platform-section" aria-labelledby="us-on-youtube">
+  <h3 id="us-on-youtube" class="sr-only">Us on YouTube</h3>
+
+  <div id="youtube-embeds" class="scrolling-wrapper scrolling-wrapper--youtube cv-auto">
+    {
+      youtubeEmbeds.map((embed, index) => (
+        <div class="youtube-embed-slot">
+          <div class="youtube-embed-frame">
+            <iframe
+              src={`https://www.youtube.com/embed/${embed.videoId}`}
+              title={`Embedded YouTube video ${index + 1}`}
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            />
+          </div>
+          <p class="social-embed-link">
+            <a
+              href={embed.watchUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-medium text-gray-500 underline-offset-2 hover:text-primary hover:underline"
+            >
+              View on YouTube
+            </a>
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</div>

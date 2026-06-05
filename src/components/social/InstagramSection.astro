@@ -1,0 +1,35 @@
+---
+import { instagramEmbeds } from '../../data/social-embeds';
+import { instagramFallback } from '../../data/social-fallbacks';
+import SocialEmbedSlot from './SocialEmbedSlot.astro';
+import SocialFallbackGrid from './SocialFallbackGrid.astro';
+---
+
+<div class="social-platform-section" aria-labelledby="us-on-instagram">
+  <h3 id="us-on-instagram" class="sr-only">Us on Instagram</h3>
+
+  <div id="instagram-embeds" class="scrolling-wrapper cv-auto">
+    {
+      instagramEmbeds.map((embed) => (
+        <SocialEmbedSlot href={embed.permalink} label="View on Instagram">
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink={embed.permalink}
+            data-instgrm-version="14"
+          >
+            <div class="insta-fallback p-6 text-center text-sm text-gray-500">
+              <p>Instagram content cannot be loaded in your browser.</p>
+            </div>
+          </blockquote>
+        </SocialEmbedSlot>
+      ))
+    }
+  </div>
+
+  <SocialFallbackGrid
+    id="instagram-fallback"
+    message={instagramFallback.message}
+    cards={instagramFallback.cards}
+    hidden
+  />
+</div>

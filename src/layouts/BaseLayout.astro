@@ -121,17 +121,16 @@ const isHome = Astro.url.pathname === '/';
       }
 
       const filters = Array.from(document.querySelectorAll('[data-social-filter]'));
-      const posts = Array.from(document.querySelectorAll('[data-social-card]'));
-      if (filters.length && posts.length) {
+      const panels = Array.from(document.querySelectorAll('[data-social-panel]'));
+      if (filters.length && panels.length) {
         const setFilter = (key) => {
           filters.forEach((button) => {
             const active = button.dataset.filter === key;
             button.dataset.active = active ? 'true' : 'false';
             button.setAttribute('aria-pressed', active ? 'true' : 'false');
           });
-          posts.forEach((card) => {
-            const show = card.dataset.platform === key;
-            card.hidden = !show;
+          panels.forEach((panel) => {
+            panel.hidden = panel.dataset.platform !== key;
           });
         };
 

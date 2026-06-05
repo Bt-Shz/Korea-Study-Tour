@@ -1,0 +1,24 @@
+---
+import type { SocialFallbackCard } from '../../data/social-fallbacks';
+import SocialCard from './SocialCard.astro';
+
+interface Props {
+  id: string;
+  message: string;
+  cards: SocialFallbackCard[];
+  hidden?: boolean;
+}
+
+const { id, message, cards, hidden = false } = Astro.props;
+---
+
+<div
+  id={id}
+  class="social-fallback flex flex-col gap-5 rounded-2xl border border-gray-100 bg-gray-50/80 p-5 md:p-6"
+  hidden={hidden || undefined}
+>
+  <p class="social-fallback-message text-sm leading-relaxed text-gray-600">{message}</p>
+  <div class="social-fallback-grid grid gap-4">
+    {cards.map((card) => <SocialCard {...card} />)}
+  </div>
+</div>

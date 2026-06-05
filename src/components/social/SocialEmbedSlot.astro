@@ -1,0 +1,25 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  frameClass?: string;
+}
+
+const { href, label, frameClass = '' } = Astro.props;
+---
+
+<div class="social-embed-slot">
+  <div class:list={['social-embed-frame', frameClass]}>
+    <slot />
+  </div>
+  <p class="social-embed-link">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="font-medium text-gray-500 underline-offset-2 hover:text-primary hover:underline"
+    >
+      {label}
+    </a>
+  </p>
+</div>
