@@ -1,4 +1,9 @@
 @layer base {
+  :root {
+    --brand-orange: #e8411a;
+    --brand-red: #c8102e;
+  }
+
   html,
   body {
     height: 100%;
@@ -11,6 +16,41 @@
 
   img {
     max-width: 100%;
+  }
+
+  .font-display {
+    font-family: "Playfair Display", serif;
+  }
+
+  .bg-brand-gradient {
+    background: linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-red) 100%);
+  }
+
+  .text-brand-gradient {
+    background: linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-red) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-brand-gradient-v {
+    background: linear-gradient(180deg, var(--brand-orange) 0%, var(--brand-red) 100%);
+  }
+
+  .drop-cap {
+    font-family: "Playfair Display", serif;
+    background: linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-red) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .drop-cap--lg {
+    font-size: 5rem;
+  }
+
+  .drop-cap--md {
+    font-size: 4.5rem;
   }
 
   .social-filter-btn[data-active="true"] {
