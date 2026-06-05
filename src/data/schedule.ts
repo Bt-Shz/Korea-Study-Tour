@@ -7,6 +7,7 @@ export const visitSchedule = [
       {
         time: '7:00 AM',
         title: 'Departure from Hong Kong → Arrival in Seoul',
+        slug: 'departure-hk-seoul-arrival',
         type: 'travel',
         location: 'HKIA Aisle A · Cathay Pacific',
         description:
