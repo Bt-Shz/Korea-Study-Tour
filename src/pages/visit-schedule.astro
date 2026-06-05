@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ScheduleDayCard from '../components/cards/ScheduleDayCard.astro';
+import ScheduleDaySection from '../components/sections/ScheduleDaySection.astro';
 import Container from '../components/ui/Container.astro';
 import GradientText from '../components/ui/GradientText.astro';
 import InnerPage from '../components/layout/InnerPage.astro';
@@ -13,32 +13,27 @@ import { visitSchedule } from '../data/schedule';
     <Container>
       <PageIntro
         eyebrow="Itinerary"
-        statValue="18–21"
+        statValue="18-22"
         statLabel="May 2026"
-        dropCap="A"
+        dropCap="T"
         scrollHint="Schedule below"
       >
         <Fragment slot="title">
-          Four days.<br />
+          Five days.<br />
           One <GradientText>journey</GradientText>.
         </Fragment>
         <Fragment slot="lead">
-          four-day academic immersion across Seoul's leading universities and innovation centers
-          &mdash; from KAIST and SKKU to Yonsei and Korea University, paired with cultural
-          exploration of the city.
+          he Korea Study Tour schedule follows our full five-day journey, covering academic visits,
+          city learning, and the final split between return travel and optional extended exploration.
         </Fragment>
         <p slot="body">
-          Each day blends technical visits, hands-on labs, and meetings with faculty and students,
-          alongside time to experience Seoul's blend of tradition and modernity.
+          Inspired by the Japan Study Tour format, all days stay visible with clear time blocks,
+          event titles, and short descriptions for quick presentation use.
         </p>
       </PageIntro>
 
-      <div class="space-y-6" data-schedule>
-        {
-          visitSchedule.map((day, dayIndex) => (
-            <ScheduleDayCard {...day} open={dayIndex === 0} />
-          ))
-        }
+      <div class="space-y-6">
+        {visitSchedule.map((day) => <ScheduleDaySection {...day} />)}
       </div>
     </Container>
   </InnerPage>

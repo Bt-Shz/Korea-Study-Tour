@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/ui/Container.astro';
+import InnerPage from '../components/layout/InnerPage.astro';
+import PageIntro from '../components/layout/PageIntro.astro';
+import GradientText from '../components/ui/GradientText.astro';
+import TeamMemberCard from '../components/cards/TeamMemberCard.astro';
+import StudentTeamCard from '../components/cards/StudentTeamCard.astro';
+import { teamMembers } from '../data/team';
+import { visitTeamStudents } from '../data/visitTeamStudents';
+---
+
+<BaseLayout title="Visit Team">
+  <InnerPage variant="gradient">
+    <Container size="wide">
+      <PageIntro
+        eyebrow="People"
+        statValue="28"
+        statLabel="participants"
+        dropCap="T"
+        scrollHint="Team below"
+      >
+        <Fragment slot="title">
+          The Visit<br />
+          <GradientText>Team</GradientText>
+        </Fragment>
+        <Fragment slot="lead">
+          he team includes our staff members and student participants. Student profiles below are
+          prepared as editable placeholders so everyone can fill in their details directly.
+        </Fragment>
+      </PageIntro>
+
+      <section class="mb-12">
+        <h2 class="font-display text-3xl font-bold mb-5">Staff</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {teamMembers.map((member) => <TeamMemberCard {...member} />)}
+        </div>
+      </section>
+
+      <section>
+        <h2 class="font-display text-3xl font-bold mb-5">Students</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {visitTeamStudents.map((student) => <StudentTeamCard {...student} />)}
+        </div>
+      </section>
+    </Container>
+  </InnerPage>
+</BaseLayout>

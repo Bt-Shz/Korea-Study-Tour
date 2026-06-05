@@ -28,7 +28,7 @@ export const socialPosts = [
     username: '@CityUCS',
     thumbnail:
       'https://images.unsplash.com/photo-1706520559246-daa3cf872267?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwc3R1ZGVudHMlMjBjYW1wdXMlMjBLb3JlYSUyMHRlY2hub2xvZ3l8ZW58MXx8fHwxNzc5MzY4MzA4fDA&ixlib=rb-4.1.0&q=80&w=600',
-    title: 'KAIST Innovation Center — Full Walkthrough',
+    title: 'KAIST AI Graduate Lab — Full Walkthrough',
     link: 'https://youtube.com',
     type: 'video' as const,
   },
@@ -101,7 +101,7 @@ export const socialPosts = [
     username: '@cityucs',
     thumbnail:
       'https://images.unsplash.com/photo-1637073759412-9d3ddd764bd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxTZW91bCUyMGNpdHlzY2FwZSUyMG5pZ2h0JTIwbW9kZXJufGVufDF8fHx8MTc3OTM2ODMwOHww&ixlib=rb-4.1.0&q=80&w=600',
-    title: 'Sunrise at Namsan Tower 🌅 The view is everything #Seoul #Korea #CityUSeoul',
+    title: 'Seoul Gallery visit day 🏛️ #Seoul #Korea #CityUSeoul',
     link: 'https://instagram.com',
     type: 'post' as const,
   },
@@ -125,8 +125,7 @@ export const socialPosts = [
     username: '@CityU_CS',
     thumbnail:
       'https://images.unsplash.com/photo-1709382204074-de328e811d1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHx1bml2ZXJzaXR5JTIwc3R1ZGVudHMlMjBjYW1wdXMlMjBLb3JlYSUyMHRlY2hub2xvZ3l8ZW58MXx8fHwxNzc5MzY4MzA4fDA&ixlib=rb-4.1.0&q=80&w=600',
-    title:
-      'Day 2: Incredible insights from KAIST Innovation Center on semiconductor research 🔬 Thread below →',
+    title: 'Day 2: Incredible insights from KAIST AI Graduate Lab research exchange 🔬 Thread below →',
     link: 'https://x.com',
     type: 'post' as const,
   },
@@ -152,7 +151,7 @@ export const socialPosts = [
     thumbnail:
       'https://images.unsplash.com/photo-1637073759412-9d3ddd764bd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxTZW91bCUyMGNpdHlzY2FwZSUyMG5pZ2h0JTIwbW9kZXJufGVufDF8fHx8MTc3OTM2ODMwOHww&ixlib=rb-4.1.0&q=80&w=600',
     title:
-      'Fascinating discussion on computer vision at the KAIST CVML Lab with Prof. Kate Shim. The future of AI is being shaped right here 🧠',
+      'Fascinating discussion at the KAIST AI Graduate Lab. The future of AI is being shaped right here 🧠',
     link: 'https://x.com',
     type: 'post' as const,
   },

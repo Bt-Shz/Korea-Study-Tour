@@ -4,6 +4,7 @@ import TeamMemberCard from '../cards/TeamMemberCard.astro';
 import DisplayHeading from '../ui/DisplayHeading.astro';
 import SectionEyebrow from '../ui/SectionEyebrow.astro';
 import { teamMembers } from '../../data/team';
+import { trip } from '../../data/trip';
 ---
 
 <section id="team" class="py-14 md:py-20 relative">
@@ -37,7 +38,7 @@ import { teamMembers } from '../../data/team';
 
     <div class="mt-10 max-w-2xl mx-auto relative z-10">
       <a
-        href="/student-takeaways"
+        href="/visit-team"
         class="block group rounded-2xl p-6 text-center shadow-lg relative overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 bg-brand-gradient"
       >
         <div
@@ -47,11 +48,11 @@ import { teamMembers } from '../../data/team';
 
         <div class="text-white/70 text-sm mb-1 uppercase tracking-wider font-bold">Plus</div>
         <div class="text-white text-5xl font-black mb-2 flex items-center justify-center gap-3">
-          25
+          {trip.studentCount}
           <Icon name="external-link" size={24} class="text-white/50 group-hover:text-white" />
         </div>
         <div class="text-white text-lg font-semibold mb-1">Undergraduate Students</div>
-        <div class="text-white/80 text-sm">Read their personal takeaways and reflections &rarr;</div>
+        <div class="text-white/80 text-sm">Meet the full visit team and student profiles &rarr;</div>
       </a>
     </div>
   </div>

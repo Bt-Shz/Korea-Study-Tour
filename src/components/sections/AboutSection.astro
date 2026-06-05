@@ -2,6 +2,7 @@
 import DisplayHeading from '../ui/DisplayHeading.astro';
 import GradientText from '../ui/GradientText.astro';
 import SectionEyebrow from '../ui/SectionEyebrow.astro';
+import { trip } from '../../data/trip';
 ---
 
 <section id="about" class="pt-14 md:pt-20 pb-8 md:pb-10 relative">
@@ -27,21 +28,17 @@ import SectionEyebrow from '../ui/SectionEyebrow.astro';
         <div class="absolute left-0 top-2 bottom-2 w-1 rounded-full border-brand-gradient-v"></div>
         <p class="text-gray-700 leading-relaxed text-[17px]">
           <span class="drop-cap drop-cap--md float-left mr-3 mt-1 leading-none">T</span>
-          he Seoul Tech &amp; Culture Tour 2026 was organized by the Department of Computer Science
-          during 18&ndash;21 May 2026, offering students a rare opportunity to engage directly with
-          South Korea's world-leading universities and Seoul's smart-city innovation centers.
+          he Seoul Tech &amp; Culture Tour 2026 took place from 18-22 May 2026 and offered students
+          a five-day academic and cultural immersion designed by the Department of Computer Science
+          at City University of Hong Kong.
         </p>
         <p class="mt-4 text-gray-600 leading-relaxed text-[15px]">
-          Led by Prof. Howard Leung and Dr. Kenneth Lee, 25 undergraduate students visited
-          Sungkyunkwan University (SKKU), the KAIST AI Hub and CVML Lab, Korea University, Yonsei
-          University's Engineering Research Park, and the Seoul TOPIS smart-transportation control
-          center at Seoul City Hall.
+          Our itinerary covered {trip.venues.join(', ')}, with sessions focused on academic
+          exchange, smart-city systems, and cross-cultural learning.
         </p>
-        <p class="mt-4 text-gray-600 leading-relaxed text-[15px]">
-          Beyond the tech circuit, students experienced Seoul firsthand &mdash; from the Hongdae
-          and Shinchon-Ewha districts where they stayed to the Seoul Gallery at City Hall &mdash;
-          bridging Korea's modern identity with its everyday culture.
-        </p>
+        <a href="/about" class="mt-5 inline-flex text-sm font-semibold text-primary hover:underline">
+          Read the full story &rarr;
+        </a>
       </div>
     </div>
 

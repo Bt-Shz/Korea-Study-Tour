@@ -1,3 +1,33 @@
 ---
-return Astro.redirect('/#about');
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/ui/Container.astro';
+import GradientText from '../components/ui/GradientText.astro';
+import InnerPage from '../components/layout/InnerPage.astro';
+import PageIntro from '../components/layout/PageIntro.astro';
+import AboutContent from '../components/sections/AboutContent.astro';
 ---
+
+<BaseLayout title="About">
+  <InnerPage variant="gradient">
+    <Container size="narrow">
+      <PageIntro
+        eyebrow="About"
+        statValue="5"
+        statLabel="days"
+        dropCap="T"
+        scrollHint="Story below"
+      >
+        <Fragment slot="title">
+          Korea Study Tour<br />
+          <GradientText>2026</GradientText>
+        </Fragment>
+        <Fragment slot="lead">
+          he purpose of this website is to provide a clear window into our Korea Study Tour and the
+          academic and cultural experiences the group shared together.
+        </Fragment>
+      </PageIntro>
+
+      <AboutContent />
+    </Container>
+  </InnerPage>
+</BaseLayout>

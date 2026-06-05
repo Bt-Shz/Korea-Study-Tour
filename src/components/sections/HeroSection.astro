@@ -1,6 +1,7 @@
 ---
 import Icon from '../Icon.astro';
 import { heroImages } from '../../data/hero';
+import { trip } from '../../data/trip';
 ---
 
 <section class="relative h-screen min-h-[600px] flex items-end overflow-hidden" data-hero>
@@ -33,7 +34,7 @@ import { heroImages } from '../../data/hero';
         </span> Culture<br />Tour 2026
       </h1>
       <p class="text-white/75 text-lg md:text-xl max-w-xl leading-relaxed">
-        A four-day academic immersion into Korea's innovation ecosystem &mdash; from world-class
+        A five-day academic immersion into Korea's innovation ecosystem &mdash; from world-class
         universities to Seoul's smart-city control center.
       </p>
     </div>
@@ -63,16 +64,16 @@ import { heroImages } from '../../data/hero';
       <div class="flex flex-col items-center text-white">
         <div class="flex items-center gap-1.5 text-white/60 text-xs mb-0.5">
           <Icon name="calendar" size={14} />
-          18&ndash;21 May 2026
+          {trip.dates.range}
         </div>
-        <div class="font-bold text-sm md:text-base">4 Days</div>
+        <div class="font-bold text-sm md:text-base">{trip.dates.days} Days</div>
       </div>
       <div class="flex flex-col items-center text-white">
         <div class="flex items-center gap-1.5 text-white/60 text-xs mb-0.5">
           <Icon name="map-pin" size={14} />
           Academic Visits
         </div>
-        <div class="font-bold text-sm md:text-base">5 Venues</div>
+        <div class="font-bold text-sm md:text-base">{trip.venuesCount} Venues</div>
       </div>
     </div>
   </div>
