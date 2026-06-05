@@ -1,0 +1,26 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ArticleBackLink from '../components/content/ArticleBackLink.astro';
+import Container from '../components/ui/Container.astro';
+import InnerPage from '../components/layout/InnerPage.astro';
+import '../styles/article.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <InnerPage variant="gradient">
+    <Container size="narrow">
+      <ArticleBackLink />
+      <article>
+        <slot name="header" />
+        <slot />
+      </article>
+    </Container>
+  </InnerPage>
+</BaseLayout>

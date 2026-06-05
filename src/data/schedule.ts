@@ -6,8 +6,10 @@ export const visitSchedule = [
     events: [
       {
         time: '7:00 AM',
-        title: 'CX flight: Hong Kong to Seoul',
+        title: 'Departure from Hong Kong → Arrival in Seoul',
+        slug: 'departure-hk-seoul-arrival',
         variant: 'travel',
+        location: 'HKIA Aisle A · Cathay Pacific',
         description:
           'Group meet-up at HK International Airport Aisle A (Cathay Pacific). Group photos with CityU props before security, then flight to Incheon and AREX transfer to Hongik University / Shinchon-Ewha area.',
       },

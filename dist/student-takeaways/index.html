@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><title>Student Takeaways | Seoul Tech &amp; Culture Tour 2026</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A five-day academic immersion into Korea's innovation ecosystem, from world-class universities to Seoul's smart-city control center."><meta name="author" content="City University of Hong Kong"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/_astro/SectionEyebrow.D75Mp-Lc.css"></head> <body class="min-h-screen bg-[#fafafa] text-[#1a1a1a]"> <header id="site-header" class="group fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent data-[scrolled=true]:bg-white/95 data-[scrolled=true]:backdrop-blur-md data-[scrolled=true]:shadow-sm data-[scrolled=true]:border-b data-[scrolled=true]:border-gray-100" data-home="false" data-scrolled="true" data-menu-open="false"> <div class="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between"> <a href="https://www.cs.cityu.edu.hk/en" class="flex items-center gap-3" rel="noopener" target="_blank"> <div class="w-8 h-8 rounded-lg flex items-center justify-center text-white text-xs font-black bg-brand-gradient">
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><title>Student Takeaways | Seoul Tech &amp; Culture Tour 2026</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A five-day academic immersion into Korea's innovation ecosystem, from world-class universities to Seoul's smart-city control center."><meta name="author" content="City University of Hong Kong"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/_astro/BaseLayout.UUg97CIr.css"></head> <body class="min-h-screen bg-[#fafafa] text-[#1a1a1a]"> <header id="site-header" class="group fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent data-[scrolled=true]:bg-white/95 data-[scrolled=true]:backdrop-blur-md data-[scrolled=true]:shadow-sm data-[scrolled=true]:border-b data-[scrolled=true]:border-gray-100" data-home="false" data-scrolled="true" data-menu-open="false"> <div class="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between"> <a href="https://www.cs.cityu.edu.hk/en" class="flex items-center gap-3" rel="noopener" target="_blank"> <div class="w-8 h-8 rounded-lg flex items-center justify-center text-white text-xs font-black bg-brand-gradient">
 CU
 </div> <div class="leading-tight"> <div class="text-xs font-semibold tracking-wide text-white group-data-[scrolled=true]:text-primary">
 CityU &middot; CS Department
@@ -156,17 +156,16 @@ cs.cityu.edu.hk
       }
 
       const filters = Array.from(document.querySelectorAll('[data-social-filter]'));
-      const posts = Array.from(document.querySelectorAll('[data-social-card]'));
-      if (filters.length && posts.length) {
+      const panels = Array.from(document.querySelectorAll('[data-social-panel]'));
+      if (filters.length && panels.length) {
         const setFilter = (key) => {
           filters.forEach((button) => {
             const active = button.dataset.filter === key;
             button.dataset.active = active ? 'true' : 'false';
             button.setAttribute('aria-pressed', active ? 'true' : 'false');
           });
-          posts.forEach((card) => {
-            const show = card.dataset.platform === key;
-            card.hidden = !show;
+          panels.forEach((panel) => {
+            panel.hidden = panel.dataset.platform !== key;
           });
         };
 

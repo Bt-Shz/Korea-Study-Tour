@@ -1,0 +1,121 @@
+/* [hidden] overrides — keep in sync with JS toggleGroupFallback */
+#instagram-fallback[hidden],
+#twitter-fallback[hidden],
+#fb-fallback[hidden] {
+  display: none !important;
+}
+
+#instagram-embeds[hidden],
+#twitter-embeds[hidden],
+#facebook-embeds[hidden],
+#youtube-embeds[hidden] {
+  display: none !important;
+}
+
+.social-platform-section {
+  width: 100%;
+}
+
+.scrolling-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 1.25rem;
+  padding-inline: 0.25rem;
+  padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.social-embed-slot {
+  flex: 0 0 auto;
+  width: min(22.5rem, calc(100vw - 2.5rem));
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.social-embed-frame {
+  width: 100%;
+  height: 28rem;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(243 244 246);
+  background: #fff;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.social-embed-frame iframe,
+.social-embed-frame .instagram-media {
+  display: block;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0.75rem;
+}
+
+/* YouTube — natural 16:9, not the tall post-style frame */
+.scrolling-wrapper--youtube {
+  align-items: flex-start;
+}
+
+.youtube-embed-slot {
+  flex: 0 0 auto;
+  width: min(22.5rem, calc(100vw - 2.5rem));
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.youtube-embed-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(243 244 246);
+  background: #000;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.youtube-embed-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.scrolling-wrapper--youtube.cv-auto {
+  contain-intrinsic-size: auto 14rem;
+}
+
+.social-embed-link {
+  margin-top: 0.5rem;
+  min-height: 1.25rem;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+}
+
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 30rem;
+}
+
+.insta-fallback {
+  display: none;
+}
+
+.social-fallback-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}

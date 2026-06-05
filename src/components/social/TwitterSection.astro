@@ -1,0 +1,35 @@
+---
+import { twitterEmbeds } from '../../data/social-embeds';
+import { twitterFallback } from '../../data/social-fallbacks';
+import SocialEmbedSlot from './SocialEmbedSlot.astro';
+import SocialFallbackGrid from './SocialFallbackGrid.astro';
+---
+
+<div class="social-platform-section" aria-labelledby="us-on-x">
+  <h3 id="us-on-x" class="sr-only">Us on X</h3>
+
+  <div id="twitter-embeds" class="scrolling-wrapper cv-auto">
+    {
+      twitterEmbeds.map((embed) => (
+        <SocialEmbedSlot href={embed.tweetUrl} label="View on X">
+          <iframe
+            class="twitter-iframe"
+            src={`https://platform.twitter.com/embed/Tweet.html?id=${embed.tweetId}&theme=light&dnt=true`}
+            title={`Embedded post from X: ${embed.tweetId}`}
+            frameborder="0"
+            scrolling="no"
+            allowtransparency="true"
+            allow="encrypted-media"
+          />
+        </SocialEmbedSlot>
+      ))
+    }
+  </div>
+
+  <SocialFallbackGrid
+    id="twitter-fallback"
+    message={twitterFallback.message}
+    cards={twitterFallback.cards}
+    hidden
+  />
+</div>

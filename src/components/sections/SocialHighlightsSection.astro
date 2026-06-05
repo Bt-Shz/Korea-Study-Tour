@@ -1,9 +1,12 @@
 ---
 import Icon from '../Icon.astro';
-import SocialPostCard from '../cards/SocialPostCard.astro';
+import FacebookSection from '../social/FacebookSection.astro';
+import InstagramSection from '../social/InstagramSection.astro';
+import TwitterSection from '../social/TwitterSection.astro';
+import YouTubeSection from '../social/YouTubeSection.astro';
 import DisplayHeading from '../ui/DisplayHeading.astro';
 import SectionEyebrow from '../ui/SectionEyebrow.astro';
-import { platformAccentColor, socialFilters, socialPosts } from '../../data/social';
+import { platformAccentColor, socialFilters } from '../../data/social';
 
 const defaultFilter = socialFilters[0].key;
 ---
@@ -73,19 +76,24 @@ const defaultFilter = socialFilters[0].key;
       }
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {
-        socialPosts.map((post) => (
-          <SocialPostCard
-            title={post.title}
-            thumbnail={post.thumbnail}
-            link={post.link}
-            platformKey={post.platformKey}
-            type={post.type}
-            hidden={post.platformKey !== defaultFilter}
-          />
-        ))
-      }
+    <div data-social-panel data-platform="youtube" hidden={defaultFilter !== 'youtube' || undefined}>
+      <YouTubeSection />
+    </div>
+
+    <div data-social-panel data-platform="facebook" hidden={defaultFilter !== 'facebook' || undefined}>
+      <FacebookSection />
+    </div>
+
+    <div data-social-panel data-platform="instagram" hidden={defaultFilter !== 'instagram' || undefined}>
+      <InstagramSection />
+    </div>
+
+    <div data-social-panel data-platform="x" hidden={defaultFilter !== 'x' || undefined}>
+      <TwitterSection />
     </div>
   </div>
 </section>
+
+<script>
+  import '../../scripts/social-embeds/index.ts';
+</script>
