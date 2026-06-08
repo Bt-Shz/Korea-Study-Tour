@@ -1,15 +1,16 @@
 ---
 interface Props {
   name: string;
+  nickname?: string;
   year: string;
   image: string;
   reflection: string;
   variant?: 'default' | 'featured';
 }
 
-const { name, year, image, reflection, variant = 'default' } = Astro.props;
+const { name, nickname = '', year, image, reflection, variant = 'default' } = Astro.props;
 const isPlaceholder = name === 'Your Full Name' || reflection.trim().length === 0;
-const displayName = isPlaceholder ? 'Student Profile' : name;
+const displayName = isPlaceholder ? 'Student Profile' : nickname ? `${name} (${nickname})` : name;
 const subtitle = `${year} · Computer Science`;
 const displayReflection = isPlaceholder ? 'Reflection coming soon.' : reflection;
 ---
