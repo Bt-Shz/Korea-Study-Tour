@@ -33,7 +33,7 @@
 
 .social-embed-slot {
   flex: 0 0 auto;
-  width: min(22.5rem, calc(100vw - 2.5rem));
+  width: min(25rem, max(18rem, calc((100% - 2.5rem) / 3)));
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
@@ -41,7 +41,7 @@
 
 .social-embed-frame {
   width: 100%;
-  height: 28rem;
+  height: 32rem;
   overflow: hidden;
   border-radius: 0.75rem;
   border: 1px solid rgb(243 244 246);
@@ -70,7 +70,7 @@
 
 .youtube-embed-slot {
   flex: 0 0 auto;
-  width: min(22.5rem, calc(100vw - 2.5rem));
+  width: min(25rem, max(18rem, calc((100% - 2.5rem) / 3)));
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
@@ -96,7 +96,7 @@
 }
 
 .scrolling-wrapper--youtube.cv-auto {
-  contain-intrinsic-size: auto 14rem;
+  contain-intrinsic-size: auto 16rem;
 }
 
 .social-embed-link {
@@ -109,7 +109,7 @@
 
 .cv-auto {
   content-visibility: auto;
-  contain-intrinsic-size: auto 30rem;
+  contain-intrinsic-size: auto 34rem;
 }
 
 .insta-fallback {
