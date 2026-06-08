@@ -21,7 +21,7 @@ export const teamMembers = [
     name: 'Jacky TAM',
     role: 'Executive Officer',
     initials: 'JT',
-    email: 'tbd@cityu.edu.hk',
+    email: 'jackytam@cityu.edu.hk',
     department: 'CS General Office',
     image: '/images/team/jacky.jpeg',
   },
