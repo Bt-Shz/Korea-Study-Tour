@@ -11,5 +11,5 @@ export const navItems = [
   { label: 'About', href: '/about' },
   { label: 'Visit Schedule', href: '/visit-schedule' },
   { label: 'Visit Team', href: '/visit-team' },
-  { label: 'Student Takeaways', href: '/student-takeaways' },
+  { label: 'Experiences', href: '/experiences' },
 ] as const;
