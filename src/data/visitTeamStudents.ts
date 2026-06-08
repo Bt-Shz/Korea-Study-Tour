@@ -34,10 +34,10 @@ export const visitTeamStudents: VisitTeamStudent[] = [
     name: 'Bolat Sherniyaz',
     nickname: 'Shera',
     year: 'Year 2',
-    email: 'yourname-c@my.cityu.edu.hk',
+    email: 'sbolat@gmail.com',
     image: '/images/team/student-01.jpg',
     reflection:
-      'The CityU CS Department study tour to Seoul was a genuinely memorable experience. Through academic sessions at SKKU and Yonsei University, we were introduced to AI research from PhD students and faculty — work I found accessible and deeply insightful. In the evenings, I connected with Kazakh students studying at Korean universities; time together outside the formal programme was a highlight in its own right.',
+      'The Seoul study tour surprised me. At SKKU and Yonsei, PhD students and faculty walked us through their AI research without drowning us in jargon. I kept up, and some of the work stuck with me after we left. In the evenings I spent time with Kazakh students already studying at Korean universities. Those nights off the official schedule were my favourite part of the trip.',
   },
   ...Array.from({ length: 24 }, (_, index) => createPlaceholder(index + 2)),
 ];
