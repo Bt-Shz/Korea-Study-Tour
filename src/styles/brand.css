@@ -1,0 +1,41 @@
+:root {
+  --brand-red: #c8102e;
+  --brand-orange: #e8411a;
+}
+
+.font-display {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+}
+
+.text-brand-gradient {
+  background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-orange) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.bg-brand-gradient {
+  background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-orange) 100%);
+}
+
+.drop-cap {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-weight: 800;
+  line-height: 0.85;
+  background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-orange) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.drop-cap--lg {
+  font-size: 3.25rem;
+  margin-right: 0.3rem;
+}
+
+.drop-cap--md {
+  font-size: 2.5rem;
+  margin-right: 0.25rem;
+}
