@@ -28,12 +28,12 @@ import { trip } from '../../data/trip';
         <div class="absolute left-0 top-2 bottom-2 w-1 rounded-full bg-brand-gradient"></div>
         <p class="text-gray-700 leading-relaxed text-[17px]">
           <span class="drop-cap drop-cap--md float-left mr-3 mt-1 leading-none">T</span>
-          he Seoul Tech &amp; Culture Tour 2026 took place from 18-22 May 2026 and offered students
+          he {trip.title} took place from 18-22 May 2026 and offered students
           a five-day academic and cultural immersion designed by the Department of Computer Science
           at City University of Hong Kong.
         </p>
         <p class="mt-4 text-gray-600 leading-relaxed text-[15px]">
-          Our itinerary covered {trip.venues.join(', ')}, with sessions focused on academic
+          Our itinerary covered {trip.venues.map((venue) => venue.name).join(', ')}, with sessions focused on academic
           exchange, smart-city systems, and cross-cultural learning.
         </p>
         <a href="/about" class="mt-5 inline-flex text-sm font-semibold text-primary hover:underline">

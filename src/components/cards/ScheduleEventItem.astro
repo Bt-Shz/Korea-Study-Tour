@@ -9,36 +9,31 @@ interface Props {
 }
 
 const { time, title, description, slug, location, variant = 'default' } = Astro.props;
-const isStayingBehind = variant === 'staying-behind';
-const isTravel = variant === 'travel';
 const href = slug ? `/visit-schedule/${slug}` : undefined;
 
 const cardClass = [
-  'rounded-2xl border p-5 md:p-6 block no-underline text-inherit transition-shadow',
-  isStayingBehind
-    ? 'border-orange-200 bg-orange-50'
-    : isTravel
-      ? 'border-blue-200 bg-blue-50'
-      : 'border-gray-200 bg-white',
-  href ? 'hover:shadow-md hover:border-primary/30' : '',
+  'schedule-card',
+  variant === 'travel' && 'schedule-card--travel',
+  variant === 'staying-behind' && 'schedule-card--staying-behind',
 ];
 ---
 
-{
-  href ? (
-    <a href={href} class:list={cardClass} aria-label={`Read more about ${title}`}>
-      <div class="text-xs uppercase tracking-[0.18em] font-semibold text-gray-500">{time}</div>
-      <h3 class="mt-2 text-lg font-bold text-gray-900">{title}</h3>
-      {location && <p class="mt-1 text-xs text-gray-500">{location}</p>}
-      <p class="mt-2 text-sm leading-relaxed text-gray-600">{description}</p>
-      <p class="mt-3 text-xs font-semibold text-primary">Read full story &rarr;</p>
-    </a>
-  ) : (
-    <article class:list={cardClass}>
-      <div class="text-xs uppercase tracking-[0.18em] font-semibold text-gray-500">{time}</div>
-      <h3 class="mt-2 text-lg font-bold text-gray-900">{title}</h3>
-      {location && <p class="mt-1 text-xs text-gray-500">{location}</p>}
-      <p class="mt-2 text-sm leading-relaxed text-gray-600">{description}</p>
-    </article>
-  )
-}
+<li class="schedule-event">
+  <span class="schedule-time">{time}</span>
+  {
+    href ? (
+      <a href={href} class:list={cardClass} aria-label={`Read more about ${title}`}>
+        <h4 class="schedule-card-title">{title}</h4>
+        {location && <p class="schedule-card-location">{location}</p>}
+        <p class="schedule-card-description">{description}</p>
+        <span class="schedule-card-link">Read full story &rarr;</span>
+      </a>
+    ) : (
+      <article class:list={cardClass}>
+        <h4 class="schedule-card-title">{title}</h4>
+        {location && <p class="schedule-card-location">{location}</p>}
+        <p class="schedule-card-description">{description}</p>
+      </article>
+    )
+  }
+</li>

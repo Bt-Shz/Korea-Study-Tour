@@ -28,7 +28,7 @@ const isHome = Astro.url.pathname === '/';
   <body class="min-h-screen bg-[#fafafa] text-[#1a1a1a]">
     <SiteHeader isHome={isHome} />
 
-    <main>
+    <main class:list={[!isHome && 'pt-28']}>
       <slot />
     </main>
 
@@ -90,8 +90,11 @@ const isHome = Astro.url.pathname === '/';
       if (hero) {
         const slides = Array.from(hero.querySelectorAll('[data-hero-slide]'));
         const dots = Array.from(hero.querySelectorAll('[data-hero-dot]'));
+        const prevButton = hero.querySelector('[data-hero-prev]');
+        const nextButton = hero.querySelector('[data-hero-next]');
         const caption = hero.querySelector('[data-hero-caption]');
         let current = 0;
+        let timer;
 
         const setHero = (next) => {
           if (!slides.length) return;
@@ -109,13 +112,33 @@ const isHome = Astro.url.pathname === '/';
           }
         };
 
-        let timer = window.setInterval(() => setHero(current + 1), 5000);
+        const restartTimer = () => {
+          clearInterval(timer);
+          timer = window.setInterval(() => setHero(current + 1), 5000);
+        };
+
+        setHero(0);
+        restartTimer();
+
+        if (prevButton) {
+          prevButton.addEventListener('click', () => {
+            setHero(current - 1);
+            restartTimer();
+          });
+        }
+
+        if (nextButton) {
+          nextButton.addEventListener('click', () => {
+            setHero(current + 1);
+            restartTimer();
+          });
+        }
+
         dots.forEach((dot) => {
           dot.addEventListener('click', () => {
             const index = Number(dot.dataset.heroIndex || '0');
             setHero(index);
-            clearInterval(timer);
-            timer = window.setInterval(() => setHero(current + 1), 5000);
+            restartTimer();
           });
         });
       }

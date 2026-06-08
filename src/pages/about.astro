@@ -5,6 +5,7 @@ import GradientText from '../components/ui/GradientText.astro';
 import InnerPage from '../components/layout/InnerPage.astro';
 import PageIntro from '../components/layout/PageIntro.astro';
 import AboutContent from '../components/sections/AboutContent.astro';
+import { trip } from '../data/trip';
 ---
 
 <BaseLayout title="About">
@@ -18,11 +19,11 @@ import AboutContent from '../components/sections/AboutContent.astro';
         scrollHint="Story below"
       >
         <Fragment slot="title">
-          Korea Study Tour<br />
+          Seoul Study Tour<br />
           <GradientText>2026</GradientText>
         </Fragment>
         <Fragment slot="lead">
-          he purpose of this website is to provide a clear window into our Korea Study Tour and the
+          he purpose of this website is to provide a clear window into our {trip.title} and the
           academic and cultural experiences the group shared together.
         </Fragment>
       </PageIntro>

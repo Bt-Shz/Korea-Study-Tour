@@ -6,6 +6,7 @@ import GradientText from '../../components/ui/GradientText.astro';
 import InnerPage from '../../components/layout/InnerPage.astro';
 import PageIntro from '../../components/layout/PageIntro.astro';
 import { visitSchedule } from '../../data/schedule';
+import { trip } from '../../data/trip';
 ---
 
 <BaseLayout title="Visit Schedule">
@@ -23,16 +24,15 @@ import { visitSchedule } from '../../data/schedule';
           One <GradientText>journey</GradientText>.
         </Fragment>
         <Fragment slot="lead">
-          he Korea Study Tour schedule follows our full five-day journey, covering academic visits,
+          he {trip.title} schedule follows our full five-day journey, covering academic visits,
           city learning, and the final split between return travel and optional extended exploration.
         </Fragment>
         <p slot="body">
-          Inspired by the Japan Study Tour format, all days stay visible with clear time blocks,
-          event titles, and short descriptions for quick presentation use.
+          Expand each day to view clear time blocks, event titles, and short descriptions for quick reference.
         </p>
       </PageIntro>
 
-      <div class="space-y-6">
+      <div class="schedule-timeline">
         {visitSchedule.map((day) => <ScheduleDaySection {...day} />)}
       </div>
     </Container>

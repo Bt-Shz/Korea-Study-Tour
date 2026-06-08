@@ -20,18 +20,23 @@ interface Props {
 const { date, summary, dayNumber, events } = Astro.props;
 ---
 
-<section class="rounded-3xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
-  <div class="flex items-start gap-4">
-    <div class="w-11 h-11 rounded-xl bg-brand-gradient text-white font-black flex items-center justify-center shrink-0">
-      {dayNumber}
+<details class="schedule-day" open>
+  <summary class="schedule-day-summary">
+    <div class="schedule-day-summary-inner">
+      <span class="schedule-day-number">{dayNumber}</span>
+      <div class="schedule-day-meta">
+        <h3 class="schedule-date">{date}</h3>
+        <p class="schedule-summary">{summary}</p>
+      </div>
+      <span class="schedule-day-toggle">▼</span>
     </div>
-    <div>
-      <h2 class="text-2xl font-display font-bold text-gray-900">{date}</h2>
-      <p class="text-sm text-gray-500 mt-1">{summary}</p>
-    </div>
-  </div>
+  </summary>
 
-  <div class="mt-6 space-y-4">
-    {events.map((event) => <ScheduleEventItem {...event} />)}
+  <div class="schedule-day-content">
+    <ul class="schedule-events">
+      {events.map((event) => (
+        <ScheduleEventItem {...event} />
+      ))}
+    </ul>
   </div>
-</section>
+</details>

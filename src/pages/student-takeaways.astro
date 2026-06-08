@@ -6,6 +6,7 @@ import GradientText from '../components/ui/GradientText.astro';
 import InnerPage from '../components/layout/InnerPage.astro';
 import PageIntro from '../components/layout/PageIntro.astro';
 import { studentTakeaways } from '../data/students';
+import { trip } from '../data/trip';
 ---
 
 <BaseLayout title="Student Takeaways">
@@ -23,7 +24,7 @@ import { studentTakeaways } from '../data/students';
           A new <GradientText>perspective</GradientText>
         </Fragment>
         <Fragment slot="lead">
-          he Seoul Tech &amp; Culture Tour 2026 wasn't just about visiting labs and museums &mdash;
+          he {trip.title} wasn't just about visiting labs and museums &mdash;
           it was about expanding perspectives, building global networks, and experiencing firsthand
           how innovation ecosystems thrive at the intersection of technology, culture, and
           collaboration.

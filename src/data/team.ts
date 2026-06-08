@@ -1,29 +1,28 @@
 export const teamMembers = [
   {
     name: 'Dr. Wing Ho LEUNG (Howard)',
-    role: 'Tour Leader',
+    position: 'Associate Professor',
     initials: 'HL',
     email: 'howard@cityu.edu.hk',
     department: 'Department of Computer Science',
-    image:
-      'https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600',
+    imageBg: '/images/team/howard1.jpg',
+    imageFg: '/images/team/howard2.png',
   },
   {
     name: 'Dr. Ka Chun LEE (Kenneth)',
-    role: 'Academic Coordinator',
+    position: 'Instructor',
     initials: 'KL',
     email: 'kenkclee@cityu.edu.hk',
     department: 'Department of Computer Science',
-    image:
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600',
+    imageBg: '/images/team/kenneth1.jpg',
+    imageFg: '/images/team/kenneth2.png',
   },
   {
-    name: 'Mr. Tam, Jacky',
-    role: 'Logistics Lead',
+    name: 'Mr. Jacky Tam',
+    position: 'Executive Officer',
     initials: 'JT',
-    email: 'tbd@cityu.edu.hk',
-    department: 'CS General Office',
-    image:
-      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600',
+    email: 'jackytam@cityu.edu.hk',
+    department: 'Department of Computer Science',
+    imageFg: '/images/team/placeholder.svg',
   },
 ] as const;

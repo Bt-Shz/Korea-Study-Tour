@@ -1,7 +1,6 @@
 ---
 import Icon from '../Icon.astro';
-import BrandLogo from '../ui/BrandLogo.astro';
-import { navItems } from '../../config/site';
+import { cityuLinks, cityuLogos, navItems, site } from '../../config/site';
 
 interface Props {
   isHome: boolean;
@@ -18,61 +17,86 @@ const isActive = (href: string) => {
 
 <header
   id="site-header"
-  class="group fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent data-[scrolled=true]:bg-white/95 data-[scrolled=true]:backdrop-blur-md data-[scrolled=true]:shadow-sm data-[scrolled=true]:border-b data-[scrolled=true]:border-gray-100"
+  class="group fixed top-0 left-0 right-0 z-50 transition-all duration-300"
   data-home={isHome ? 'true' : 'false'}
   data-scrolled={isHome ? 'false' : 'true'}
   data-menu-open="false"
 >
-  <div class="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
-    <a href="https://www.cs.cityu.edu.hk/en" class="flex items-center gap-3" rel="noopener" target="_blank">
-      <BrandLogo />
-      <div class="leading-tight">
-        <div class="text-xs font-semibold tracking-wide text-white group-data-[scrolled=true]:text-primary">
-          CityU &middot; CS Department
+  <div class="bg-transparent group-data-[scrolled=true]:bg-white/95 group-data-[scrolled=true]:backdrop-blur-md group-data-[scrolled=true]:border-b group-data-[scrolled=true]:border-gray-100">
+    <div class="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
+      <a href={cityuLinks.university} class="flex items-center gap-3 min-w-0" rel="noopener" target="_blank">
+        <img src={cityuLogos.verticalCmyk} alt="City University of Hong Kong" class="hidden sm:block h-11 w-auto" />
+        <img src={cityuLogos.mini} alt="City University of Hong Kong" class="sm:hidden h-8 w-auto" />
+        <div class="leading-tight min-w-0">
+          <div class="text-xs font-semibold tracking-wide text-white group-data-[scrolled=true]:text-primary">
+            {site.department}
+          </div>
+          <div class="text-[10px] text-white/70 group-data-[scrolled=true]:text-gray-500 truncate">
+            {site.university}
+          </div>
         </div>
-        <div class="text-[10px] text-white/70 group-data-[scrolled=true]:text-gray-500">
-          Seoul Visit 2026
-        </div>
-      </div>
-    </a>
-
-    <nav class="hidden md:flex items-center gap-1">
-      {
-        navItems.map((item) => {
-          const active = isActive(item.href);
-          return (
-            <a
-              href={item.href}
-              aria-current={active ? 'page' : undefined}
-              data-active={active ? 'true' : undefined}
-              class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 text-white/90 hover:bg-white/15 group-data-[scrolled=true]:text-gray-700 group-data-[scrolled=true]:hover:bg-gray-100 data-[active=true]:bg-primary data-[active=true]:text-white"
-            >
-              {item.label}
-            </a>
-          );
-        })
-      }
-    </nav>
-
-    <button
-      id="mobile-menu-toggle"
-      type="button"
-      class="md:hidden p-2 rounded-lg text-white group-data-[scrolled=true]:text-gray-700"
-      aria-controls="mobile-menu"
-      aria-expanded="false"
-    >
-      <span class="sr-only">Toggle menu</span>
-      <Icon name="menu" size={20} data-menu-icon />
-      <Icon name="x" size={20} class="hidden" data-close-icon />
-    </button>
+      </a>
+      <a href="/" class="hidden md:block text-sm font-semibold tracking-wide text-white group-data-[scrolled=true]:text-gray-700">
+        {site.shortTitle}
+      </a>
+      <button
+        id="mobile-menu-toggle"
+        type="button"
+        class="md:hidden p-2 rounded-lg text-white group-data-[scrolled=true]:text-gray-700"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Toggle menu</span>
+        <Icon name="menu" size={20} data-menu-icon />
+        <Icon name="x" size={20} class="hidden" data-close-icon />
+      </button>
+    </div>
   </div>
 
-  <div
-    id="mobile-menu"
-    class="md:hidden bg-white border-t border-gray-100 shadow-xl"
-    aria-hidden="true"
-    hidden
-  >
+  <div class="bg-transparent border-t border-white/15 group-data-[scrolled=true]:bg-white/95 group-data-[scrolled=true]:backdrop-blur-md group-data-[scrolled=true]:shadow-sm group-data-[scrolled=true]:border-t-0 group-data-[scrolled=true]:border-b group-data-[scrolled=true]:border-gray-100">
+    <div class="max-w-7xl mx-auto px-5 h-12 flex items-center justify-between">
+      <nav class="hidden md:flex items-center gap-1">
+        <a
+          href="/"
+          aria-current={isActive('/') ? 'page' : undefined}
+          data-active={isActive('/') ? 'true' : undefined}
+          class="px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 text-white/90 hover:bg-white/15 group-data-[scrolled=true]:text-gray-700 group-data-[scrolled=true]:hover:bg-gray-100 data-[active=true]:bg-primary data-[active=true]:text-white"
+          aria-label="Home"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="inline-block">
+            <path d="m3 11 9-8 9 8" />
+            <path d="M5 10v10h14V10" />
+          </svg>
+        </a>
+        {
+          navItems
+            .filter((item) => item.href !== '/')
+            .map((item) => {
+              const active = isActive(item.href);
+              return (
+                <a
+                  href={item.href}
+                  aria-current={active ? 'page' : undefined}
+                  data-active={active ? 'true' : undefined}
+                  class="px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 text-white/90 hover:bg-white/15 group-data-[scrolled=true]:text-gray-700 group-data-[scrolled=true]:hover:bg-gray-100 data-[active=true]:bg-primary data-[active=true]:text-white"
+                >
+                  {item.label}
+                </a>
+              );
+            })
+        }
+      </nav>
+
+      <a href="/" class="md:hidden text-sm font-semibold tracking-wide text-white group-data-[scrolled=true]:text-gray-700 truncate">
+        {site.shortTitle}
+      </a>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 shadow-xl" aria-hidden="true" hidden>
+    <a href="/" class="w-full text-left px-5 py-3.5 text-sm font-semibold text-gray-900 border-b border-gray-100">
+      {site.shortTitle}
+    </a>
     {
       navItems.map((item) => (
         <a
@@ -85,4 +109,4 @@ const isActive = (href: string) => {
       ))
     }
   </div>
-</header>
+ </header>
