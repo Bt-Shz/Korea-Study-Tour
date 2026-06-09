@@ -2,3 +2,5 @@ node_modules/
 dist/
 Japan - StudyTour2024/
 .DS_Store
+.astro/
+.claude/

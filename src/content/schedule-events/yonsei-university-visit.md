@@ -9,23 +9,23 @@ summary: 'Korea University & Yonsei University'
 description: 'A visit to Yonsei University, where students of Prof. Jeon hosted a campus tour and a mutual research introduction with the Visual AI Lab.'
 ---
 
-On the afternoon of May 20th, 2026, our group visited **Yonsei University**, founded in 1885 and counted among Korea's most distinguished universities. Conveniently close to our base in Sinchon, Yonsei gave us an afternoon of research exchange with students our own age.
+For the afternoon, we headed to **Yonsei University** — founded in 1885 and one of Korea's most distinguished universities. Best of all, it was right on our doorstep in Sinchon, so we got to spend the rest of the day swapping ideas with students our own age.
 
-All participants travelled from Korea University back toward Sinchon via the Seoul Metro and walked to the **Yonsei Engineering Research Park (YERP)**, where the students of **Prof. Jeon** met us in the lobby and began with a tour of the campus and the research park.
+We made our way back from Korea University toward Sinchon and walked over to the **Yonsei Engineering Research Park (YERP)**, where the students of **Prof. Jeon** met us in the lobby and kicked things off with a tour of the campus and the research park.
 
 ## The exchange
 
-The heart of the afternoon was a **mutual research introduction** with **14 students from the Visual AI Lab** together with peers from several other laboratories. Each side presented its current projects and research interests, and the session quickly turned into a genuine two-way conversation about how AI research is pursued in Hong Kong and in Korea. Hearing students explain their own work, rather than a polished lecture, made the exchange feel close and honest.
+The heart of the afternoon was a **mutual research introduction** — **14 students from the Visual AI Lab**, plus a few from other labs, sitting down with us to share what everyone's working on. Both sides took turns presenting their projects, and it quickly turned into a proper two-way conversation about how AI research actually gets done in Hong Kong versus Korea. Hearing students talk through their own work — no polished lecture, just the real thing — made it all feel honest and close.
 
 ## Highlights
 
 - A campus and research-park tour hosted by the students of Prof. Jeon.
 - A mutual research introduction with the Visual AI Lab and other labs.
-- An open exchange of ideas, questions, and the start of new friendships.
+- An open swap of ideas, questions, and the start of a few new friendships.
 
-## Our hosts
+<aside class="souvenir">
+<span class="souvenir__tag">🎁 Souvenir exchange</span>
+<p class="souvenir__text">As a thank-you to our hosts, we presented the students of <strong>Prof. Jeon</strong> and the <strong>Visual AI Lab</strong> with a small souvenir from <strong>City University of Hong Kong</strong> — a friendly reminder of the new connections made between our two universities.</p>
+</aside>
 
-- The students of **Prof. Jeon**, Yonsei University
-- The members of the **Visual AI Lab** and other participating laboratories
-
-The afternoon flowed naturally into a group dinner together with the Yonsei students.
+From there, the afternoon rolled straight into a group dinner with the Yonsei students.

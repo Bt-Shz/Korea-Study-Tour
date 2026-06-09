@@ -7,6 +7,31 @@ import InnerPage from '../../components/layout/InnerPage.astro';
 import PageIntro from '../../components/layout/PageIntro.astro';
 import { visitSchedule } from '../../data/schedule';
 import { trip } from '../../data/trip';
+
+const allEvents = visitSchedule.flatMap((day) => day.events);
+
+const stats = [
+  { value: String(visitSchedule.length), label: 'Days' },
+  {
+    value: String(allEvents.filter((event) => event.icon === 'graduation').length),
+    label: 'Universities',
+  },
+  {
+    value: String(
+      allEvents.filter((event) => event.icon === 'landmark' || event.icon === 'image').length,
+    ),
+    label: 'City Visits',
+  },
+  { value: String(allEvents.filter((event) => event.slug).length), label: 'Stories' },
+];
+
+const dayNav = visitSchedule.map((day) => {
+  const match = day.date.match(/(\d+)(?:st|nd|rd|th)?\s+([A-Za-z]+)/);
+  return {
+    dayNumber: day.dayNumber,
+    shortDate: match ? `${match[1]} ${match[2]}` : day.date,
+  };
+});
 ---
 
 <BaseLayout title="Visit Schedule">
@@ -32,9 +57,46 @@ import { trip } from '../../data/trip';
         </p>
       </PageIntro>
 
+      <div class="schedule-stats">
+        {
+          stats.map((stat) => (
+            <div class="schedule-stat">
+              <span class="schedule-stat-value">{stat.value}</span>
+              <span class="schedule-stat-label">{stat.label}</span>
+            </div>
+          ))
+        }
+      </div>
+
+      <nav class="schedule-nav" aria-label="Jump to a day">
+        {
+          dayNav.map((day) => (
+            <a class="schedule-nav-item" href={`#day-${day.dayNumber}`} data-day-link={day.dayNumber}>
+              Day {day.dayNumber}
+              <span class="schedule-nav-date">{day.shortDate}</span>
+            </a>
+          ))
+        }
+      </nav>
+
       <div class="schedule-timeline">
         {visitSchedule.map((day) => <ScheduleDaySection {...day} />)}
       </div>
     </Container>
   </InnerPage>
+
+  <script is:inline>
+    document.querySelectorAll('[data-day-link]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const id = `day-${link.getAttribute('data-day-link')}`;
+        const target = document.getElementById(id);
+        if (!target) return;
+        if (target.tagName === 'DETAILS' && !target.open) {
+          target.open = true;
+        }
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
 </BaseLayout>

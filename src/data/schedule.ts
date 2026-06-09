@@ -2,6 +2,15 @@ import { visitTeamStudents } from './visitTeamStudents';
 
 export type ScheduleEventVariant = 'default' | 'travel' | 'staying-behind';
 
+export type ScheduleEventIcon =
+  | 'plane'
+  | 'train'
+  | 'graduation'
+  | 'utensils'
+  | 'landmark'
+  | 'compass'
+  | 'image';
+
 export interface ScheduleParticipant {
   name: string;
   image: string;
@@ -14,6 +23,7 @@ export interface ScheduleEvent {
   slug?: string;
   location?: string;
   variant?: ScheduleEventVariant;
+  icon?: ScheduleEventIcon;
   steps?: readonly string[];
   participants?: readonly ScheduleParticipant[];
 }
@@ -41,6 +51,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: 'Morning',
         title: 'CX410: HKG to ICN',
+        icon: 'plane',
         slug: 'departure-hk-seoul-arrival',
         location: 'Hong Kong International Airport · Aisle A (Cathay Pacific)',
         description:
@@ -50,6 +61,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: 'Afternoon',
         title: 'Travel to Hotel via AREX & Seoul Metro',
+        icon: 'train',
         variant: 'travel',
         location: 'Incheon Airport → Hongik University / Sinchon',
         description:
@@ -63,6 +75,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: 'Evening',
         title: 'Rest & Self Exploration',
+        icon: 'compass',
         location: 'Sinchon, Seoul',
         description:
           'All participants rested and explored the lively Sinchon neighbourhood at their own pace, settling in for the academic visits ahead.',
@@ -77,6 +90,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: '8:10 - 9:30',
         title: 'Travel to SKKU via Seoul Metro',
+        icon: 'train',
         variant: 'travel',
         location: 'Sinchon → Sindorim → SKKU Station (Exit 2)',
         description:
@@ -90,6 +104,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: '10:00 AM - 12:00 PM',
         title: 'Academic Visit @ Sungkyunkwan University (SKKU)',
+        icon: 'graduation',
         slug: 'skku-visit',
         location: 'SKKU Engineering Building, Suwon',
         description:
@@ -99,6 +114,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: '12:00 - 1:30 PM',
         title: 'Travel to KAIST AI Hub via Metro',
+        icon: 'train',
         variant: 'travel',
         location: 'SKKU → Suwon → Jeongja → Yangjae',
         description:
@@ -113,6 +129,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: '2:00 PM - 4:00 PM',
         title: 'Lab Visit @ Graduate School of AI at KAIST',
+        icon: 'graduation',
         slug: 'kaist-ai-visit',
         location: 'KAIST AI Hub, Yangjae · 6F · CVML Lab',
         description:
@@ -129,6 +146,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: '9:00 - 9:50',
         title: 'Travel to Korea University via Seoul Metro',
+        icon: 'train',
         variant: 'travel',
         location: 'Sinchon → Sindang → Anam (Exit 4)',
         description:
@@ -142,6 +160,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: '10:00 AM - 1:00 PM',
         title: 'Campus Visit @ Korea University',
+        icon: 'graduation',
         slug: 'korea-university-visit',
         location: 'Korea University · Science & Engineering and Main Campus',
         description:
@@ -151,6 +170,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: '2:00 - 2:35 PM',
         title: 'Travel to Yonsei University via Seoul Metro',
+        icon: 'train',
         variant: 'travel',
         location: 'Korea University → Sindang → Sinchon (Exit 2/3)',
         description:
@@ -164,6 +184,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: '3:00 PM - 5:30 PM',
         title: 'Research Exchange @ Yonsei University',
+        icon: 'graduation',
         slug: 'yonsei-university-visit',
         location: 'Yonsei Engineering Research Park (YERP)',
         description:
@@ -173,6 +194,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: '6:00 PM',
         title: 'Group Dinner with Yonsei Students',
+        icon: 'utensils',
         slug: 'group-dinner-yonsei',
         location: 'Restaurant near Yonsei University',
         description:
@@ -189,6 +211,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: '9:00 - 9:30',
         title: 'Travel to Seoul City Hall via Seoul Metro',
+        icon: 'train',
         variant: 'travel',
         location: 'Sinchon → City Hall (Exit 4)',
         description:
@@ -198,6 +221,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: '9:30 AM - 12:00 PM',
         title: 'Visit to Seoul Gallery',
+        icon: 'image',
         slug: 'seoul-gallery',
         location: 'Seoul City Hall · B1 & B2 (free admission)',
         description:
@@ -207,6 +231,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: '1:00 PM',
         title: 'Visit to Seoul TOPIS',
+        icon: 'landmark',
         slug: 'seoul-topis',
         location: 'Seoul City Hall · TOPIS Office (5F)',
         description:
@@ -223,6 +248,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: 'Morning',
         title: 'Travel to Incheon Airport via AREX',
+        icon: 'train',
         variant: 'travel',
         location: 'Seoul → Incheon International Airport',
         description:
@@ -231,6 +257,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: 'Afternoon',
         title: 'CX Flight: ICN to HKG',
+        icon: 'plane',
         location: 'Incheon International Airport',
         description:
           'The return group departed from Incheon International Airport on the afternoon flight back to Hong Kong International Airport.',
@@ -238,6 +265,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
       {
         time: 'Staying Behind',
         title: 'Continue Exploring Korea',
+        icon: 'compass',
         variant: 'staying-behind',
         description:
           'Some members of the visit team chose to stay behind and continue exploring different places in Korea.',

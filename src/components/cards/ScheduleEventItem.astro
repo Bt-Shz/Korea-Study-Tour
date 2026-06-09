@@ -1,8 +1,19 @@
 ---
+import Icon from '../Icon.astro';
+
 interface Participant {
   name: string;
   image: string;
 }
+
+type EventIcon =
+  | 'plane'
+  | 'train'
+  | 'graduation'
+  | 'utensils'
+  | 'landmark'
+  | 'compass'
+  | 'image';
 
 interface Props {
   time: string;
@@ -11,6 +22,7 @@ interface Props {
   slug?: string;
   location?: string;
   variant?: 'default' | 'travel' | 'staying-behind';
+  icon?: EventIcon;
   steps?: readonly string[];
   participants?: readonly Participant[];
 }
@@ -22,10 +34,14 @@ const {
   slug,
   location,
   variant = 'default',
+  icon,
   steps,
   participants,
 } = Astro.props;
 const href = slug ? `/visit-schedule/${slug}` : undefined;
+
+const markerIcon: EventIcon =
+  icon ?? (variant === 'travel' ? 'train' : variant === 'staying-behind' ? 'compass' : 'graduation');
 
 const cardClass = [
   'schedule-card',
@@ -38,32 +54,50 @@ const hasParticipants = participants && participants.length > 0;
 const Tag = href ? 'a' : 'article';
 ---
 
-<li class="schedule-event">
-  <span class="schedule-time">{time}</span>
-  <Tag
-    href={href}
-    class:list={cardClass}
-    aria-label={href ? `Read more about ${title}` : undefined}
-  >
-    <h4 class="schedule-card-title">{title}</h4>
-    {location && <p class="schedule-card-location">{location}</p>}
-    <p class="schedule-card-description">{description}</p>
-    {hasSteps && (
-      <ul class="schedule-card-steps">
-        {steps!.map((step) => (
-          <li>{step}</li>
-        ))}
-      </ul>
-    )}
-    {hasParticipants && (
-      <div class="schedule-participants" aria-label="Participants">
-        {participants!.map((person) => (
-          <span class="schedule-participant" title={person.name}>
-            <img src={person.image} alt={person.name} loading="lazy" />
-          </span>
-        ))}
-      </div>
-    )}
-    {href && <span class="schedule-card-link">Read full story &rarr;</span>}
-  </Tag>
+<li class:list={['schedule-event', `schedule-event--${variant}`]}>
+  <span class="schedule-event-marker" aria-hidden="true">
+    <Icon name={markerIcon} size={16} strokeWidth={2.2} />
+  </span>
+  <div class="schedule-event-body">
+    <span class="schedule-time">
+      <Icon name="clock" size={12} strokeWidth={2.4} />
+      {time}
+    </span>
+    <Tag
+      href={href}
+      class:list={cardClass}
+      aria-label={href ? `Read more about ${title}` : undefined}
+    >
+      <h4 class="schedule-card-title">{title}</h4>
+      {location && (
+        <p class="schedule-card-location">
+          <Icon name="map-pin" size={12} strokeWidth={2.2} />
+          {location}
+        </p>
+      )}
+      <p class="schedule-card-description">{description}</p>
+      {hasSteps && (
+        <ul class="schedule-card-steps">
+          {steps!.map((step) => (
+            <li>{step}</li>
+          ))}
+        </ul>
+      )}
+      {hasParticipants && (
+        <div class="schedule-participants" aria-label="Participants">
+          {participants!.map((person) => (
+            <span class="schedule-participant" title={person.name}>
+              <img src={person.image} alt={person.name} loading="lazy" />
+            </span>
+          ))}
+        </div>
+      )}
+      {href && (
+        <span class="schedule-card-link">
+          Read full story
+          <Icon name="chevron-right" size={14} strokeWidth={2.4} />
+        </span>
+      )}
+    </Tag>
+  </div>
 </li>

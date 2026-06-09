@@ -42,8 +42,20 @@
 
   .article-prose ul,
   .article-prose ol {
-    padding-left: 1.25rem;
+    padding-left: 1.4rem;
     margin: 0;
+  }
+
+  .article-prose ul {
+    list-style: disc;
+  }
+
+  .article-prose ol {
+    list-style: decimal;
+  }
+
+  .article-prose li::marker {
+    color: var(--brand-red, #c8102e);
   }
 
   .article-prose li + li {
@@ -66,5 +78,39 @@
   .article-prose strong {
     color: #111827;
     font-weight: 600;
+  }
+
+  .article-prose .souvenir {
+    position: relative;
+    margin-block: 1.85rem;
+    padding: 1.15rem 1.35rem 1.15rem 1.55rem;
+    border-radius: 0.95rem;
+    border: 1px solid rgba(200, 16, 46, 0.16);
+    background: linear-gradient(135deg, rgba(232, 65, 26, 0.06), rgba(200, 16, 46, 0.04));
+    overflow: hidden;
+  }
+
+  .article-prose .souvenir::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--brand-orange, #e8411a), var(--brand-red, #c8102e));
+  }
+
+  .article-prose .souvenir__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-red, #c8102e);
+  }
+
+  .article-prose .souvenir__text {
+    margin-top: 0.5rem;
+    color: #374151;
   }
 }

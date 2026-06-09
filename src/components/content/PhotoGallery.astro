@@ -1,0 +1,59 @@
+---
+import Icon from '../Icon.astro';
+
+interface GalleryPhoto {
+  src: string;
+  alt?: string;
+  caption?: string;
+}
+
+interface Props {
+  title: string;
+  heading?: string;
+  photos?: readonly GalleryPhoto[];
+  placeholders?: number;
+}
+
+const { title, heading = 'Moments from the visit', photos = [], placeholders = 6 } = Astro.props;
+const hasPhotos = photos.length > 0;
+const placeholderItems = Array.from({ length: Math.max(0, placeholders) });
+---
+
+<section class="photo-gallery" aria-label="Photo gallery">
+  <div class="photo-gallery-head">
+    <span class="photo-gallery-eyebrow">
+      <Icon name="camera" size={14} />
+      Gallery
+    </span>
+    <h2 class="photo-gallery-title">{heading}</h2>
+    {
+      !hasPhotos && (
+        <p class="photo-gallery-note">
+          Photos from this visit are on the way — they will appear here soon.
+        </p>
+      )
+    }
+  </div>
+
+  {
+    hasPhotos ? (
+      <div class="photo-gallery-grid">
+        {photos.map((photo) => (
+          <figure class="photo-gallery-item">
+            <img src={photo.src} alt={photo.alt ?? photo.caption ?? title} loading="lazy" />
+            {photo.caption && <figcaption>{photo.caption}</figcaption>}
+          </figure>
+        ))}
+      </div>
+    ) : (
+      <div class="photo-gallery-grid">
+        {placeholderItems.map((_, index) => (
+          <div class="photo-gallery-placeholder" aria-hidden={index > 0 ? 'true' : undefined}>
+            <Icon name="image" size={28} class="photo-gallery-placeholder-icon" />
+            <span class="photo-gallery-placeholder-label">Photo coming soon</span>
+          </div>
+        ))}
+      </div>
+    )
+  }
+</section>

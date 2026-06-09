@@ -9,14 +9,14 @@ summary: 'Seoul Gallery & TOPIS'
 description: 'A free visit to the Seoul Gallery beneath City Hall, followed by team exploration of the city centre and lunch on our own.'
 ---
 
-On the morning of May 21st, 2026, our group visited the **Seoul Gallery**, the city's public exhibition space on **B1 and B2 of Seoul City Hall**. Sitting beneath the striking glass-and-steel City Hall, the gallery is where contemporary art and design meet the everyday life of the capital, and admission is free to all.
+Day four had a slightly different feel — a chance to slow down and soak up the city. We kicked off the morning at the **Seoul Gallery**, the city's free public exhibition space on **B1 and B2 of Seoul City Hall**. Tucked beneath the striking glass-and-steel City Hall, it's where contemporary art and design bump up against the everyday life of the capital — and the best part, it's completely free.
 
-All participants departed from the Sinchon area and took the Seoul Metro to City Hall Station, walking the short distance to Seoul City Hall.
+Getting there was easy: a quick metro ride from Sinchon straight to City Hall Station, then a short walk over to the building itself.
 
 ## The visit
 
-The Seoul Gallery hosts rotating exhibitions in bright, open spaces tucked into the lower floors of City Hall. With no fixed programme to follow, the group was free to wander through the displays at its own pace, taking in the artwork and the architecture of one of Seoul's most recognisable civic buildings.
+The Seoul Gallery runs rotating exhibitions across bright, open spaces on the lower floors of City Hall. With no set programme to stick to, we were free to drift through the displays at our own pace, taking in the art and the architecture of one of Seoul's most recognisable civic buildings.
 
 ## Free exploration
 
-After the gallery, participants split into their teams to explore central Seoul and enjoy lunch on their own. Everyone stayed together with their teammates rather than travelling alone, before regrouping in the afternoon for the visit to Seoul TOPIS.
+After the gallery, we split off into our teams to explore central Seoul and grab lunch on our own. The one rule: stick with your teammates rather than wandering off solo. Once everyone had refuelled, we regrouped in the afternoon for the visit to Seoul TOPIS.

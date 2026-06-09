@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import ArticleBody from '../../components/content/ArticleBody.astro';
 import ArticleHeader from '../../components/content/ArticleHeader.astro';
+import PhotoGallery from '../../components/content/PhotoGallery.astro';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 export async function getStaticPaths() {
@@ -14,7 +15,8 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, description, time, location, image, date, summary } = entry.data;
+const { title, description, time, location, image, date, summary, gallery, galleryPlaceholders } =
+  entry.data;
 ---
 
 <ArticleLayout title={title} description={description}>
@@ -31,4 +33,5 @@ const { title, description, time, location, image, date, summary } = entry.data;
   <ArticleBody>
     <Content />
   </ArticleBody>
+  <PhotoGallery title={title} photos={gallery} placeholders={galleryPlaceholders} />
 </ArticleLayout>

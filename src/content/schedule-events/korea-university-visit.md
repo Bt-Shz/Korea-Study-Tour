@@ -9,25 +9,25 @@ summary: 'Korea University & Yonsei University'
 description: 'A visit to Korea University, where Prof. Paul Seo welcomed us and Dr. William Stewart led a tour of the historic main campus.'
 ---
 
-On May 20th, 2026, our group visited **Korea University**, founded in 1905 and one of the nation's most prestigious private universities. Set in Anam in northeastern Seoul, the campus is famous for its grand stone architecture and its proud, century-old traditions.
+Midweek, and day three was all about two of Korea's most storied universities. We started the morning at **Korea University**, founded in 1905 and one of the country's most prestigious private schools. Tucked into Anam in northeastern Seoul, it's famous for its grand stone architecture and its proud, century-old traditions.
 
-All participants departed from the Sinchon area in the morning and took the Seoul Metro through Sindang to Anam Station, then walked the short distance to the main gate of the Science & Engineering campus, where the visit began at 10:00 AM.
+We set off from Sinchon and took the metro through Sindang to Anam Station, then walked the short distance to the main gate of the Science & Engineering campus, ready for a 10:00 start.
 
 ## The visit
 
-**Prof. Paul Seo** welcomed the group at the Science & Engineering campus and set the tone for the morning. We then walked across to the historic main campus, where **Dr. William Stewart** met us at the **Centennial Memorial Samsung Hall** and led a guided tour of the grounds, sharing the history and character of the university as we went.
+**Prof. Paul Seo** met us at the main gate of the Science & Engineering campus and set the tone for the morning. From there we strolled over to the historic main campus, where **Dr. William Stewart** was waiting at the **Centennial Memorial Samsung Hall** to lead us on a guided tour — sharing the stories and little quirks of the university as we went, all the way past the **Ilmin Museum**.
 
-Walking between the ivy-clad stone buildings, the group got a real sense of how a campus can carry more than a hundred years of history while still buzzing with present-day student life.
+Wandering between the ivy-clad stone buildings, you really feel how a campus can carry more than a hundred years of history and still buzz with present-day student life.
 
 ## Campus highlights
 
-- A welcome and introduction from Prof. Paul Seo at the Science & Engineering campus.
-- A guided walking tour of the historic main campus with Dr. William Stewart.
+- A welcome from Prof. Paul Seo at the Science & Engineering campus.
+- A guided walk through the historic main campus with Dr. William Stewart.
 - The Centennial Memorial Samsung Hall and the Ilmin Museum.
 
-## Our hosts
+<aside class="souvenir">
+<span class="souvenir__tag">🎁 Souvenir exchange</span>
+<p class="souvenir__text">To thank our hosts for the morning, we presented <strong>Prof. Paul Seo</strong> and <strong>Dr. William Stewart</strong> with a small souvenir from <strong>City University of Hong Kong</strong> — a warm token of friendship between Korea University and CityU.</p>
+</aside>
 
-- **Prof. Paul Seo** — Korea University, Science & Engineering campus
-- **Dr. William Stewart** — Korea University, main campus tour
-
-After the campus tour, the group headed toward Yonsei University for the afternoon research exchange.
+With the campus tour behind us, we set our sights on Yonsei University for the afternoon's research exchange.

@@ -9,12 +9,12 @@ summary: 'Korea University & Yonsei University'
 description: 'After the research exchange, we shared a group dinner with the Yonsei students near campus before being dismissed for the evening.'
 ---
 
-After a full day at Korea University and Yonsei University, the group moved to a restaurant near campus for a **dinner together with the Yonsei students**. It was the perfect, relaxed end to a day packed with academic visits.
+After a packed day across Korea University and Yonsei University, we wrapped things up the best way possible — a **dinner with the Yonsei students** at a restaurant near campus. Around 6:00 PM we all moved over together, more than ready to swap lecture halls for a proper meal.
 
 ## A relaxed evening
 
-Away from the formal sessions, the dinner gave everyone a chance to keep the afternoon's conversations going over Korean food. Students from both universities mixed freely across the tables, swapping stories about coursework, research, and student life in their two cities, and discovering just how much they had in common.
+With the formal sessions behind us, dinner was the moment to just keep chatting over good Korean food. Students from both universities mixed freely across the tables, trading stories about coursework, research, and what student life is really like in Hong Kong and Seoul — and finding out just how much we had in common.
 
 ## A fitting end to the day
 
-A shared meal has a way of turning a day of meetings into something more personal. The friendships that began in the Yonsei labs carried on long after the plates were cleared, and the group was dismissed directly after dinner.
+There's something about a shared meal that turns a day of meetings into something more personal. The friendships that started in the Yonsei labs kept going long after the plates were cleared, and we were dismissed straight after dinner — tired, full, and already looking forward to the next day.

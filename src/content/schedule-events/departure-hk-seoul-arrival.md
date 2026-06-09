@@ -9,21 +9,19 @@ summary: 'Arrival & Settling In'
 description: 'All participants took the morning flight CX410 from Hong Kong International Airport and landed at Incheon International Airport, then transferred to the Hongik University area.'
 ---
 
-The journey began at **Hong Kong International Airport**. All participants gathered at **7:00 AM at Aisle A (Cathay Pacific)** for check-in, group photos with the CityU props, and a short briefing before clearing immigration together.
+And we're off! The trip kicked off bright and early at **Hong Kong International Airport**, where everyone met up at **7:00 AM by Aisle A (Cathay Pacific)**. Whoever arrived early dropped their luggage off straight away — but we all kept our **CityU props as hand-carry**, because there were group photos to take before we flew out. The props for the Korean universities, meanwhile, rode along safely tucked inside our suitcases.
 
-## Departure
+Once everyone had checked in, we cleared immigration together and boarded the morning flight, **CX410**, bound for Seoul. (One small reminder we kept repeating: hold on to your physical boarding pass — you'll need it for reimbursement later.)
 
-Early arrivals checked in their luggage without waiting, keeping the CityU props as hand-carry for photos in the airport while the props for the Korean universities were packed safely in the suitcases. Once the group had checked in, we passed immigration together and kept our boarding passes for reimbursement.
+## Touchdown in Seoul
 
-## Arrival in Seoul
+A few hours later we landed at **Incheon International Airport** and regrouped at the arrivals hall on **1F**. First order of business: sorting out our travel cards. Anyone who had bought a **WOWPASS** online picked it up from the **CU convenience store**, and those who needed a **T-Money** card grabbed one there too — your key to Seoul's metro and buses for the rest of the week. (A lesson we learned fast: a brand-new T-Money card starts at zero, so it needs topping up before the gates will let you through.)
 
-The morning flight landed at **Incheon International Airport**. At the arrival hall, participants collected their **WOWPASS** and **T-Money** cards from the CU convenience store before heading down to the **AREX** (Airport Railroad Express) platform.
+## Into the city
 
-## Transfer to the city
-
-From Incheon, the group took the AREX all-stop train toward the **Hongik University / Sinchon-Ewha** area, where the hotels for the trip were located.
+Cards in hand, we headed down to the **AREX** platform on **B1F** and hopped on the all-stop train toward our hotels around **Hongik University and Sinchon**.
 
 - **15:20** — Incheon T1 → Hongik University (~52 min)
 - **16:20** — Hongik University → Sinchon / Ewha Womans University (~2 min)
 
-After checking in to their hotels, participants were dismissed for the day and free to rest and explore the lively Sinchon neighbourhood at their own pace.
+From there, everyone checked in to their own hotel and we wrapped up for the day — free to rest up and wander the buzzing streets of Sinchon before the academic visits began.

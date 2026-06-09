@@ -1,5 +1,6 @@
 ---
 import ScheduleEventItem from '../cards/ScheduleEventItem.astro';
+import Icon from '../Icon.astro';
 
 interface Participant {
   name: string;
@@ -13,6 +14,14 @@ interface EventItem {
   slug?: string;
   location?: string;
   variant?: 'default' | 'travel' | 'staying-behind';
+  icon?:
+    | 'plane'
+    | 'train'
+    | 'graduation'
+    | 'utensils'
+    | 'landmark'
+    | 'compass'
+    | 'image';
   steps?: readonly string[];
   participants?: readonly Participant[];
 }
@@ -25,17 +34,27 @@ interface Props {
 }
 
 const { date, summary, dayNumber, events } = Astro.props;
+const stopCount = events.length;
 ---
 
-<details class="schedule-day" open>
+<details class="schedule-day" id={`day-${dayNumber}`} open>
   <summary class="schedule-day-summary">
     <div class="schedule-day-summary-inner">
-      <span class="schedule-day-number">{dayNumber}</span>
+      <span class="schedule-day-number">
+        <span class="schedule-day-number-label">Day</span>
+        <span class="schedule-day-number-value">{dayNumber}</span>
+      </span>
       <div class="schedule-day-meta">
         <h3 class="schedule-date">{date}</h3>
         <p class="schedule-summary">{summary}</p>
+        <span class="schedule-day-count">
+          {stopCount}
+          {stopCount === 1 ? 'stop' : 'stops'}
+        </span>
       </div>
-      <span class="schedule-day-toggle">▼</span>
+      <span class="schedule-day-toggle" aria-hidden="true">
+        <Icon name="chevron-down" size={18} strokeWidth={2.4} />
+      </span>
     </div>
   </summary>
 
