@@ -18,7 +18,7 @@ const { cityu, cityuCs, skku, kaistAi, koreaUniversity, yonsei, seoulGallery, se
   <p>
     The itinerary included visits to{' '}
     <a href={skku.href} class={linkClass} rel="noopener noreferrer" target="_blank">{skku.label}</a>,{' '}
-    <a href={kaistAi.href} class={linkClass} rel="noopener noreferrer" target="_blank">{kaistAi.label}</a>,{' '}
+    <a href={kaistAi.href} class={linkClass} rel="noopener noreferrer" target="_blank">{kaistAi.label} ({kaistAi.shortName})</a>,{' '}
     <a href={koreaUniversity.href} class={linkClass} rel="noopener noreferrer" target="_blank">{koreaUniversity.label}</a>, and{' '}
     <a href={yonsei.href} class={linkClass} rel="noopener noreferrer" target="_blank">{yonsei.label}</a>.
     Our trip also included visits to{' '}
@@ -26,9 +26,9 @@ const { cityu, cityuCs, skku, kaistAi, koreaUniversity, yonsei, seoulGallery, se
     <a href={seoulTopis.href} class={linkClass} rel="noopener noreferrer" target="_blank">{seoulTopis.label}</a>, where students explored Seoul's smart-city operations.
   </p>
   <p>
-    The tour was led by the esteemed Dr. Howard Leung and Dr. Kenneth Lee from the{' '}
-    <a href={cityuCs.href} class={linkClass} rel="noopener noreferrer" target="_blank">{cityuCs.label}</a> at{' '}
-    <a href={cityu.href} class={linkClass} rel="noopener noreferrer" target="_blank">{cityu.label}</a>.
+    The tour was led by the esteemed{' '}
+    <a href="/visit-team" class={linkClass}>Dr. Howard Leung, Dr. Kenneth Lee, and Mr. Jacky Tam</a>
+    from the Department of Computer Science at City University of Hong Kong.
   </p>
   <p class="font-medium text-gray-900">{trip.about.closing}</p>
 </div>

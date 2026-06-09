@@ -1,4 +1,9 @@
 ---
+interface Participant {
+  name: string;
+  image: string;
+}
+
 interface Props {
   time: string;
   title: string;
@@ -6,9 +11,20 @@ interface Props {
   slug?: string;
   location?: string;
   variant?: 'default' | 'travel' | 'staying-behind';
+  steps?: readonly string[];
+  participants?: readonly Participant[];
 }
 
-const { time, title, description, slug, location, variant = 'default' } = Astro.props;
+const {
+  time,
+  title,
+  description,
+  slug,
+  location,
+  variant = 'default',
+  steps,
+  participants,
+} = Astro.props;
 const href = slug ? `/visit-schedule/${slug}` : undefined;
 
 const cardClass = [
@@ -16,24 +32,38 @@ const cardClass = [
   variant === 'travel' && 'schedule-card--travel',
   variant === 'staying-behind' && 'schedule-card--staying-behind',
 ];
+
+const hasSteps = steps && steps.length > 0;
+const hasParticipants = participants && participants.length > 0;
+const Tag = href ? 'a' : 'article';
 ---
 
 <li class="schedule-event">
   <span class="schedule-time">{time}</span>
-  {
-    href ? (
-      <a href={href} class:list={cardClass} aria-label={`Read more about ${title}`}>
-        <h4 class="schedule-card-title">{title}</h4>
-        {location && <p class="schedule-card-location">{location}</p>}
-        <p class="schedule-card-description">{description}</p>
-        <span class="schedule-card-link">Read full story &rarr;</span>
-      </a>
-    ) : (
-      <article class:list={cardClass}>
-        <h4 class="schedule-card-title">{title}</h4>
-        {location && <p class="schedule-card-location">{location}</p>}
-        <p class="schedule-card-description">{description}</p>
-      </article>
-    )
-  }
+  <Tag
+    href={href}
+    class:list={cardClass}
+    aria-label={href ? `Read more about ${title}` : undefined}
+  >
+    <h4 class="schedule-card-title">{title}</h4>
+    {location && <p class="schedule-card-location">{location}</p>}
+    <p class="schedule-card-description">{description}</p>
+    {hasSteps && (
+      <ul class="schedule-card-steps">
+        {steps!.map((step) => (
+          <li>{step}</li>
+        ))}
+      </ul>
+    )}
+    {hasParticipants && (
+      <div class="schedule-participants" aria-label="Participants">
+        {participants!.map((person) => (
+          <span class="schedule-participant" title={person.name}>
+            <img src={person.image} alt={person.name} loading="lazy" />
+          </span>
+        ))}
+      </div>
+    )}
+    {href && <span class="schedule-card-link">Read full story &rarr;</span>}
+  </Tag>
 </li>

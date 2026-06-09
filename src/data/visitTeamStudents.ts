@@ -64,7 +64,7 @@ const team1Students: Partial<VisitTeamStudent>[] = [
     email: 'mnwang8-c@my.cityu.edu.hk',
     image: '/images/team/student-02.jpg',
     reflection:
-      'This study tour to Seoul was truly eye-opening. Visiting leading universities like KAIST and Korea University, I learned directly from master\'s and doctoral students about their research projects and gained valuable insights into AI models and the latest trends. Their projects were fascinating, especially those involving 3D modelling and simulation. Beyond academics, I also immersed myself in Korean culture — from kimchi to Korean BBQ, every meal was a delight. The tour deepened my understanding of AI and broadened my cultural horizons in a meaningful way.',
+      'This study tour to Seoul was truly eye-opening. Visiting leading universities like KAIST and Korea University, I learned directly from master\'s and doctoral students about their research projects and gained valuable insights into AI models and the latest trends. Their projects were fascinating, especially those involving 3D modelling and simulation. Beyond academics, I also immersed myself in Korean culture - from kimchi to Korean BBQ, every meal was a delight. The tour deepened my understanding of AI and broadened my cultural horizons in a meaningful way.',
   },
   {
     id: 'student-03',
@@ -74,7 +74,7 @@ const team1Students: Partial<VisitTeamStudent>[] = [
     email: 'yuanli2-c@my.cityu.edu.hk',
     image: '/images/team/student-03.jpg',
     reflection:
-      'This trip was so good! The academic visits were the highlight — SKKU\'s engineering vibe, KAIST AI Hub\'s cutting-edge work, and the joint session with Yonsei\'s Visual AI Lab where we got to talk real research with students our age from a different country. That hit different. Even the rest parts were great — TOPIS was unexpectedly cool, and the group dinners were where the real conversations happened. Biggest takeaway? Korean research culture is fast, collaborative, and they don\'t mess around. Thanks to the Department of Computer Science and the professors for making this happen. It was genuinely worth every early morning metro ride.',
+      'This trip was so good! The academic visits were the highlight - SKKU\'s engineering vibe, KAIST AI Hub\'s cutting-edge work, and the joint session with Yonsei\'s Visual AI Lab where we got to talk real research with students our age from a different country. That hit different. Even the rest parts were great - TOPIS was unexpectedly cool, and the group dinners were where the real conversations happened. Biggest takeaway? Korean research culture is fast, collaborative, and they don\'t mess around. Thanks to the Department of Computer Science and the professors for making this happen. It was genuinely worth every early morning metro ride.',
   },
   {
     id: 'student-04',
@@ -84,7 +84,7 @@ const team1Students: Partial<VisitTeamStudent>[] = [
     email: 'nnguyen6-c@my.cityu.edu.hk',
     image: '/images/team/student-04.jpg',
     reflection:
-      'In this five-day study tour to Korea, I gained invaluable insight into a different academic culture. Visiting prestigious institutions like SKKU, Yonsei University, KAIST, and Korea University exposed me to exceptional research, particularly high-quality papers published at top conferences like ICLR and ICCV. What struck me most was the humble and respectful attitude of the students and professors — true expertise often comes with great humility. I want to thank the Department of Computer Science and the accompanying professors for giving me, a Year 1 student, this amazing opportunity.',
+      'In this five-day study tour to Korea, I gained invaluable insight into a different academic culture. Visiting prestigious institutions like SKKU, Yonsei University, KAIST, and Korea University exposed me to exceptional research, particularly high-quality papers published at top conferences like ICLR and ICCV. What struck me most was the humble and respectful attitude of the students and professors - true expertise often comes with great humility. I want to thank the Department of Computer Science and the accompanying professors for giving me, a Year 1 student, this amazing opportunity.',
   },
   {
     id: 'student-05',
@@ -130,7 +130,7 @@ const team2Students: Partial<VisitTeamStudent>[] = [
     email: 'meiyanlai5-c@my.cityu.edu.hk',
     image: '/images/team/ashley-lee.jpg',
     reflection:
-      'The Seoul Study Tour gave me a fresh perspective on how AI and smart-city technology are taught and applied beyond Hong Kong. Campus visits to KAIST and Yonsei, together with the TOPIS briefing, connected classroom concepts to real infrastructure at scale. Exploring the city between sessions — from transit to local food — made the learning feel lived-in, not just academic. I left with a clearer sense of where I want to take my CS studies next.',
+      'The Seoul Study Tour gave me a fresh perspective on how AI and smart-city technology are taught and applied beyond Hong Kong. Campus visits to KAIST and Yonsei, together with the TOPIS briefing, connected classroom concepts to real infrastructure at scale. Exploring the city between sessions - from transit to local food - made the learning feel lived-in, not just academic. I left with a clearer sense of where I want to take my CS studies next.',
   },
   {
     name: 'Sin Ching CHAN',
@@ -160,6 +160,7 @@ const team4Students: Partial<VisitTeamStudent>[] = [
   {
     name: 'Taimas YEDRISSOV',
     nickname: '',
+    email: 'taimas.y@my.cityu.edu.hk',
     image: '/images/team/taimas-yedrissov.jpg',
     reflection:
       'I am very thankful for the opportunity to have joined the Seoul study tour. While I arrived with an interest in Korean academic research, I left with a much deeper appreciation for the country\'s unique blend of tradition and high-speed innovation. Seeing the contrast between the historic palaces and the bustling, modern tech districts was fascinating. This trip pushed me to engage with people outside of my usual circles, and the conversations I had with peers and researchers during the trip have provided me with a fresh perspective on my own studies back at CityU.',
@@ -170,7 +171,7 @@ const team4Students: Partial<VisitTeamStudent>[] = [
     email: 'pfchen3-c@my.cityu.edu.hk',
     image: '/images/team/frank-chen.jpg',
     reflection:
-      'The Seoul study tour was an eye-opening experience that went beyond simple site visits. Engaging with students from different years provided me with a wealth of practical, \'insider\' tips on how to balance coursework and research—advice that has proven to be incredibly useful. Watching the local students work on their current projects showed me a different side of the field, one that is driven more by hands-on experimentation than just theory. I am grateful for the friendships forged during this time; it was a deeply inspiring trip that has left me much more motivated for my upcoming academic challenges.',
+      'The Seoul study tour was an eye-opening experience that went beyond simple site visits. Engaging with students from different years provided me with a wealth of practical, \'insider\' tips on how to balance coursework and research - advice that has proven to be incredibly useful. Watching the local students work on their current projects showed me a different side of the field, one that is driven more by hands-on experimentation than just theory. I am grateful for the friendships forged during this time; it was a deeply inspiring trip that has left me much more motivated for my upcoming academic challenges.',
   },
   {
     name: 'Ho Kwan Sam WONG',

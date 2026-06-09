@@ -1,6 +1,11 @@
 export type TripVenue = {
   name: string;
+  listName?: string;
+  mapLabel: string;
+  mapQuery: string;
   url?: string;
+  lat: number;
+  lng: number;
 };
 
 export const institutionLinks = {
@@ -17,7 +22,8 @@ export const institutionLinks = {
     href: 'https://www.skku.edu/eng/index.do',
   },
   kaistAi: {
-    label: 'KAIST AI Graduate Lab',
+    label: 'Graduate School of AI at the Korea Advanced Institute of Science and Technology',
+    shortName: 'KAIST AI',
     href: 'https://gsai.kaist.ac.kr/',
   },
   koreaUniversity: {
@@ -54,28 +60,54 @@ export const trip = {
   staffCount: 3,
   venues: [
     {
-      name: institutionLinks.skku.label,
+      name: 'Sungkyunkwan University (SKKU)',
+      mapLabel: 'Sungkyunkwan University (SKKU)',
+      mapQuery: '2066 Seobu-ro, Jangan-gu, Suwon-si, Gyeonggi-do, South Korea',
       url: institutionLinks.skku.href,
+      lat: 37.2941,
+      lng: 126.9727,
     },
     {
-      name: institutionLinks.kaistAi.label,
+      name: 'Graduate School of AI at KAIST',
+      listName: 'KAIST AI',
+      mapLabel: 'Graduate School of AI at KAIST',
+      mapQuery: '141 Umyeon-dong, Seocho-gu, Seoul, South Korea',
       url: institutionLinks.kaistAi.href,
+      lat: 37.4648,
+      lng: 127.0189,
     },
     {
-      name: institutionLinks.koreaUniversity.label,
+      name: 'Korea University',
+      mapLabel: 'Korea University',
+      mapQuery: '145 Anam-ro, Seongbuk-gu, Seoul, South Korea',
       url: institutionLinks.koreaUniversity.href,
+      lat: 37.588,
+      lng: 127.0324,
     },
     {
-      name: institutionLinks.yonsei.label,
+      name: 'Yonsei University',
+      mapLabel: 'Yonsei University',
+      mapQuery: '50 Yonsei-ro, Seodaemun-gu, Seoul, South Korea',
       url: institutionLinks.yonsei.href,
+      lat: 37.561,
+      lng: 126.9396,
     },
     {
-      name: institutionLinks.seoulGallery.label,
+      name: 'Seoul Gallery - City Hall',
+      mapLabel: 'Seoul Gallery - City Hall',
+      mapQuery: '110 Sejong-daero, Jung-gu, Seoul, South Korea',
       url: institutionLinks.seoulGallery.href,
+      lat: 37.5668,
+      lng: 126.9783,
     },
     {
-      name: institutionLinks.seoulTopis.label,
+      name: 'Seoul TOPIS',
+      listName: 'TOPIS',
+      mapLabel: 'Seoul TOPIS',
+      mapQuery: '110 Sejong-daero, Jung-gu, Seoul, South Korea',
       url: institutionLinks.seoulTopis.href,
+      lat: 37.5666,
+      lng: 126.9786,
     },
   ] satisfies readonly TripVenue[],
   about: {

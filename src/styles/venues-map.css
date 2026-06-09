@@ -1,0 +1,89 @@
+.venue-map {
+  min-height: 22rem;
+  height: 100%;
+  z-index: 0;
+}
+
+.venue-map-layout {
+  align-items: stretch;
+}
+
+.venue-map-panel {
+  min-height: 22rem;
+}
+
+.venue-map .leaflet-control-attribution {
+  font-size: 10px;
+}
+
+.venue-map-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-orange) 100%);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.venue-map-card {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.875rem;
+  border: 1px solid #f3f4f6;
+  background: #fafafa;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.venue-map-card:hover {
+  border-color: color-mix(in srgb, var(--brand-red) 30%, #f3f4f6);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.venue-map-card-title {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.venue-map-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.125rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--brand-red);
+}
+
+.venue-map-card-link:hover {
+  text-decoration: underline;
+}
+
+.venue-map-popup .leaflet-popup-content-wrapper {
+  border-radius: 0.75rem;
+}
+
+.venue-map-popup .leaflet-popup-content {
+  margin: 0.75rem 0.9rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.venue-map-popup a {
+  color: var(--brand-red);
+  font-weight: 600;
+}
+
+.venue-map-popup a:hover {
+  text-decoration: underline;
+}

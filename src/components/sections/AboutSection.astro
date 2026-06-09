@@ -33,7 +33,7 @@ import { trip } from '../../data/trip';
           at City University of Hong Kong.
         </p>
         <p class="mt-4 text-gray-600 leading-relaxed text-[15px]">
-          Our itinerary covered {trip.venues.map((venue) => venue.name).join(', ')}, with sessions focused on academic
+          Our itinerary covered {trip.venues.map((venue) => venue.listName ?? venue.name).join(', ')}, with sessions focused on academic
           exchange, smart-city systems, and cross-cultural learning.
         </p>
         <a href="/about" class="mt-5 inline-flex text-sm font-semibold text-primary hover:underline">

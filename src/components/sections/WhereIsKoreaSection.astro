@@ -1,0 +1,153 @@
+---
+import Icon from '../Icon.astro';
+import DisplayHeading from '../ui/DisplayHeading.astro';
+import SectionEyebrow from '../ui/SectionEyebrow.astro';
+import { trip } from '../../data/trip';
+
+const mapVenues = trip.venues.map((venue, index) => ({
+  index: index + 1,
+  name: venue.name,
+  label: venue.mapLabel,
+  mapQuery: venue.mapQuery,
+  url: venue.url,
+  lat: venue.lat,
+  lng: venue.lng,
+}));
+---
+
+<section id="where-is-korea" class="py-14 md:py-20 relative bg-white border-t border-gray-100">
+  <div
+    class="absolute top-0 right-0 w-80 h-80 rounded-full opacity-10 pointer-events-none blur-3xl"
+    style="background: var(--brand-orange); transform: translate(35%, -35%);"
+  ></div>
+
+  <div class="relative max-w-7xl mx-auto px-5">
+    <SectionEyebrow>Destinations</SectionEyebrow>
+    <DisplayHeading class="text-4xl md:text-5xl mb-4">Where is Korea?</DisplayHeading>
+    <p class="text-gray-600 max-w-3xl mb-10 leading-relaxed">
+      Our study tour covered six key venues across the Seoul metropolitan area and Suwon, from
+      university campuses to the city&apos;s smart-mobility control centre.
+    </p>
+
+    <div class="grid lg:grid-cols-3 gap-6 venue-map-layout">
+      <div class="lg:col-span-2 venue-map-panel">
+        <div
+          id="korea-venue-map"
+          class="venue-map rounded-2xl overflow-hidden border border-gray-200 shadow-md bg-gray-100"
+          data-venues={JSON.stringify(mapVenues)}
+          aria-label="Map of Korea showing study tour venues"
+        ></div>
+        <noscript>
+          <p class="mt-4 text-sm text-gray-600">
+            <strong>JavaScript is disabled.</strong> View the map on Google Maps:{' '}
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=South+Korea"
+              class="text-primary hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open South Korea in Google Maps
+            </a>
+          </p>
+        </noscript>
+      </div>
+
+      <ol class="flex flex-col justify-between gap-2 h-full min-h-[22rem]">
+        {
+          mapVenues.map((venue) => (
+            <li class="venue-map-card">
+              <span class="venue-map-marker shrink-0">{venue.index}</span>
+              <div class="min-w-0 flex-1">
+                {venue.url ? (
+                  <a
+                    href={venue.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="venue-map-card-title hover:text-primary transition-colors"
+                  >
+                    {venue.label}
+                  </a>
+                ) : (
+                  <span class="venue-map-card-title">{venue.label}</span>
+                )}
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venue.mapQuery)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="venue-map-card-link"
+                >
+                  <Icon name="map-pin" size={11} />
+                  View on map
+                </a>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  type MapVenue = {
+    index: number;
+    name: string;
+    label: string;
+    mapQuery: string;
+    url?: string;
+    lat: number;
+    lng: number;
+  };
+
+  function initVenueMap() {
+    const mapEl = document.getElementById('korea-venue-map');
+    if (!mapEl || mapEl.dataset.mapReady === 'true') return;
+
+    const venues = JSON.parse(mapEl.dataset.venues ?? '[]') as MapVenue[];
+    if (venues.length === 0) return;
+
+    const map = L.map(mapEl, {
+      scrollWheelZoom: false,
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 20,
+    }).addTo(map);
+
+    const bounds = L.latLngBounds([]);
+
+    venues.forEach((venue) => {
+      const marker = L.marker([venue.lat, venue.lng], {
+        icon: L.divIcon({
+          className: '',
+          html: `<span class="venue-map-marker">${venue.index}</span>`,
+          iconSize: [28, 28],
+          iconAnchor: [14, 14],
+        }),
+      });
+
+      const popupLink = venue.url
+        ? `<a href="${venue.url}" target="_blank" rel="noopener noreferrer">${venue.name}</a>`
+        : venue.name;
+
+      marker.bindPopup(`<strong>${venue.index}. ${venue.label}</strong><br>${popupLink}`, {
+        className: 'venue-map-popup',
+      });
+
+      marker.addTo(map);
+      bounds.extend([venue.lat, venue.lng]);
+    });
+
+    map.fitBounds(bounds, { padding: [48, 48], maxZoom: 11 });
+    mapEl.dataset.mapReady = 'true';
+  }
+
+  initVenueMap();
+  document.addEventListener('astro:page-load', initVenueMap);
+</script>

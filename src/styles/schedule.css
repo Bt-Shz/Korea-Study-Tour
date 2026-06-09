@@ -180,6 +180,52 @@
   color: rgb(75 85 99);
 }
 
+.schedule-card-steps {
+  margin: 0.75rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: rgb(75 85 99);
+}
+
+.schedule-card-steps li + li {
+  margin-top: 0.35rem;
+}
+
+.schedule-participants {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1rem;
+  padding-left: 0.6rem;
+}
+
+.schedule-participant {
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-left: -0.6rem;
+  margin-bottom: 0.35rem;
+  border-radius: 9999px;
+  overflow: hidden;
+  background: rgb(243 244 246);
+  border: 2px solid #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+  transition: transform 0.2s ease, z-index 0.2s ease;
+}
+
+.schedule-participant:hover {
+  transform: translateY(-3px) scale(1.08);
+  z-index: 2;
+}
+
+.schedule-participant img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .schedule-card-link {
   display: inline-block;
   margin-top: 0.75rem;
