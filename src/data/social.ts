@@ -3,7 +3,7 @@ export const socialFilters = [
     key: 'youtube',
     label: 'YouTube',
     color: '#FF0000',
-    url: 'https://www.youtube.com/@CityUCS',
+    url: 'https://www.youtube.com/user/CityUHongKong',
   },
   {
     key: 'facebook',
@@ -15,7 +15,7 @@ export const socialFilters = [
     key: 'instagram',
     label: 'Instagram',
     color: '#E4405F',
-    url: 'https://www.instagram.com/cityucs/',
+    url: 'https://www.instagram.com/hkcityucs/',
   },
   { key: 'x', label: 'X', color: '#111111', url: 'https://twitter.com/CityUCS' },
 ] as const;

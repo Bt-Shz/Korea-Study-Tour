@@ -23,6 +23,6 @@ export const teamMembers = [
     initials: 'JT',
     email: 'jackytam@cityu.edu.hk',
     department: 'Department of Computer Science',
-    imageFg: '/images/team/placeholder.svg',
+    imageFg: '/images/team/jacky.jpeg',
   },
 ] as const;

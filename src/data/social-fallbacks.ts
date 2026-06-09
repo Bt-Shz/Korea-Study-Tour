@@ -49,7 +49,7 @@ export const instagramFallback: PlatformFallback = {
       image: instagramFallbackImages[index]!,
       imageAlt: 'CityU CS on Instagram',
       title: 'View post on Instagram',
-      meta: '@CityUCS',
+      meta: '@hkcityucs',
     })),
   ],
 };

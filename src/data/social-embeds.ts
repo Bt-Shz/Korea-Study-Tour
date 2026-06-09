@@ -17,7 +17,7 @@ export type FacebookEmbed = {
   postUrl: string;
 };
 
-const EMBED_SLOT_WIDTH = 360;
+const EMBED_SLOT_WIDTH = 500;
 
 function facebookPluginUrl(href: string): string {
   return `https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(href)}&show_text=true&width=${EMBED_SLOT_WIDTH}`;

@@ -3,6 +3,41 @@ export type TripVenue = {
   url?: string;
 };
 
+export const institutionLinks = {
+  cityu: {
+    label: 'City University of Hong Kong',
+    href: 'https://www.cityu.edu.hk',
+  },
+  cityuCs: {
+    label: 'Department of Computer Science',
+    href: 'https://www.cs.cityu.edu.hk/en',
+  },
+  skku: {
+    label: 'Sungkyunkwan University (SKKU)',
+    href: 'https://www.skku.edu/eng/index.do',
+  },
+  kaistAi: {
+    label: 'KAIST AI Graduate Lab',
+    href: 'https://gsai.kaist.ac.kr/',
+  },
+  koreaUniversity: {
+    label: 'Korea University',
+    href: 'https://www.korea.edu/en/index.do',
+  },
+  yonsei: {
+    label: 'Yonsei University',
+    href: 'https://www.yonsei.ac.kr/en_sc/index.do',
+  },
+  seoulGallery: {
+    label: 'Seoul Gallery',
+    href: 'https://www.seoul.go.kr/seoulgallery',
+  },
+  seoulTopis: {
+    label: 'Seoul TOPIS (Seoul Transport Operation and Information Service)',
+    href: 'https://topis.seoul.go.kr/openEngIntro.do',
+  },
+} as const;
+
 export const trip = {
   title: 'Seoul Study Tour 2026',
   department: 'Department of Computer Science',
@@ -19,35 +54,31 @@ export const trip = {
   staffCount: 3,
   venues: [
     {
-      name: 'Sungkyunkwan University (SKKU)',
-      url: 'https://www.skku.edu/eng/index.do',
+      name: institutionLinks.skku.label,
+      url: institutionLinks.skku.href,
     },
     {
-      name: 'KAIST AI Graduate Lab',
-      url: 'https://www.kaist.ac.kr/en/',
+      name: institutionLinks.kaistAi.label,
+      url: institutionLinks.kaistAi.href,
     },
     {
-      name: 'Korea University',
-      url: 'https://www.korea.edu/',
+      name: institutionLinks.koreaUniversity.label,
+      url: institutionLinks.koreaUniversity.href,
     },
     {
-      name: 'Yonsei University',
-      url: 'https://www.yonsei.ac.kr/en_sc/',
+      name: institutionLinks.yonsei.label,
+      url: institutionLinks.yonsei.href,
     },
     {
-      name: 'Seoul Gallery',
-      url: 'https://www.seoul.go.kr/main/index.do',
+      name: institutionLinks.seoulGallery.label,
+      url: institutionLinks.seoulGallery.href,
     },
     {
-      name: 'Seoul TOPIS (Seoul Transport Operation and Information Service)',
-      url: 'https://topis.seoul.go.kr/',
+      name: institutionLinks.seoulTopis.label,
+      url: institutionLinks.seoulTopis.href,
     },
   ] satisfies readonly TripVenue[],
   about: {
-    purpose:
-      'The purpose of this website is to provide a window into a 5-day study tour that the Department of Computer Science at City University of Hong Kong made possible. The trip took place 18-22 May 2026, aiming to expose students to a different educational system, introduce them to new collaboration and career opportunities, and expand their horizons.',
-    leadership:
-      'The tour was led by the esteemed Dr. Howard Leung and Dr. Kenneth Lee from the Department of Computer Science at City University of Hong Kong.',
     closing: 'Enjoy exploring our website and seeing different aspects of our tour!',
   },
 } as const;
