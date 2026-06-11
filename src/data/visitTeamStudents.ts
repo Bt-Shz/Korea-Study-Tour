@@ -137,6 +137,61 @@ const team2Students: Partial<VisitTeamStudent>[] = [
     nickname: 'Eunice',
     email: 'sincchan3-c@my.cityu.edu.hk',
     image: '/images/team/eunice-chan.jpg',
+    reflection:
+      'The Seoul study tour was a genuinely enriching experience. Visiting SKKU, KAIST, Korea University, and Yonsei gave me a closer look at how AI research is conducted at a world-class level, and hearing directly from PhD students made the work feel tangible and inspiring. The trip to TOPIS was a highlight - seeing smart-city technology applied at such a scale was impressive. Beyond the academics, exploring Seoul\'s food and culture with the group made the whole experience truly memorable. I am grateful to the CS Department for this opportunity.',
+  },
+];
+
+const team3Students: Partial<VisitTeamStudent>[] = [
+  {
+    id: 'student-11',
+    name: 'Shutong CAO',
+    nickname: 'Scott',
+    year: 'Year 1',
+    email: 'shutoncao3-c@my.cityu.edu.hk',
+    image: '/images/team/scott-cao.png',
+    reflection:
+      'This 5-day trip to Seoul is an unforgettable experience. I enjoyed visiting the partner universities and exploring their campuses while listening to their recent AI projects in computer vision and machine learning. It was eye-opening to see how AI research is applied in real life, from lab talks to the visit at Seoul TOPIS. Outside of academics, I had a lot of fun trying local food and experiencing the local culture. I\'m really grateful that the CS Department and professors gave me this opportunity to explore a new city and broaden my perspective on technology.',
+  },
+  {
+    id: 'student-12',
+    name: 'Chung Hi WONG',
+    nickname: 'Baron',
+    year: 'Year 1',
+    email: 'chwong376-c@my.cityu.edu.hk',
+    image: '/images/team/baron-wong.png',
+    reflection:
+      'The 5-day study tour to Seoul was an eye-opening trip for me. I fortunately had an opportunity to explore four of the most prestigious universities in Korea: Sungkyunkwan University, Korea Advanced Institute of Science and Technology (KAIST), Korea University and Yonsei University. The university visits expanded my perspective to Korea\'s technological research and life at campus, uncovering a university life I have never seen before. Besides visiting universities, Seoul Gallery showcased a brief history and rapid development of Seoul, while Seoul TOPIS offered us a precious insight of the array of systems that handle Seoul\'s metropolitan operations. I discovered the innovative and insightful use of technology in maintaining Seoul\'s administration, and I am deeply impressed by the Seoul government\'s hard work in managing the busy and always-changing city. Outside of academic visits, I experienced Korea\'s local culture by savouring delicious Korean food, as well as exploring several historic landmarks and scenic spots. Overall, I am very grateful that the CS department and professors offered me such a prestigious opportunity to explore the city of Seoul and broaden my mind on Korea\'s technological advancements. The precious experience from this trip has enriched my university life, and I look forward to future opportunities to explore other cities.',
+  },
+  {
+    id: 'student-13',
+    name: 'Vinh Thanh Linh LE',
+    nickname: 'Linh',
+    year: 'Year 2',
+    email: 'vtlle2-c@my.cityu.edu.hk',
+    image: '/images/team/linh-le.png',
+    reflection:
+      'The 5-day study tour to Seoul was a truly rewarding and enriching experience. The best part of the Seoul trip was getting to see world class universities like KAIST, Yonsei, Korea University, and Sungkyunkwan University, which gave me a profound look into their cutting-edge research and vibrant campus environments. Meeting the PhD students and seeing them present their AI projects in person made everything we learn in class feel way more real. Beyond the academic exchanges, exploring local landmarks, discovering the technological marvel of Seoul TOPIS, and tasting authentic Korean cuisine made my trip unforgettable. I am incredibly grateful to the CS Department and our professors for organizing this wonderful opportunity to broaden my global perspective and experience Korea\'s dynamic tech scene.',
+  },
+  {
+    id: 'student-14',
+    name: 'Ademi ORYNBEK',
+    nickname: 'Ademi',
+    year: 'Year 1',
+    email: 'aorynbek2-c@my.cityu.edu.hk',
+    image: '/images/team/ademi-orynbek.png',
+    reflection:
+      'The best choice I\'ve made during my first year of study was definitely applying for the study tour to Seoul. It was incredibly fun getting to see so many renowned Korean institutions: the campus tours and student talks at SKKU, KAIST, Yonsei and Korea University were not only informative, but also entertaining. I personally enjoyed the talks about research in computer vision by the PhD students the most. The last day, when we got to visit the Seoul Gallery and the TOPIS office was incredibly fruitful as well. What I enjoyed most was the scheduling of the tour, which left us plenty of room to plan our own visits to local landmarks and any other points of interest. I am really happy I got to meet so many like-minded peers during the study tour, and get to know them a little better. Our professors and the CS department as a whole did an incredible job with the trip! I had an amazing time :)',
+  },
+  {
+    id: 'student-15',
+    name: 'Shun Nang LUK',
+    nickname: 'Vincent',
+    year: 'Year 2',
+    email: 'snluk2-c@my.cityu.edu.hk',
+    image: '/images/team/vincent-luk.png',
+    reflection:
+      'This study tour was more than just a visit to prestigious universities and research labs - it was a front-row seat to how computer science is shaping the real world. From engaging with professors and students at SKKU, KAIST, Korea University, and Yonsei, to seeing urban intelligence in action at Seoul TOPIS, every moment reminded me how much there is to learn beyond the classroom. I came away not only with new technical insights but also with a deep appreciation for collaboration, humility, and the shared curiosity that connects researchers across borders. Grateful to CityU CS for this unforgettable opportunity.',
   },
 ];
 
@@ -144,6 +199,7 @@ const team4Students: Partial<VisitTeamStudent>[] = [
   {
     name: 'Sum Yi LEE',
     nickname: 'Eugenia',
+    year: 'Year 2',
     email: 'sumylee6-c@my.cityu.edu.hk',
     image: '/images/team/eugenia-lee.jpg',
     reflection:
@@ -159,7 +215,7 @@ const team4Students: Partial<VisitTeamStudent>[] = [
   },
   {
     name: 'Taimas YEDRISSOV',
-    nickname: '',
+    nickname: 'Taimas',
     email: 'taimas.y@my.cityu.edu.hk',
     image: '/images/team/taimas-yedrissov.jpg',
     reflection:
@@ -176,6 +232,7 @@ const team4Students: Partial<VisitTeamStudent>[] = [
   {
     name: 'Ho Kwan Sam WONG',
     nickname: 'Sam',
+    year: 'Year 2',
     email: 'samhkwong2-c@my.cityu.edu.hk',
     image: '/images/team/sam-wong.jpg',
     reflection:
@@ -238,7 +295,7 @@ const team5Students: Partial<VisitTeamStudent>[] = [
 export const visitTeamGroups: VisitTeamGroup[] = [
   createTeam(1, team1Students),
   createTeam(2, team2Students),
-  createTeam(3),
+  createTeam(3, team3Students),
   createTeam(4, team4Students),
   createTeam(5, team5Students),
 ];

@@ -10,19 +10,13 @@ import { trip } from '../../data/trip';
 
 const allEvents = visitSchedule.flatMap((day) => day.events);
 
+const venueCount = allEvents.filter(
+  (event) => event.icon === 'graduation' || event.icon === 'landmark' || event.icon === 'image',
+).length;
+
 const stats = [
   { value: String(visitSchedule.length), label: 'Days' },
-  {
-    value: String(allEvents.filter((event) => event.icon === 'graduation').length),
-    label: 'Universities',
-  },
-  {
-    value: String(
-      allEvents.filter((event) => event.icon === 'landmark' || event.icon === 'image').length,
-    ),
-    label: 'City Visits',
-  },
-  { value: String(allEvents.filter((event) => event.slug).length), label: 'Stories' },
+  { value: String(venueCount), label: 'Venues' },
 ];
 
 const dayNav = visitSchedule.map((day) => {

@@ -114,3 +114,20 @@ export const trip = {
     closing: 'Enjoy exploring our website and seeing different aspects of our tour!',
   },
 } as const;
+
+export type TripVenueKey =
+  | 'skku'
+  | 'kaistAi'
+  | 'koreaUniversity'
+  | 'yonsei'
+  | 'seoulGallery'
+  | 'seoulTopis';
+
+export const tripVenuesByKey: Record<TripVenueKey, TripVenue> = {
+  skku: trip.venues[0],
+  kaistAi: trip.venues[1],
+  koreaUniversity: trip.venues[2],
+  yonsei: trip.venues[3],
+  seoulGallery: trip.venues[4],
+  seoulTopis: trip.venues[5],
+};

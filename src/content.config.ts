@@ -12,6 +12,12 @@ const scheduleEvents = defineCollection({
     date: z.string(),
     summary: z.string(),
     description: z.string().optional(),
+    headerVariant: z.enum(['default', 'featured']).default('default'),
+    headerEyebrow: z.string().optional(),
+    extraChip: z.string().optional(),
+    mapVenue: z
+      .enum(['skku', 'kaistAi', 'koreaUniversity', 'yonsei', 'seoulGallery', 'seoulTopis'])
+      .optional(),
     draft: z.boolean().default(false),
     // Photo gallery. Add real photos here when they are ready, e.g.
     //   gallery:

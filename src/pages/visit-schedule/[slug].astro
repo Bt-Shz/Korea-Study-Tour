@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import ArticleBody from '../../components/content/ArticleBody.astro';
 import ArticleHeader from '../../components/content/ArticleHeader.astro';
 import PhotoGallery from '../../components/content/PhotoGallery.astro';
+import ArticleVenueMap from '../../components/content/ArticleVenueMap.astro';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 export async function getStaticPaths() {
@@ -15,7 +16,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, description, time, location, image, date, summary, gallery, galleryPlaceholders } =
+const { title, description, time, location, image, date, summary, gallery, galleryPlaceholders, headerVariant, headerEyebrow, mapVenue, extraChip } =
   entry.data;
 ---
 
@@ -29,9 +30,89 @@ const { title, description, time, location, image, date, summary, gallery, galle
     date={date}
     summary={summary}
     description={description}
+    variant={headerVariant}
+    eyebrow={headerEyebrow}
+    extraChip={extraChip}
   />
   <ArticleBody>
     <Content />
   </ArticleBody>
-  <PhotoGallery title={title} photos={gallery} placeholders={galleryPlaceholders} />
+  {mapVenue && <ArticleVenueMap venueKey={mapVenue} />}
+  {
+    (gallery?.length ?? 0) > 0 || (galleryPlaceholders ?? 0) > 0 ? (
+      <PhotoGallery title={title} photos={gallery} placeholders={galleryPlaceholders} />
+    ) : null
+  }
 </ArticleLayout>
+
+<script>
+  // Photo carousels powered by keen-slider
+  import KeenSlider from 'keen-slider';
+
+  document.querySelectorAll<HTMLElement>('.photo-carousel__stage').forEach((stage) => {
+    const viewport = stage.querySelector<HTMLElement>('.keen-slider')!;
+    const dotsWrap = stage.querySelector<HTMLElement>('.photo-carousel__dots')!;
+    const prevBtn = stage.querySelector<HTMLButtonElement>('.photo-carousel__btn--prev')!;
+    const nextBtn = stage.querySelector<HTMLButtonElement>('.photo-carousel__btn--next')!;
+
+    const dots: HTMLButtonElement[] = [];
+
+    function syncDots(rel: number) {
+      dots.forEach((d, i) => d.classList.toggle('photo-carousel__dot--active', i === rel));
+    }
+
+    function syncBtnState(rel: number, total: number) {
+      prevBtn.classList.toggle('photo-carousel__btn--disabled', rel === 0);
+      nextBtn.classList.toggle('photo-carousel__btn--disabled', rel === total - 1);
+    }
+
+    function applyTween(s: KeenSlider) {
+      const details = s.track.details.slides;
+      s.slides.forEach((el, i) => {
+        const dist = Math.abs(details[i]?.distance ?? 0);
+        el.style.transform = `scale(${Math.max(1 - dist * 0.16, 0.84).toFixed(3)})`;
+        el.style.opacity = Math.max(1 - dist * 0.7, 0.36).toFixed(2);
+      });
+    }
+
+    const slider = new KeenSlider(viewport, {
+      slides: { perView: 1.72, spacing: 12, origin: 'center' },
+      created(s) {
+        const count = s.track.details.slides.length;
+        for (let i = 0; i < count; i++) {
+          const btn = document.createElement('button');
+          btn.className = 'photo-carousel__dot';
+          btn.setAttribute('aria-label', `Slide ${i + 1}`);
+          btn.addEventListener('click', () => s.moveToIdx(i));
+          dotsWrap.appendChild(btn);
+          dots.push(btn);
+        }
+        const rel = s.track.details.rel;
+        syncDots(rel);
+        syncBtnState(rel, count);
+        applyTween(s);
+      },
+      slideChanged(s) {
+        const rel = s.track.details.rel;
+        syncDots(rel);
+        syncBtnState(rel, s.track.details.slides.length);
+      },
+      detailsChanged: applyTween,
+    });
+
+    prevBtn.addEventListener('click', () => slider.prev());
+    nextBtn.addEventListener('click', () => slider.next());
+  });
+
+  // Featured hero lightbox
+  const heroWrap = document.querySelector<HTMLElement>('.article-header-featured__hero');
+  const lightbox = document.getElementById('hero-lightbox') as HTMLDialogElement | null;
+  if (heroWrap && lightbox) {
+    heroWrap.addEventListener('click', () => lightbox.showModal());
+    lightbox.querySelector('.hero-lightbox__close')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      lightbox.close();
+    });
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.close(); });
+  }
+</script>

@@ -6,52 +6,53 @@
 /* ---------- Trip at a glance ---------- */
 .schedule-stats {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
-  max-width: 52rem;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 640px) {
-  .schedule-stats {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
+  grid-template-columns: repeat(2, 11rem);
+  gap: 1rem;
+  justify-content: center;
+  margin: 0 0 2.5rem;
 }
 
 .schedule-stat {
   position: relative;
-  border-radius: 1rem;
-  border: 1px solid rgb(229 231 235);
-  background: #fff;
-  padding: 1rem 1.1rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-red) 100%);
+  padding: 1.75rem 1.5rem 1.5rem;
   overflow: hidden;
+  box-shadow: 0 12px 36px rgba(200, 16, 46, 0.22);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.schedule-stat::before {
+.schedule-stat::after {
   content: '';
   position: absolute;
-  inset: 0 auto 0 0;
-  width: 3px;
-  background: linear-gradient(180deg, var(--brand-orange) 0%, var(--brand-red) 100%);
+  bottom: -2rem;
+  right: -2rem;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
 }
 
 .schedule-stat-value {
   font-family: "Playfair Display", Georgia, serif;
-  font-size: 1.65rem;
+  font-size: 3.5rem;
   font-weight: 800;
   line-height: 1;
-  color: var(--brand-red);
+  color: #fff;
 }
 
 .schedule-stat-label {
   display: block;
-  margin-top: 0.35rem;
+  margin-top: 0.45rem;
   font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgb(107 114 128);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 /* ---------- Day quick-nav ---------- */
@@ -401,6 +402,27 @@ a.schedule-card:hover {
   color: rgb(75 85 99);
 }
 
+.schedule-card-fun-fact {
+  margin: 0.65rem 0 0;
+  padding: 0.55rem 0.75rem;
+  border-left: 2px solid rgba(200, 16, 46, 0.2);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: rgb(107 114 128);
+  opacity: 0.8;
+}
+
+.schedule-card-fun-fact-label {
+  display: inline-block;
+  margin-right: 0.35rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+  opacity: 0.7;
+}
+
 .schedule-card-steps {
   margin: 0.85rem 0 0;
   padding: 0.75rem 0 0.1rem 1.1rem;
@@ -461,4 +483,107 @@ a.schedule-card:hover {
 
 a.schedule-card:hover .schedule-card-link {
   gap: 0.5rem;
+}
+
+/* ── Card with side thumbnail ──────────────────────────────────────────── */
+
+.schedule-card--has-thumb {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.schedule-card-text {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* ── Thumbnail button (right-side, no crop) ────────────────────────────── */
+
+.schedule-card-thumb {
+  position: relative;
+  flex: 0 0 7rem;
+  width: 7rem;
+  align-self: stretch;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: zoom-in;
+  border: none;
+  padding: 0;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.schedule-card-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.35s ease, filter 0.35s ease;
+  filter: brightness(0.9) saturate(0.85);
+}
+
+.schedule-card-thumb:hover img,
+.schedule-card-thumb:focus-visible img {
+  transform: scale(1.05);
+  filter: brightness(1) saturate(1);
+}
+
+.schedule-card-thumb-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+.schedule-card-thumb:hover .schedule-card-thumb-icon,
+.schedule-card-thumb:focus-visible .schedule-card-thumb-icon {
+  opacity: 1;
+}
+
+/* ── Lightbox (native <dialog>) ───────────────────────────────────────── */
+
+.schedule-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  border: none;
+  padding: 1.5rem;
+  max-width: 100vw;
+  max-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  cursor: zoom-out;
+  background: rgba(0, 0, 0, 0.88);
+}
+
+.schedule-lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.schedule-lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.schedule-lightbox img {
+  display: block;
+  max-width: min(90vw, 900px);
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
 }

@@ -20,12 +20,14 @@ export interface ScheduleEvent {
   time: string;
   title: string;
   description: string;
+  funFact?: string;
   slug?: string;
   location?: string;
   variant?: ScheduleEventVariant;
   icon?: ScheduleEventIcon;
   steps?: readonly string[];
   participants?: readonly ScheduleParticipant[];
+  image?: string;
 }
 
 export interface ScheduleDay {
@@ -53,9 +55,9 @@ export const visitSchedule: readonly ScheduleDay[] = [
         title: 'CX410: HKG to ICN',
         icon: 'plane',
         slug: 'departure-hk-seoul-arrival',
-        location: 'Hong Kong International Airport · Aisle A (Cathay Pacific)',
+        location: 'Hong Kong International Airport · Aisle A',
         description:
-          'All participants gathered at 7:00 AM at Hong Kong International Airport, Aisle A (Cathay Pacific), took the morning flight CX410 and landed at Incheon International Airport. We took group photos with the CityU props before clearing immigration together.',
+          'All participants gathered at 7:00 AM at Hong Kong International Airport, Aisle A, took the morning flight CX410 and landed at Incheon International Airport. We took group photos with the CityU props before clearing immigration together.',
         participants: allParticipants,
       },
       {
@@ -66,11 +68,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
         location: 'Incheon Airport → Hongik University / Sinchon',
         description:
           'After arriving at Incheon International Airport, all participants collected their WOWPASS and T-Money cards at the CU convenience store, then took the AREX all-stop train toward the Hongik University and Sinchon area to check in to their hotels.',
-        steps: [
-          '15:20 — Incheon T1 → Hongik University (~52 min)',
-          '16:20 — Hongik University → Sinchon / Ewha Womans University (~2 min)',
-          'Self check-in at the hotels, then dismiss for the day',
-        ],
+        image: '/images/visit/airport/inchon.jpeg',
       },
       {
         time: 'Evening',
@@ -95,15 +93,12 @@ export const visitSchedule: readonly ScheduleDay[] = [
         location: 'Sinchon → Sindorim → SKKU Station (Exit 2)',
         description:
           'All participants gathered at their hotel lobbies, walked to Sinchon Station together and took the Seoul Metro through Sindorim toward SKKU Station, then walked to the Engineering Building via the campus gate.',
-        steps: [
-          '8:25 — Sinchon → Sindorim (~13 min)',
-          '8:50 — Sindorim → SKKU Station, Exit 2 (~32–40 min)',
-          '9:30 — Walk to the Engineering Building via the West / North gate (~15 min)',
-        ],
+        funFact:
+          'Sindorim is so notoriously overcrowded that locals nicknamed it "Helldorim" (헬도림) — a mashup of Hell and Sindorim.',
       },
       {
         time: '10:00 AM - 12:00 PM',
-        title: 'Academic Visit @ Sungkyunkwan University (SKKU)',
+        title: 'Sungkyunkwan University (SKKU)',
         icon: 'graduation',
         slug: 'skku-visit',
         location: 'SKKU Engineering Building, Suwon',
@@ -119,16 +114,10 @@ export const visitSchedule: readonly ScheduleDay[] = [
         location: 'SKKU → Suwon → Jeongja → Yangjae',
         description:
           'After the morning session, all participants travelled from Suwon toward Seoul, alighting at Yangjae Citizen Forest and walking to the KAIST AI Hub, with lunch on the way.',
-        steps: [
-          '12:20 — SKKU → Suwon (~5 min)',
-          '12:30 — Suwon → Jeongja (~40 min)',
-          '13:15 — Jeongja → Yangjae Citizen Forest, Exit 5 (~13 min)',
-          '13:30 — Walk to the AI Hub (~1.5 km)',
-        ],
       },
       {
         time: '2:00 PM - 4:00 PM',
-        title: 'Lab Visit @ Graduate School of AI at KAIST',
+        title: 'AI Hub @ KAIST',
         icon: 'graduation',
         slug: 'kaist-ai-visit',
         location: 'KAIST AI Hub, Yangjae · 6F · CVML Lab',
@@ -151,17 +140,11 @@ export const visitSchedule: readonly ScheduleDay[] = [
         location: 'Sinchon → Sindang → Anam (Exit 4)',
         description:
           'All participants departed from the Sinchon area and took the Seoul Metro through Sindang to Anam Station, then walked to the main gate of the Science & Engineering campus.',
-        steps: [
-          '9:15 — Sinchon → Sindang (~17 min)',
-          '9:40 — Sindang → Anam, Exit 4 (~7 min)',
-          '9:50 — Walk to the main gate of the Science & Engineering campus (~5 min)',
-        ],
       },
       {
         time: '10:00 AM - 1:00 PM',
         title: 'Campus Visit @ Korea University',
         icon: 'graduation',
-        slug: 'korea-university-visit',
         location: 'Korea University · Science & Engineering and Main Campus',
         description:
           'A visit to Korea University, where Prof. Paul Seo welcomed us at the Science & Engineering campus and Dr. William Stewart led a tour of the historic main campus, including the Centennial Memorial Samsung Hall and the Ilmin Museum.',
@@ -175,17 +158,11 @@ export const visitSchedule: readonly ScheduleDay[] = [
         location: 'Korea University → Sindang → Sinchon (Exit 2/3)',
         description:
           'All participants travelled from Korea University back toward Sinchon via the Seoul Metro and walked to the Yonsei Engineering Research Park (YERP).',
-        steps: [
-          '14:00 — Korea University → Sindang (~9 min)',
-          '14:15 — Sindang → Sinchon, Exit 2/3 (~17 min)',
-          '14:35 — Walk to Yonsei Engineering Research Park (~12 min)',
-        ],
       },
       {
         time: '3:00 PM - 5:30 PM',
         title: 'Research Exchange @ Yonsei University',
         icon: 'graduation',
-        slug: 'yonsei-university-visit',
         location: 'Yonsei Engineering Research Park (YERP)',
         description:
           'A visit to Yonsei University, where students of Prof. Jeon hosted a campus tour and a mutual research introduction with 14 students from the Visual AI Lab and other laboratories.',
@@ -195,7 +172,6 @@ export const visitSchedule: readonly ScheduleDay[] = [
         time: '6:00 PM',
         title: 'Group Dinner with Yonsei Students',
         icon: 'utensils',
-        slug: 'group-dinner-yonsei',
         location: 'Restaurant near Yonsei University',
         description:
           'After the research exchange, we moved to a nearby restaurant for a group dinner together with the Yonsei students, sharing food, conversation and friendship before being dismissed for the evening.',
@@ -216,13 +192,11 @@ export const visitSchedule: readonly ScheduleDay[] = [
         location: 'Sinchon → City Hall (Exit 4)',
         description:
           'All participants departed from the Sinchon area and took the Seoul Metro to City Hall Station, walking to Seoul City Hall.',
-        steps: ['9:15 — Sinchon → City Hall, Exit 4 (~7 min)'],
       },
       {
         time: '9:30 AM - 12:00 PM',
         title: 'Visit to Seoul Gallery',
         icon: 'image',
-        slug: 'seoul-gallery',
         location: 'Seoul City Hall · B1 & B2 (free admission)',
         description:
           'A free visit to the Seoul Gallery beneath City Hall, after which participants explored the city centre in their teams and enjoyed lunch on their own before regrouping for the afternoon visit.',
@@ -232,7 +206,6 @@ export const visitSchedule: readonly ScheduleDay[] = [
         time: '1:00 PM',
         title: 'Visit to Seoul TOPIS',
         icon: 'landmark',
-        slug: 'seoul-topis',
         location: 'Seoul City Hall · TOPIS Office (5F)',
         description:
           'A visit to Seoul TOPIS (Seoul Transport Operation and Information Service), where we learned how the city collects and visualises big data to manage transport across the metropolis in real time.',

@@ -1,0 +1,100 @@
+---
+import Icon from '../Icon.astro';
+import { trip, tripVenuesByKey, type TripVenueKey } from '../../data/trip';
+
+interface Props {
+  venueKey: TripVenueKey;
+}
+
+const { venueKey } = Astro.props;
+const venue = tripVenuesByKey[venueKey];
+const venueNumber = trip.venues.findIndex((entry) => entry === venue) + 1;
+const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venue.mapQuery)}`;
+
+const mapData = {
+  index: venueNumber,
+  name: venue.name,
+  label: venue.mapLabel,
+  url: venue.url,
+  lat: venue.lat,
+  lng: venue.lng,
+};
+---
+
+<aside class="article-venue-map">
+  <div class="article-venue-map__head">
+    <span class="article-venue-map__eyebrow">
+      <Icon name="map-pin" size={13} />
+      On the map
+    </span>
+    <h2 class="article-venue-map__title">{venue.mapLabel}</h2>
+  </div>
+
+  <div
+    class="article-map"
+    data-article-venue-map
+    data-venue={JSON.stringify(mapData)}
+    aria-label={`Map showing ${venue.mapLabel}`}
+  >
+  </div>
+
+  <a href={mapsLink} target="_blank" rel="noopener noreferrer" class="article-venue-map__link">
+    <Icon name="map-pin" size={14} />
+    View {venue.mapLabel} on Google Maps
+  </a>
+</aside>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  type VenueData = {
+    index: number;
+    name: string;
+    label: string;
+    url?: string;
+    lat: number;
+    lng: number;
+  };
+
+  function initArticleVenueMaps() {
+    document.querySelectorAll<HTMLElement>('[data-article-venue-map]').forEach((mapEl) => {
+      if (mapEl.dataset.mapReady === 'true') return;
+
+      const venue = JSON.parse(mapEl.dataset.venue ?? 'null') as VenueData | null;
+      if (!venue) return;
+
+      const map = L.map(mapEl, { scrollWheelZoom: false }).setView([venue.lat, venue.lng], 15);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20,
+      }).addTo(map);
+
+      const marker = L.marker([venue.lat, venue.lng], {
+        icon: L.divIcon({
+          className: '',
+          html: `<span class="venue-map-marker">${venue.index}</span>`,
+          iconSize: [28, 28],
+          iconAnchor: [14, 14],
+        }),
+      });
+
+      const popupLink = venue.url
+        ? `<a href="${venue.url}" target="_blank" rel="noopener noreferrer">${venue.name}</a>`
+        : venue.name;
+
+      marker.bindPopup(`<strong>${venue.index}. ${venue.label}</strong><br>${popupLink}`, {
+        className: 'venue-map-popup',
+      });
+
+      marker.addTo(map).openPopup();
+      mapEl.dataset.mapReady = 'true';
+    });
+  }
+
+  initArticleVenueMaps();
+  document.addEventListener('astro:page-load', initArticleVenueMaps);
+</script>

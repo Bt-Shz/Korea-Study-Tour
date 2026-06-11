@@ -19,25 +19,31 @@ interface Props {
   time: string;
   title: string;
   description: string;
+  funFact?: string;
   slug?: string;
   location?: string;
   variant?: 'default' | 'travel' | 'staying-behind';
   icon?: EventIcon;
   steps?: readonly string[];
   participants?: readonly Participant[];
+  image?: string;
 }
 
 const {
   time,
   title,
   description,
+  funFact,
   slug,
   location,
   variant = 'default',
   icon,
   steps,
   participants,
+  image,
 } = Astro.props;
+
+const dialogId = image ? `lb-${Math.random().toString(36).slice(2, 9)}` : undefined;
 const href = slug ? `/visit-schedule/${slug}` : undefined;
 
 const markerIcon: EventIcon =
@@ -65,39 +71,70 @@ const Tag = href ? 'a' : 'article';
     </span>
     <Tag
       href={href}
-      class:list={cardClass}
+      class:list={[...cardClass, image && 'schedule-card--has-thumb']}
       aria-label={href ? `Read more about ${title}` : undefined}
     >
-      <h4 class="schedule-card-title">{title}</h4>
-      {location && (
-        <p class="schedule-card-location">
-          <Icon name="map-pin" size={12} strokeWidth={2.2} />
-          {location}
-        </p>
-      )}
-      <p class="schedule-card-description">{description}</p>
-      {hasSteps && (
-        <ul class="schedule-card-steps">
-          {steps!.map((step) => (
-            <li>{step}</li>
-          ))}
-        </ul>
-      )}
-      {hasParticipants && (
-        <div class="schedule-participants" aria-label="Participants">
-          {participants!.map((person) => (
-            <span class="schedule-participant" title={person.name}>
-              <img src={person.image} alt={person.name} loading="lazy" />
-            </span>
-          ))}
-        </div>
-      )}
-      {href && (
-        <span class="schedule-card-link">
-          Read full story
-          <Icon name="chevron-right" size={14} strokeWidth={2.4} />
-        </span>
+      <div class="schedule-card-text">
+        <h4 class="schedule-card-title">{title}</h4>
+        {location && (
+          <p class="schedule-card-location">
+            <Icon name="map-pin" size={12} strokeWidth={2.2} />
+            {location}
+          </p>
+        )}
+        <p class="schedule-card-description">{description}</p>
+        {funFact && (
+          <p class="schedule-card-fun-fact">
+            <span class="schedule-card-fun-fact-label">Fun fact</span>
+            {funFact}
+          </p>
+        )}
+        {hasSteps && (
+          <ul class="schedule-card-steps">
+            {steps!.map((step) => (
+              <li>{step}</li>
+            ))}
+          </ul>
+        )}
+        {hasParticipants && (
+          <div class="schedule-participants" aria-label="Participants">
+            {participants!.map((person) => (
+              <span class="schedule-participant" title={person.name}>
+                <img src={person.image} alt={person.name} loading="lazy" />
+              </span>
+            ))}
+          </div>
+        )}
+        {href && (
+          <span class="schedule-card-link">
+            Read full story
+            <Icon name="chevron-right" size={14} strokeWidth={2.4} />
+          </span>
+        )}
+      </div>
+      {image && (
+        <button
+          class="schedule-card-thumb"
+          onclick={`document.getElementById('${dialogId}').showModal()`}
+          aria-label="View photo"
+          type="button"
+        >
+          <img src={image} alt="" loading="lazy" />
+          <span class="schedule-card-thumb-icon" aria-hidden="true">
+            <Icon name="zoom-in" size={14} strokeWidth={2.2} />
+          </span>
+        </button>
       )}
     </Tag>
   </div>
 </li>
+
+{image && (
+  <dialog
+    id={dialogId}
+    class="schedule-lightbox"
+    onclick="this.close()"
+  >
+    <img src={image} alt="" loading="lazy" />
+  </dialog>
+)}

@@ -1,48 +1,42 @@
 ---
-title: 'Lab Visit @ Graduate School of AI at KAIST'
+title: 'AI Hub @ KAIST'
 time: '2:00 PM - 4:00 PM'
-location: 'KAIST AI Hub, Yangjae · 6F · CVML Lab'
+location: 'KAIST AI Hub, Yangjae · 6F'
 image: '/images/visit/kaist/01.jpg'
 dayNumber: 2
 date: 'Tue 19 May 2026'
-summary: 'Sungkyunkwan University & KAIST AI Hub'
-description: 'A visit to the Kim Jaechul Graduate School of AI at KAIST, hosted by Prof. Kate Shim, with an overview of the AI Hub, research-sharing sessions, and the CVML Lab.'
-gallery:
-  - src: /images/visit/kaist/04.jpg
-    caption: 'The CityU group with our KAIST hosts at the AI Hub'
-  - src: /images/visit/kaist/03.jpg
-    caption: 'A welcome and introduction to the Kim Jaechul Graduate School of AI'
-  - src: /images/visit/kaist/06.jpg
-    caption: 'A research talk on long-tail scenarios in autonomous driving'
-  - src: /images/visit/kaist/07.jpg
-    caption: 'Sharing on Vision-Language-Action models'
-  - src: /images/visit/kaist/08.jpg
-    caption: 'Graduate students walking us through their latest research'
-  - src: /images/visit/kaist/05.jpg
-    caption: 'Presenting our souvenir to Prof. Kate Shim'
+summary: 'Graduate School of AI at KAIST · Yangjae, Seoul'
+description: 'AI Hub @ KAIST — Kim Jaechul Graduate School of AI, Yangjae, Seoul.'
+headerVariant: featured
+headerEyebrow: 'Kim Jaechul Graduate School of AI'
+mapVenue: kaistAi
+gallery: []
+galleryPlaceholders: 0
 ---
 
-After a quick lunch, the afternoon took us up to the **AI Hub in Yangjae**, home to KAIST's **Kim Jaechul Graduate School of AI**. KAIST — the Korea Advanced Institute of Science and Technology — was founded in **1971** as Korea's first research-oriented science and engineering institution, and it's since grown into one of Asia's real powerhouses in artificial intelligence. Needless to say, this was a stop we'd been looking forward to all week.
+During our Seoul Study Tour, our group had the privilege of visiting KAIST (Korea Advanced Institute of Science and Technology), one of Asia's leading research universities and a global powerhouse in artificial intelligence. Founded in 1971 as Korea's first research-oriented science and engineering institution, KAIST has played a defining role in driving the nation's technological advancement. We were warmly welcomed by faculty members and graduate researchers from the Kim Jaechul Graduate School of AI, who generously hosted us for a tour of their AI Hub and research facilities.
 
-Getting there from SKKU was a bit of a trek: we hopped across from Suwon through Jeongja, came up at Yangjae Citizen Forest, and walked the last stretch to the AI Hub (grabbing lunch along the way).
+![](/images/visit/kaist/04.jpg)
 
-## The visit
+After the initial welcome, our hosts began by providing an overview of KAIST's AI programs, highlighting the institute's interdisciplinary approach that blends machine learning, robotics, computer vision, and natural language processing. They emphasized KAIST's strong industry partnerships and its mission to nurture world-class talent capable of tackling real-world challenges. As we toured the AI Hub, the researchers introduced us to several ongoing projects, ranging from autonomous systems to large-scale language models, giving us a vivid picture of cutting-edge AI research in action.
 
-Up on the 6th floor, **Prof. Kate Shim** and the graduate researchers gave us a warm welcome and an overview of KAIST's AI programmes. What really stood out was how interdisciplinary it all is — machine learning, robotics, computer vision and natural language processing all under one roof — backed by strong industry partnerships and a clear mission to train people who can take on real-world problems. As we toured the AI Hub, they walked us through a handful of ongoing projects, from autonomous systems to large-scale language models, and zoomed in on Prof. Shim's own group, the **CVML (Computer Vision & Machine Learning) Lab**.
+![](/images/visit/kaist/03.jpg)
 
-## Research sharing
+## Research Sharing
 
-The real highlight was a set of sharing sessions led by the graduate students themselves. In a relaxed, conversational setting, they talked us through their work in plain language — how machines learn from data and keep getting better over time (not so different from the recommendation feeds and voice assistants we use every day), and how computer vision teaches a computer to "see" and make sense of images. They showed how those same ideas power everything from self-driving cars to medical imaging, and it really drove home just how exciting and far-reaching computer science can be.
+Afterwards, we listened to a few sharing sessions by research students, which gave us a deeper insight into our Computer Science studies. They spoke about Artificial Intelligence, explaining how machines can learn from data and improve over time, much like the recommendation systems and voice assistants we use daily. They also introduced us to computer vision, showing how computers can be taught to "see" and interpret images. We learned how this technology powers self-driving cars and medical imaging. These sessions made us realise how exciting and impactful the field of Computer Science truly is.
 
-## How the afternoon went
+<div class="article-image-row">
+  <img src="/images/visit/kaist/06.jpg" alt="" loading="lazy" />
+  <img src="/images/visit/kaist/07.jpg" alt="" loading="lazy" />
+  <img src="/images/visit/kaist/08.jpg" alt="" loading="lazy" />
+</div>
 
-- **2:00 PM** — Introduction to the department (15–20 min)
-- **2:20 PM** — CVML Lab's research interests and recent topics (40 min)
-- **3:00 PM** — Casual meet-up with the graduate students, Q&A, and a tour of the research space (60 min)
-
-<aside class="souvenir">
-<span class="souvenir__tag">🎁 Souvenir exchange</span>
-<p class="souvenir__text">As a thank-you for the warm welcome, we presented <strong>Prof. Kate Shim</strong> and the graduate students with a small souvenir from <strong>City University of Hong Kong</strong> — a little keepsake to mark the start of a connection between our two schools.</p>
-</aside>
-
-Once the visit wrapped up, the group was dismissed right there at the KAIST AI Hub.
+<div class="article-souvenir-block">
+<h2>Souvenir Presenting</h2>
+<p>We expressed our gratitude to Prof. Kate SHIM by presenting souvenirs.</p>
+<figure class="article-figure">
+  <img src="/images/visit/kaist/05.jpg" alt="" loading="lazy" />
+  <figcaption>Prof. Kate SHIM</figcaption>
+</figure>
+</div>
