@@ -1,0 +1,8 @@
+media/
+Japan - StudyTour2024/
+node_modules/
+dist/
+.astro/
+.claude/
+.git/
+.DS_Store

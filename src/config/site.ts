@@ -25,7 +25,7 @@ export const navItems = [
   { label: 'About', href: '/about' },
   { label: 'Visit Schedule', href: '/visit-schedule' },
   { label: 'Visit Team', href: '/visit-team' },
-  { label: 'Experiences', href: '/experiences' },
+  { label: 'Experiences', href: '/student-takeaways' },
 ] as const;
 
 export const footerLinks = [

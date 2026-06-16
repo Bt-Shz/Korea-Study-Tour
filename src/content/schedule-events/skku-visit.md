@@ -81,11 +81,11 @@ Our hosts then presented SKKU's computing and advanced software programmes, high
       </figure>
       <figure class="souvenir-card">
         <img class="zoomable" src="/images/visit/skku/souvenirs/exchange-4.jpeg" alt="A formal two-handed souvenir handover between CityU and SKKU" loading="lazy" />
-        <figcaption>Kyuhong Shim - The formal, two-handed handover — the customary way to give and receive.</figcaption>
+        <figcaption>Gift to Prof. Kyuhong Shim — CityU and SKKU exchange</figcaption>
       </figure>
       <figure class="souvenir-card">
         <img src="/images/visit/skku/souvenirs/exchange-1.jpeg" alt="Faculty exchanging a wrapped gift box beneath a THANK YOU slide" loading="lazy" />
-        <figcaption>Jong Wuk Lee - Beneath the "Thank You" slide, the first wrapped box changes hands.</figcaption>
+        <figcaption>Gift to Prof. Jong Wuk Lee — CityU and SKKU exchange</figcaption>
       </figure>
       <figure class="souvenir-card">
         <img src="/images/visit/skku/souvenirs/exchange-3.jpeg" alt="A CityU student receiving a green gift box from an SKKU professor" loading="lazy" />
@@ -108,7 +108,9 @@ Our hosts then presented SKKU's computing and advanced software programmes, high
     </div>
   </header>
 
-  <p>From the seminar room we spilled outside, where a host briefed us under a building portico before leading the way. SKKU's main campus in Suwon is wonderfully green, and we wound between its colour-coded halls — the blue-tiled Second Science Hall, the green-tiled Basic Studies Hall, the brick Second Engineering Hall framed by trees, and the striking Biotechnology building with its yellow brick and circular cut-outs — crossing the leafy campus by the residence halls. Pausing on the wide plaza beside the central lawn, it was easy to picture studying here.</p>
+  <p>From the seminar room, we moved outside where a host gave a brief introduction under a building portico before guiding us onward. The main campus of Sungkyunkwan University is notably green and spacious, and we walked through its distinct, colour-coded buildings — the blue-tiled Second Science Hall, the green-tiled Basic Studies Hall, the brick Second Engineering Hall framed by trees, and the striking Biotechnology building with its yellow brick and circular cut-outs.
+
+Crossing the leafy campus past the residence halls, we eventually reached the wide central plaza. Pausing there beside the open lawn, it was easy to imagine what it would be like to study in such an environment.</p>
 
   <div class="photo-mosaic">
     <figure><img src="/images/visit/skku/campus/orientation.jpeg" alt="A host briefs the group under the portico before we set off" loading="lazy" /></figure>

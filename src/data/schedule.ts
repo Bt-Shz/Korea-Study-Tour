@@ -49,14 +49,6 @@ const allParticipants: readonly ScheduleParticipant[] = visitTeamStudents
 /** Everyone who travelled — shown once as a sideways team rail on the schedule. */
 export const tripTeam: readonly ScheduleParticipant[] = allParticipants;
 
-/** Students who stayed behind in Korea — featured on Day 5. */
-export const stayingBehindStudents: readonly ScheduleParticipant[] = visitTeamStudents
-  .filter((student) => student.stayingBehind && !student.image.includes('placeholder'))
-  .map((student) => ({
-    name: student.nickname?.trim() || student.name,
-    image: student.image,
-  }));
-
 export const visitSchedule: readonly ScheduleDay[] = [
   {
     date: 'Monday, 18th May 2026',
@@ -261,7 +253,6 @@ export const visitSchedule: readonly ScheduleDay[] = [
         variant: 'staying-behind',
         description:
           'While most of the team flew home, a few of us stayed behind to keep exploring — more of Seoul, and beyond — before heading back.',
-        participants: stayingBehindStudents,
         parallel: true,
       },
     ],
