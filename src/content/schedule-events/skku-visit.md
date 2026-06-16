@@ -14,7 +14,7 @@ gallery: []
 galleryPlaceholders: 0
 ---
 
-During our Seoul Study Tour, our group had the privilege of visiting Sungkyunkwan University (SKKU), one of Korea's most prestigious universities and a global leader in education and research. Founded originally in 1398, SKKU carries a deep historical heritage, with a rich tradition of academic excellence seamlessly blended with modern innovation. From the moment we stepped through the gate, we were warmly welcomed by faculty members and graduate researchers from the College of Computing and Informatics, who generously hosted us for a tour of their advanced computing labs and research facilities. What follows is our morning at SKKU, stop by stop.
+During our Seoul Study Tour, our group had the privilege of visiting Sungkyunkwan University (SKKU), one of Korea's most prestigious universities and a global leader in education and research. Founded originally in 1398, SKKU carries a deep historical heritage, with a rich tradition of academic excellence seamlessly blended with modern innovation. From the moment we stepped through the gate, we were warmly welcomed by faculty members and graduate researchers from the College of Computing and Informatics, who generously hosted us for a tour of their advanced computing labs and research facilities, showcasing their strong industry-aligned tech ecosystem. What follows is our morning at SKKU, stop by stop.
 
 <nav class="skku-route" aria-label="Visit route">
   <p class="skku-route__eyebrow">Our route through SKKU</p>
@@ -36,9 +36,9 @@ During our Seoul Study Tour, our group had the privilege of visiting Sungkyunkwa
     </div>
   </header>
 
-  <p>Our morning began at SKKU's traditional brick main gate, framed by old trees on a quiet Suwon street. We gathered there with our CityU sign, half of us still blinking from the early start — the right way to enter a university that traces its roots all the way back to 1398.</p>
+  <p>Our morning began at SKKU's traditional brick main gate, where we gathered before making our way across campus to the Engineering Building. Surrounded by tree-lined paths and historic architecture, it was a fitting introduction to a university whose roots stretch back more than six centuries.</p>
 
-  <p>Inside, the mood shifted from old to new in a single step: a bright glass lobby, bold 3D "SKKU" letters, and a screen that read "City University of Hong Kong — Welcome to SKKU." Seeing our own university named on arrival made the whole visit suddenly feel official, and very warm.</p>
+  <p>Inside, the mood shifted from old to new in a single step: a bright glass lobby, bold 3D "SKKU" letters, and a screen that read "City University of Hong Kong - Welcome to SKKU." Seeing our own university named on arrival made the whole visit suddenly feel official, and very warm.</p>
 </section>
 
 <section id="stop-talk" class="skku-stop">
@@ -50,9 +50,13 @@ During our Seoul Study Tour, our group had the privilege of visiting Sungkyunkwa
     </div>
   </header>
 
-  <p>Settled into a modern seminar room, we listened as our hosts opened with an overview of SKKU's computing and advanced software programs. They walked us through the university's interdisciplinary approach — one that blends artificial intelligence, data science, software engineering, and smart-industry applications — and an intro video on the big screen helped bring it to life.</p>
+  <p>
+Settling into a seminar room at the College of Computing and Informatics, we were welcomed by Professor Kyuhong Shim and Professor Jongwuk Lee, who introduced us to SKKU's academic and research environment. The session began with an overview of the university, its history, and its vision for advancing computing education and research in an increasingly AI-driven world.
 
-  <p>What stayed with us was how they spoke about SKKU's enterprise partnerships, especially its deep collaboration with industry leaders like Samsung, and a clear mission to nurture world-class tech talent ready for complex, real-world challenges. A slide on the "Global Education / Global Challenge Program" framed the morning nicely, and the researchers introduced us to several ongoing projects, from next-generation software platforms to intelligent systems — a vivid picture of cutting-edge research in action. Then came the best part: meeting our student hosts, the "Council of CSE," every bit as friendly (and as fond of a goofy group photo) as we are.</p>
+Our hosts then presented SKKU's computing and advanced software programmes, highlighting the university's interdisciplinary approach that combines artificial intelligence, data science, software engineering, and intelligent systems. They also shared insights into ongoing research activities within the college, offering us a glimpse into how cutting-edge technologies are being developed and applied to real-world challenges.
+  </p>
+
+  <p>They emphasized SKKU's exceptionally strong enterprise partnerships, especially its deep collaboration with industry leaders such as Samsung, and its mission to nurture world-class technology talent. Through examples of current projects and research initiatives, we gained a better understanding of how SKKU connects academic research with industry needs and innovation. The discussion provided valuable perspectives on both the technical and practical dimensions of modern computing research.</p>
 
   <div class="flicking-carousel" data-flicking>
     <div class="flicking-viewport">
@@ -69,7 +73,7 @@ During our Seoul Study Tour, our group had the privilege of visiting Sungkyunkwa
   <section class="souvenir-showcase">
     <span class="souvenir-showcase__eyebrow">Exchanging Souvenirs</span>
     <h2 class="souvenir-showcase__title">A small ceremony of thanks</h2>
-    <p class="souvenir-showcase__intro">No academic visit is complete without a proper gift exchange, and ours was a warm one: a two-handed swap of wrapped boxes between CityU and SKKU, a small gesture carrying a lot of gratitude on both sides.</p>
+    <p class="souvenir-showcase__intro">No academic visit is complete without a moment of appreciation, and ours was a particularly warm one - a simple gesture that reflected the gratitude and goodwill shared between both institutions.</p>
     <div class="souvenir-showcase__grid">
       <figure class="souvenir-card souvenir-card--feature">
         <img class="zoomable" src="/images/visit/skku/talk/souvenir-bear.jpeg" alt="A Sungkyunkwan University teddy bear, the souvenir SKKU gave us" loading="lazy" style="object-position: center 30%;" />
@@ -77,11 +81,11 @@ During our Seoul Study Tour, our group had the privilege of visiting Sungkyunkwa
       </figure>
       <figure class="souvenir-card">
         <img class="zoomable" src="/images/visit/skku/souvenirs/exchange-4.jpeg" alt="A formal two-handed souvenir handover between CityU and SKKU" loading="lazy" />
-        <figcaption>The formal, two-handed handover — the customary way to give and receive.</figcaption>
+        <figcaption>Kyuhong Shim - The formal, two-handed handover — the customary way to give and receive.</figcaption>
       </figure>
       <figure class="souvenir-card">
         <img src="/images/visit/skku/souvenirs/exchange-1.jpeg" alt="Faculty exchanging a wrapped gift box beneath a THANK YOU slide" loading="lazy" />
-        <figcaption>Beneath the "Thank You" slide, the first wrapped box changes hands.</figcaption>
+        <figcaption>Jong Wuk Lee - Beneath the "Thank You" slide, the first wrapped box changes hands.</figcaption>
       </figure>
       <figure class="souvenir-card">
         <img src="/images/visit/skku/souvenirs/exchange-3.jpeg" alt="A CityU student receiving a green gift box from an SKKU professor" loading="lazy" />

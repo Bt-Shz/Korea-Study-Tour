@@ -14,9 +14,11 @@ gallery: []
 galleryPlaceholders: 0
 ---
 
-And we're off! The trip kicked off bright and early at **Hong Kong International Airport**, where everyone gathered at **7:00 AM at Aisle A**. Whoever arrived early dropped their luggage off straight away — but we all kept our **CityU props as hand-carry**, because there were group photos to take before we flew out. The props for the Korean universities, meanwhile, rode safely tucked inside our suitcases.
+## The Journey Begins
 
-Once everyone had checked in, we cleared immigration together and boarded the morning flight, **CX410**, bound for Seoul.
+Our study trip officially began on the morning of 18 May 2026, when the group gathered at Hong Kong International Airport for the flight to Seoul. Before checking in, everyone took the opportunity to meet up, organise their luggage, and capture a few group photos together.
+
+After clearing immigration, we boarded Cathay Pacific flight CX410, departing Hong Kong for Incheon International Airport. For many participants, this was their first visit to South Korea, making the journey especially exciting.
 
 <div class="flicking-carousel" data-flicking>
   <div class="flicking-viewport">
@@ -30,13 +32,17 @@ Once everyone had checked in, we cleared immigration together and boarded the mo
   <nav class="flicking-pagination" aria-label="Carousel pagination"></nav>
 </div>
 
-## Touchdown in Seoul
+## Arrival in Seoul
 
-A few hours later we landed at **Incheon International Airport** and regrouped at the arrivals hall on **1F**. First order of business: sorting out travel cards. Anyone who had bought a **WOWPASS** online picked it up from the **CU convenience store**, and those who needed a **T-Money** card grabbed one there too — your key to Seoul's metro and buses for the rest of the week. (A lesson we learned fast: a brand-new T-Money card starts at zero, so it needs topping up before the gates will let you through.)
+After a smooth flight, the group arrived at Incheon International Airport, one of the world's busiest international gateways. Once reunited in the arrivals hall, participants collected their transport cards and prepared for the journey into the city.
+
+With everything ready, we boarded the AREX Airport Railroad and continued by Seoul Metro towards Sinchon, where we would be staying for the week. The route offered many participants their first glimpse of Seoul, from its modern skyline to the bustling neighbourhoods that would soon become familiar during the programme.
 
 <div class="article-image-row">
   <img src="/images/visit/airport/airport3.jpeg" alt="" loading="lazy" />
   <img src="/images/visit/airport/touchdown-b.jpg" alt="" loading="lazy" />
   <img src="/images/visit/airport/touchdown-a.jpg" alt="" loading="lazy" />
 </div>
+
+By the afternoon, everyone had successfully checked into their accommodation and settled in, ready for the university visits and activities scheduled for the days ahead.
 
