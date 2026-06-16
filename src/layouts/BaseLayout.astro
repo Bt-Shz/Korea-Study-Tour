@@ -55,6 +55,13 @@ const isHome = Astro.url.pathname === '/';
         const closeIcon = header.querySelector('[data-close-icon]');
         const setMenu = (open) => {
           header.dataset.menuOpen = open ? 'true' : 'false';
+          // Keep a solid header behind the open dropdown, otherwise the hero
+          // image bleeds through the transparent bars on the home page.
+          if (open) {
+            header.dataset.scrolled = 'true';
+          } else {
+            setScrolled();
+          }
           if (menuButton) {
             menuButton.setAttribute('aria-expanded', open ? 'true' : 'false');
           }

@@ -28,6 +28,8 @@ export interface ScheduleEvent {
   steps?: readonly string[];
   participants?: readonly ScheduleParticipant[];
   image?: string;
+  /** Render side-by-side with the adjacent parallel event(s) — for things that happen at the same time. */
+  parallel?: boolean;
 }
 
 export interface ScheduleDay {
@@ -39,6 +41,17 @@ export interface ScheduleDay {
 
 const allParticipants: readonly ScheduleParticipant[] = visitTeamStudents
   .filter((student) => !student.image.includes('placeholder'))
+  .map((student) => ({
+    name: student.nickname?.trim() || student.name,
+    image: student.image,
+  }));
+
+/** Everyone who travelled — shown once as a sideways team rail on the schedule. */
+export const tripTeam: readonly ScheduleParticipant[] = allParticipants;
+
+/** Students who stayed behind in Korea — featured on Day 5. */
+export const stayingBehindStudents: readonly ScheduleParticipant[] = visitTeamStudents
+  .filter((student) => student.stayingBehind && !student.image.includes('placeholder'))
   .map((student) => ({
     name: student.nickname?.trim() || student.name,
     image: student.image,
@@ -83,7 +96,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
   {
     date: 'Tuesday, 19th May 2026',
     dayNumber: 2,
-    summary: 'Sungkyunkwan University & KAIST AI Hub',
+    summary: 'Sungkyunkwan University & Graduate School of AI at KAIST',
     events: [
       {
         time: '8:10 - 9:30',
@@ -92,7 +105,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
         variant: 'travel',
         location: 'Sinchon → Sindorim → SKKU Station (Exit 2)',
         description:
-          'All participants gathered at their hotel lobbies, walked to Sinchon Station together and took the Seoul Metro through Sindorim toward SKKU Station, then walked to the Engineering Building via the campus gate.',
+          'All participants gathered at their hotel lobbies, walked to Sinchon Station together and took the Seoul Metro through Sindorim toward SKKU Station, then walked to the main campus via the campus gate.',
         funFact:
           'Sindorim is so notoriously overcrowded that locals nicknamed it "Helldorim" (헬도림) — a mashup of Hell and Sindorim.',
       },
@@ -101,26 +114,26 @@ export const visitSchedule: readonly ScheduleDay[] = [
         title: 'Sungkyunkwan University (SKKU)',
         icon: 'graduation',
         slug: 'skku-visit',
-        location: 'SKKU Engineering Building, Suwon',
+        location: 'Main Campus, Suwon',
         description:
           'A visit to Sungkyunkwan University, where Prof. Kyuhong Shim and Prof. Jongwuk Lee introduced their research and walked us through the engineering department and its laboratories.',
         participants: allParticipants,
       },
       {
         time: '12:00 - 1:30 PM',
-        title: 'Travel to KAIST AI Hub via Metro',
+        title: 'Travel to Graduate School of AI at KAIST via Metro',
         icon: 'train',
         variant: 'travel',
         location: 'SKKU → Suwon → Jeongja → Yangjae',
         description:
-          'After the morning session, all participants travelled from Suwon toward Seoul, alighting at Yangjae Citizen Forest and walking to the KAIST AI Hub, with lunch on the way.',
+          'After the morning session, all participants travelled from Suwon toward Seoul, alighting at Yangjae Citizen Forest and walking to the Graduate School of AI at KAIST.',
       },
       {
         time: '2:00 PM - 4:00 PM',
-        title: 'AI Hub @ KAIST',
+        title: 'Graduate School of AI at KAIST',
         icon: 'graduation',
         slug: 'kaist-ai-visit',
-        location: 'KAIST AI Hub, Yangjae · 6F · CVML Lab',
+        location: 'Graduate School of AI at KAIST · Yangjae · 6F · CVML Lab',
         description:
           'A visit to the Graduate School of AI at KAIST, hosted by Prof. Kate Shim, featuring an introduction to the department and the CVML Lab, a session with graduate students on their research, and a tour of the research space.',
         participants: allParticipants,
@@ -145,6 +158,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
         time: '10:00 AM - 1:00 PM',
         title: 'Campus Visit @ Korea University',
         icon: 'graduation',
+        slug: 'koreau',
         location: 'Korea University · Science & Engineering and Main Campus',
         description:
           'A visit to Korea University, where Prof. Paul Seo welcomed us at the Science & Engineering campus and Dr. William Stewart led a tour of the historic main campus, including the Centennial Memorial Samsung Hall and the Ilmin Museum.',
@@ -163,6 +177,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
         time: '3:00 PM - 5:30 PM',
         title: 'Research Exchange @ Yonsei University',
         icon: 'graduation',
+        slug: 'yonsei',
         location: 'Yonsei Engineering Research Park (YERP)',
         description:
           'A visit to Yonsei University, where students of Prof. Jeon hosted a campus tour and a mutual research introduction with 14 students from the Visual AI Lab and other laboratories.',
@@ -172,6 +187,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
         time: '6:00 PM',
         title: 'Group Dinner with Yonsei Students',
         icon: 'utensils',
+        slug: 'yonsei-dinner',
         location: 'Restaurant near Yonsei University',
         description:
           'After the research exchange, we moved to a nearby restaurant for a group dinner together with the Yonsei students, sharing food, conversation and friendship before being dismissed for the evening.',
@@ -197,6 +213,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
         time: '9:30 AM - 12:00 PM',
         title: 'Visit to Seoul Gallery',
         icon: 'image',
+        slug: 'seoul-gallery',
         location: 'Seoul City Hall · B1 & B2 (free admission)',
         description:
           'A free visit to the Seoul Gallery beneath City Hall, after which participants explored the city centre in their teams and enjoyed lunch on their own before regrouping for the afternoon visit.',
@@ -206,6 +223,7 @@ export const visitSchedule: readonly ScheduleDay[] = [
         time: '1:00 PM',
         title: 'Visit to Seoul TOPIS',
         icon: 'landmark',
+        slug: 'topis',
         location: 'Seoul City Hall · TOPIS Office (5F)',
         description:
           'A visit to Seoul TOPIS (Seoul Transport Operation and Information Service), where we learned how the city collects and visualises big data to manage transport across the metropolis in real time.',
@@ -234,14 +252,17 @@ export const visitSchedule: readonly ScheduleDay[] = [
         location: 'Incheon International Airport',
         description:
           'The return group departed from Incheon International Airport on the afternoon flight back to Hong Kong International Airport.',
+        parallel: true,
       },
       {
         time: 'Staying Behind',
-        title: 'Continue Exploring Korea',
+        title: 'Self-Exploration in Korea',
         icon: 'compass',
         variant: 'staying-behind',
         description:
-          'Some members of the visit team chose to stay behind and continue exploring different places in Korea.',
+          'While most of the team flew home, a few of us stayed behind to keep exploring — more of Seoul, and beyond — before heading back.',
+        participants: stayingBehindStudents,
+        parallel: true,
       },
     ],
   },

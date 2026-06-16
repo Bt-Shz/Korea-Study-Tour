@@ -27,6 +27,7 @@ interface Props {
   steps?: readonly string[];
   participants?: readonly Participant[];
   image?: string;
+  parallel?: boolean;
 }
 
 const {
@@ -41,6 +42,7 @@ const {
   steps,
   participants,
   image,
+  parallel = false,
 } = Astro.props;
 
 const dialogId = image ? `lb-${Math.random().toString(36).slice(2, 9)}` : undefined;
@@ -60,7 +62,7 @@ const hasParticipants = participants && participants.length > 0;
 const Tag = href ? 'a' : 'article';
 ---
 
-<li class:list={['schedule-event', `schedule-event--${variant}`]}>
+<li class:list={['schedule-event', `schedule-event--${variant}`, parallel && 'schedule-event--parallel']}>
   <span class="schedule-event-marker" aria-hidden="true">
     <Icon name={markerIcon} size={16} strokeWidth={2.2} />
   </span>
@@ -96,13 +98,20 @@ const Tag = href ? 'a' : 'article';
             ))}
           </ul>
         )}
-        {hasParticipants && (
-          <div class="schedule-participants" aria-label="Participants">
-            {participants!.map((person) => (
-              <span class="schedule-participant" title={person.name}>
-                <img src={person.image} alt={person.name} loading="lazy" />
-              </span>
-            ))}
+        {hasParticipants && variant === 'staying-behind' && (
+          <div class="schedule-stayers" aria-label="Staying behind">
+            <p class="schedule-stayers__label">
+              <Icon name="compass" size={13} strokeWidth={2.2} />
+              Who stayed behind
+            </p>
+            <div class="schedule-stayers__list">
+              {participants!.map((person) => (
+                <span class="schedule-stayer" title={person.name}>
+                  <img src={person.image} alt={person.name} loading="lazy" />
+                  <span class="schedule-stayer__name">{person.name}</span>
+                </span>
+              ))}
+            </div>
           </div>
         )}
         {href && (

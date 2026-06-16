@@ -1,0 +1,133 @@
+---
+// A single sideways (horizontally scrollable) view of the travelling team —
+// shown once, instead of repeating everyone's avatar under every activity.
+interface Person {
+  name: string;
+  image: string;
+}
+
+interface Props {
+  students: readonly Person[];
+  eyebrow?: string;
+  title?: string;
+}
+
+const { students, eyebrow = 'Who came', title } = Astro.props;
+---
+
+<section class="team-rail" aria-label="The travelling team">
+  <div class="team-rail__head">
+    <span class="team-rail__eyebrow">{eyebrow}</span>
+    {title && <p class="team-rail__title">{title}</p>}
+    <span class="team-rail__hint" aria-hidden="true">swipe →</span>
+  </div>
+  <div class="team-rail__track" role="list">
+    {
+      students.map((s) => (
+        <div class="team-rail__item" role="listitem" title={s.name}>
+          <span class="team-rail__avatar">
+            <img src={s.image} alt={s.name} loading="lazy" />
+          </span>
+          <span class="team-rail__name">{s.name}</span>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .team-rail {
+    margin: 1.75rem 0 2.25rem;
+  }
+
+  .team-rail__head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .team-rail__eyebrow {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-red, #c8102e);
+  }
+
+  .team-rail__title {
+    margin: 0;
+    font-size: 0.92rem;
+    color: #475569;
+  }
+
+  .team-rail__hint {
+    margin-left: auto;
+    font-size: 0.72rem;
+    color: #94a3b8;
+  }
+
+  .team-rail__track {
+    display: flex;
+    gap: 0.85rem;
+    overflow-x: auto;
+    padding: 0.25rem 0.1rem 0.9rem;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(200, 16, 46, 0.4) transparent;
+  }
+
+  .team-rail__track::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .team-rail__track::-webkit-scrollbar-thumb {
+    background: rgba(200, 16, 46, 0.35);
+    border-radius: 9999px;
+  }
+
+  .team-rail__item {
+    flex: 0 0 auto;
+    width: 4.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    scroll-snap-align: start;
+    text-align: center;
+  }
+
+  .team-rail__avatar {
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #f1f5f9;
+    box-shadow: 0 0 0 2px #fff, 0 4px 10px rgba(15, 23, 42, 0.14);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .team-rail__item:hover .team-rail__avatar {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 0 2px #fff, 0 8px 16px rgba(200, 16, 46, 0.28);
+  }
+
+  .team-rail__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .team-rail__name {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #475569;
+    line-height: 1.15;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+</style>

@@ -1,20 +1,19 @@
 ---
 import Icon from '../Icon.astro';
-import { trip, tripVenuesByKey, type TripVenueKey } from '../../data/trip';
+import { getMapVenuePayload, type TripVenueKey } from '../../data/trip';
 
 interface Props {
   venueKey: TripVenueKey;
 }
 
 const { venueKey } = Astro.props;
-const venue = tripVenuesByKey[venueKey];
-const venueNumber = trip.venues.findIndex((entry) => entry === venue) + 1;
+const venue = getMapVenuePayload(venueKey);
 const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venue.mapQuery)}`;
 
 const mapData = {
-  index: venueNumber,
+  index: venue.index,
   name: venue.name,
-  label: venue.mapLabel,
+  label: venue.label,
   url: venue.url,
   lat: venue.lat,
   lng: venue.lng,
@@ -27,20 +26,20 @@ const mapData = {
       <Icon name="map-pin" size={13} />
       On the map
     </span>
-    <h2 class="article-venue-map__title">{venue.mapLabel}</h2>
+    <h2 class="article-venue-map__title">{venue.label}</h2>
   </div>
 
   <div
     class="article-map"
     data-article-venue-map
     data-venue={JSON.stringify(mapData)}
-    aria-label={`Map showing ${venue.mapLabel}`}
+    aria-label={`Map showing ${venue.label}`}
   >
   </div>
 
   <a href={mapsLink} target="_blank" rel="noopener noreferrer" class="article-venue-map__link">
     <Icon name="map-pin" size={14} />
-    View {venue.mapLabel} on Google Maps
+    View {venue.label} on Google Maps
   </a>
 </aside>
 

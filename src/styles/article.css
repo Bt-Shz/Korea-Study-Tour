@@ -542,6 +542,114 @@
     transform: scale(1.35);
   }
 
+  /* ── Flicking carousel + MUI-style numbered pagination ── */
+  /* No box — the carousel sits directly on the light page. The viewport mask
+     fades the peeking neighbours into the page so the infinite filmstrip reads
+     cleanly and the first/last slides never look cut off. */
+  .article-prose .flicking-carousel {
+    margin-block: 2rem;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .article-prose .flicking-carousel .flicking-viewport {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+  }
+
+  /* Big centre photo, slim symmetric peeks on both sides. */
+  .article-prose .flicking-panel {
+    width: 82%;
+    margin-right: 0.85rem;
+    will-change: transform, opacity;
+    transform-origin: center center;
+  }
+
+  .article-prose .flicking-panel img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 1rem;
+    display: block;
+    margin: 0;
+    max-width: none;
+    box-shadow: 0 14px 32px -16px rgba(17, 24, 39, 0.45);
+    transition: box-shadow 0.25s ease;
+  }
+
+  .article-prose .flicking-panel--focused img {
+    box-shadow: 0 20px 44px -18px rgba(17, 24, 39, 0.55);
+  }
+
+  @media (min-width: 768px) {
+    .article-prose .flicking-panel {
+      width: 60%;
+    }
+  }
+
+  .article-prose .flicking-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    padding-top: 1.25rem;
+  }
+
+  /* MUI-style pagination, themed for the light page. */
+  .flicking-page {
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.4rem;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: #374151;
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.18s, color 0.18s;
+  }
+
+  .flicking-page:hover:not(:disabled):not(.flicking-page--active) {
+    background: rgba(200, 16, 46, 0.08);
+    color: var(--brand-red, #c8102e);
+  }
+
+  .flicking-page--active {
+    background: var(--brand-red, #c8102e);
+    color: #fff;
+    font-weight: 600;
+    cursor: default;
+    box-shadow: 0 2px 8px rgba(200, 16, 46, 0.3);
+  }
+
+  .flicking-page--arrow {
+    font-size: 1.25rem;
+    color: #374151;
+  }
+
+  .flicking-page:disabled {
+    color: #9ca3af;
+    opacity: 0.55;
+    cursor: default;
+  }
+
+  .flicking-page--ellipsis {
+    cursor: default;
+    color: #9ca3af;
+  }
+
+  .flicking-page--ellipsis:hover {
+    background: transparent;
+  }
+
   .article-prose strong {
     color: #111827;
     font-weight: 600;
@@ -579,5 +687,1885 @@
   .article-prose .souvenir__text {
     margin-top: 0.5rem;
     color: #374151;
+  }
+
+  /* ============================================================
+     SKKU journey page — route pins, stop markers & photo layouts
+     ============================================================ */
+
+  /* Smooth-scroll the in-page route jumps (reduced-motion browsers ignore this). */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* ── Route / itinerary: pinpoints the 5 stops in order ── */
+  .article-prose .skku-route {
+    margin-block: 1.75rem 2.5rem;
+    padding: 1.4rem 1.5rem;
+    border: 1px solid rgba(200, 16, 46, 0.14);
+    border-radius: 1.25rem;
+    background: linear-gradient(135deg, rgba(232, 65, 26, 0.05), rgba(200, 16, 46, 0.03));
+  }
+
+  .article-prose .skku-route__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1.1rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-red, #c8102e);
+  }
+
+  .article-prose .skku-route__track {
+    display: flex;
+    gap: 0.5rem;
+    position: relative;
+  }
+
+  /* connecting line behind the numbered pins */
+  .article-prose .skku-route__track::before {
+    content: '';
+    position: absolute;
+    top: 1.1rem;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, rgba(200, 16, 46, 0.3) 0 6px, transparent 6px 12px);
+  }
+
+  .article-prose .skku-route__stop {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+    text-align: center;
+    text-decoration: none;
+    color: #374151;
+  }
+
+  .article-prose .skku-route__num {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--brand-red, #c8102e);
+    box-shadow: 0 0 0 4px #fff, 0 4px 10px rgba(200, 16, 46, 0.28);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .article-prose .skku-route__label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .article-prose .skku-route__stop:hover .skku-route__num {
+    transform: translateY(-3px) scale(1.06);
+    box-shadow: 0 0 0 4px #fff, 0 8px 18px rgba(200, 16, 46, 0.4);
+  }
+
+  .article-prose .skku-route__stop:hover .skku-route__label {
+    color: var(--brand-red, #c8102e);
+  }
+
+  @media (max-width: 640px) {
+    .article-prose .skku-route__track {
+      flex-direction: column;
+      gap: 0.9rem;
+      padding-left: 0.5rem;
+    }
+    .article-prose .skku-route__track::before {
+      top: 1.1rem;
+      bottom: 1.1rem;
+      left: 1.6rem;
+      right: auto;
+      width: 2px;
+      height: auto;
+      background: repeating-linear-gradient(180deg, rgba(200, 16, 46, 0.3) 0 6px, transparent 6px 12px);
+    }
+    .article-prose .skku-route__stop {
+      flex-direction: row;
+      gap: 0.85rem;
+      text-align: left;
+    }
+  }
+
+  /* ── Numbered stop section header ── */
+  .article-prose .skku-stop {
+    scroll-margin-top: 90px;
+    margin-top: 3rem;
+  }
+
+  .article-prose .skku-stop__head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .article-prose .skku-stop__num {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, var(--brand-orange, #e8411a), var(--brand-red, #c8102e));
+    box-shadow: 0 8px 20px rgba(200, 16, 46, 0.3);
+  }
+
+  .article-prose .skku-stop__titles {
+    min-width: 0;
+  }
+
+  .article-prose .skku-stop__title {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.15;
+    color: #111827;
+  }
+
+  .article-prose .skku-stop__kicker {
+    margin: 0.2rem 0 0;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #6b7280;
+  }
+
+  /* Spacing for narrative paragraphs inside a stop (the base owl selector only
+     spaces DIRECT children of .article-prose, so nested <p> need their own). */
+  .article-prose .skku-stop > p {
+    margin-top: 1.25rem;
+  }
+
+  .article-prose .skku-stop > p.photo-cap {
+    margin-top: 0.5rem;
+  }
+
+  .article-prose .photo-aside__text p + p {
+    margin-top: 0.9rem;
+  }
+
+  /* ── Feature hero with caption overlay ── */
+  .article-prose .photo-feature {
+    position: relative;
+    margin-block: 1.5rem;
+    border-radius: 1.1rem;
+    overflow: hidden;
+    box-shadow: 0 18px 40px -18px rgba(17, 24, 39, 0.5);
+  }
+
+  .article-prose .photo-feature img {
+    width: 100%;
+    max-width: none;
+    display: block;
+    margin: 0;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .article-prose .photo-feature:hover img {
+    transform: scale(1.04);
+  }
+
+  .article-prose .photo-feature__cap {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 2.5rem 1.25rem 1rem;
+    font-size: 0.9rem;
+    color: #fff;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.72), transparent);
+  }
+
+  .article-prose .photo-feature--tall img {
+    aspect-ratio: 3 / 4;
+  }
+
+  /* ── Duo: two photos side by side ── */
+  .article-prose .photo-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+    margin-block: 1.5rem;
+  }
+
+  .article-prose .photo-duo figure {
+    margin: 0;
+  }
+
+  .article-prose .photo-duo img {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 0.9rem;
+    display: block;
+  }
+
+  /* ── Portrait + text aside (e.g. library atrium) ── */
+  .article-prose .photo-aside {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: center;
+    margin-block: 1.75rem;
+  }
+
+  .article-prose .photo-aside--reverse {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  }
+
+  .article-prose .photo-aside--reverse .photo-aside__media {
+    order: 2;
+  }
+
+  .article-prose .photo-aside__media {
+    margin: 0;
+    border-radius: 1.1rem;
+    overflow: hidden;
+    box-shadow: 0 18px 40px -20px rgba(17, 24, 39, 0.55);
+  }
+
+  .article-prose .photo-aside__media img {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .article-prose .photo-aside__media:hover img {
+    transform: scale(1.04);
+  }
+
+  .article-prose .photo-aside__text {
+    font-size: 0.98rem;
+    color: #374151;
+  }
+
+  @media (max-width: 640px) {
+    .article-prose .photo-aside,
+    .article-prose .photo-aside--reverse {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .article-prose .photo-aside--reverse .photo-aside__media {
+      order: 0;
+    }
+  }
+
+  /* ── Mosaic grid (campus facilities) — even 4:3 tiles, one tall accent ── */
+  .article-prose .photo-mosaic {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    margin-block: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .article-prose .photo-mosaic {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    /* one tall tile keeps the playful mosaic feel without the ragged edges */
+    .article-prose .photo-mosaic figure:nth-child(3) {
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+  }
+
+  .article-prose .photo-mosaic figure {
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    border-radius: 0.85rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .article-prose .photo-mosaic img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    margin: 0;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .article-prose .photo-mosaic figure:hover img {
+    transform: scale(1.05);
+  }
+
+  .article-prose .photo-mosaic figcaption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 1.6rem 0.7rem 0.55rem;
+    font-size: 0.72rem;
+    color: #fff;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .article-prose .photo-mosaic figure:hover figcaption {
+    opacity: 1;
+  }
+
+  /* ── Library grid — one tall portrait accent + even 4:3 tiles (gap-free) ── */
+  .article-prose .library-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+    margin-block: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .article-prose .library-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .article-prose .library-grid figure {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    border-radius: 0.85rem;
+    overflow: hidden;
+  }
+
+  /* the tall accent (Global Innovation atrium) spans two rows on every layout */
+  .article-prose .library-grid figure.library-grid__tall {
+    grid-row: span 2;
+    aspect-ratio: auto;
+  }
+
+  .article-prose .library-grid img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    margin: 0;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .article-prose .library-grid figure:hover img {
+    transform: scale(1.05);
+  }
+
+  .article-prose .library-grid figcaption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 1.5rem 0.65rem 0.5rem;
+    font-size: 0.72rem;
+    color: #fff;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .article-prose .library-grid figure:hover figcaption {
+    opacity: 1;
+  }
+
+  /* ── Shared small caption under standalone figures ── */
+  .article-prose .photo-cap {
+    margin: 0.5rem 0 0;
+    font-size: 0.8rem;
+    color: #6b7280;
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* Click-to-zoom affordance */
+  .article-prose .zoomable {
+    cursor: zoom-in;
+  }
+
+  /* ── SPECIAL: Souvenir showcase ── */
+  .article-prose .souvenir-showcase {
+    margin-block: 2.5rem;
+    padding: 1.85rem 1.5rem 2rem;
+    border-radius: 1.5rem;
+    background:
+      radial-gradient(120% 80% at 0% 0%, rgba(232, 65, 26, 0.1), transparent 60%),
+      radial-gradient(120% 80% at 100% 100%, rgba(200, 16, 46, 0.1), transparent 60%),
+      #fbf6f4;
+    border: 1px solid rgba(200, 16, 46, 0.16);
+  }
+
+  .article-prose .souvenir-showcase__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    background: var(--brand-red, #c8102e);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .article-prose .souvenir-showcase__title {
+    margin: 0.85rem 0 0.3rem;
+    font-size: 1.5rem;
+    color: #111827;
+  }
+
+  .article-prose .souvenir-showcase__intro {
+    margin: 0 0 1.4rem;
+    max-width: 46ch;
+    color: #374151;
+    font-size: 0.98rem;
+  }
+
+  .article-prose .souvenir-showcase__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+  }
+
+  /* On the narrow 2-col layout the odd last card spans full width — no gap */
+  .article-prose .souvenir-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  @media (min-width: 768px) {
+    .article-prose .souvenir-showcase__grid {
+      grid-template-columns: repeat(6, 1fr);
+    }
+    /* featured card spans wide + tall; with four more cards this tiles a clean 3×2 */
+    .article-prose .souvenir-card--feature {
+      grid-column: span 3;
+      grid-row: span 2;
+    }
+    .article-prose .souvenir-card {
+      grid-column: span 3;
+    }
+    /* no full-width banner on desktop — the 3×2 grid already fills with no gaps */
+    .article-prose .souvenir-card:last-child {
+      grid-column: span 3;
+    }
+  }
+
+  .article-prose .souvenir-card {
+    position: relative;
+    margin: 0;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 10px 26px -16px rgba(17, 24, 39, 0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .article-prose .souvenir-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px -16px rgba(200, 16, 46, 0.4);
+  }
+
+  .article-prose .souvenir-card img {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+    display: block;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .article-prose .souvenir-card--feature img {
+    aspect-ratio: 1 / 1;
+  }
+
+  .article-prose .souvenir-card:hover img {
+    transform: scale(1.05);
+  }
+
+  .article-prose .souvenir-card figcaption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 1.8rem 0.85rem 0.7rem;
+    font-size: 0.78rem;
+    line-height: 1.3;
+    color: #fff;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.78), transparent);
+  }
+
+  /* ── Lightbox overlay ── */
+  .skku-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(10, 12, 18, 0.92);
+    cursor: zoom-out;
+  }
+
+  .skku-lightbox.is-open {
+    display: flex;
+  }
+
+  .skku-lightbox img {
+    max-width: 96vw;
+    max-height: 92vh;
+    border-radius: 0.6rem;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  }
+
+  .skku-lightbox__close {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    width: 2.6rem;
+    height: 2.6rem;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background 0.18s ease;
+  }
+
+  .skku-lightbox__close:hover {
+    background: rgba(255, 255, 255, 0.28);
+  }
+
+  /* ============================================================
+     KAIST journey — a blue "itinerary / boarding-pass" styling,
+     deliberately distinct from the SKKU page's red numbered stops.
+     ============================================================ */
+
+  /* ── Itinerary jump nav ── */
+  .article-prose .kaist-itinerary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-block: 1.75rem 2.75rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(10, 77, 147, 0.16);
+    border-radius: 0.9rem;
+    background: linear-gradient(135deg, rgba(43, 127, 212, 0.07), rgba(10, 77, 147, 0.04));
+  }
+
+  .article-prose .kaist-itinerary__lead {
+    width: 100%;
+    margin: 0 0 0.35rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #0a4d93;
+  }
+
+  .article-prose .kaist-itinerary a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 9999px;
+    background: #fff;
+    border: 1px solid rgba(10, 77, 147, 0.22);
+    color: #0a4d93;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  }
+
+  .article-prose .kaist-itinerary a .n {
+    font-weight: 800;
+    opacity: 0.55;
+  }
+
+  .article-prose .kaist-itinerary a:hover {
+    background: #0a4d93;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  .article-prose .kaist-itinerary a:hover .n {
+    opacity: 0.8;
+  }
+
+  /* ── Leg (section) + boarding-pass header ── */
+  .article-prose .kaist-leg {
+    scroll-margin-top: 90px;
+    margin-top: 3.5rem;
+  }
+
+  .article-prose .kaist-leg__head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 0.85rem;
+    margin-bottom: 1.4rem;
+    border-bottom: 2px solid rgba(10, 77, 147, 0.18);
+  }
+
+  /* rounded SQUARE tile (vs SKKU's circle), blue (vs red) */
+  .article-prose .kaist-leg__num {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.85rem;
+    display: grid;
+    place-items: center;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, #2b7fd4, #0a4d93);
+    box-shadow: 0 8px 20px rgba(10, 77, 147, 0.3);
+  }
+
+  .article-prose .kaist-leg__titles {
+    min-width: 0;
+  }
+
+  .article-prose .kaist-leg__eyebrow {
+    display: block;
+    margin: 0 0 0.15rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0a4d93;
+  }
+
+  .article-prose .kaist-leg__title {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.15;
+    color: #111827;
+  }
+
+  /* KAIST sliders use the blue accent for pagination (vs the site's red) */
+  .article-prose .kaist-leg .flicking-page--active {
+    background: #0a4d93;
+    box-shadow: 0 2px 8px rgba(10, 77, 147, 0.3);
+  }
+
+  .article-prose .kaist-leg .flicking-page:hover:not(:disabled):not(.flicking-page--active) {
+    background: rgba(10, 77, 147, 0.09);
+    color: #0a4d93;
+  }
+
+  /* spacing for narrative paragraphs inside a leg */
+  .article-prose .kaist-leg > p {
+    margin-top: 1.25rem;
+  }
+
+  .article-prose .kaist-leg > p.photo-cap {
+    margin-top: 0.5rem;
+  }
+
+  /* ── Feature image with a solid blue caption tab (vs SKKU gradient) ── */
+  .article-prose .kaist-feature {
+    position: relative;
+    margin-block: 1.5rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 18px 40px -18px rgba(10, 77, 147, 0.5);
+  }
+
+  .article-prose .kaist-feature img {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .article-prose .kaist-feature:hover img {
+    transform: scale(1.03);
+  }
+
+  .article-prose .kaist-feature figcaption {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    max-width: 85%;
+    padding: 0.5rem 1rem;
+    background: #0a4d93;
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-top-right-radius: 0.7rem;
+  }
+
+  .article-prose .kaist-feature--tall img {
+    aspect-ratio: 4 / 5;
+  }
+
+  /* ── Image + text split ── */
+  .article-prose .kaist-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 1.5rem;
+    align-items: center;
+    margin-block: 1.75rem;
+  }
+
+  .article-prose .kaist-split--flip {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .article-prose .kaist-split--flip .kaist-split__media {
+    order: 2;
+  }
+
+  .article-prose .kaist-split__media {
+    margin: 0;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 16px 36px -18px rgba(10, 77, 147, 0.5);
+  }
+
+  .article-prose .kaist-split__media img {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    display: block;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .article-prose .kaist-split__text {
+    color: #374151;
+    font-size: 0.98rem;
+  }
+
+  @media (max-width: 640px) {
+    .article-prose .kaist-split,
+    .article-prose .kaist-split--flip {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .article-prose .kaist-split--flip .kaist-split__media {
+      order: 0;
+    }
+  }
+
+  /* ── Dense thumbnail gallery (the many souvenir moments) ── */
+  .article-prose .kaist-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+    margin-block: 1.5rem;
+  }
+
+  @media (min-width: 680px) {
+    .article-prose .kaist-gallery {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .article-prose .kaist-gallery figure {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 1 / 1;
+    border-radius: 0.7rem;
+    overflow: hidden;
+  }
+
+  .article-prose .kaist-gallery img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    margin: 0;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .article-prose .kaist-gallery figure:hover img {
+    transform: scale(1.07);
+  }
+
+  /* ── Even two-up / three-up rows ── */
+  .article-prose .kaist-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    margin-block: 1.5rem;
+  }
+
+  .article-prose .kaist-trio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    margin-block: 1.5rem;
+  }
+
+  @media (max-width: 560px) {
+    .article-prose .kaist-trio {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .article-prose .kaist-duo figure,
+  .article-prose .kaist-trio figure {
+    margin: 0;
+    border-radius: 0.8rem;
+    overflow: hidden;
+  }
+
+  .article-prose .kaist-duo img,
+  .article-prose .kaist-trio img {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Blue stat band (e.g. KAIST world ranking) ── */
+  .article-prose .kaist-stat {
+    display: flex;
+    align-items: center;
+    gap: 1.3rem;
+    margin-block: 1.75rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #0a4d93, #2b7fd4);
+    color: #fff;
+    box-shadow: 0 16px 36px -18px rgba(10, 77, 147, 0.6);
+  }
+
+  .article-prose .kaist-stat__big {
+    flex-shrink: 0;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .article-prose .kaist-stat__text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .article-prose .kaist-stat__text strong {
+    color: #fff;
+  }
+
+  /* ============================================================
+     Korea University journey — a crimson & gold "heritage" style,
+     Roman-numeral chapters (distinct from SKKU's red circles and
+     KAIST's blue squares).
+     ============================================================ */
+
+  /* ── Contents index (centred, serif) ── */
+  .article-prose .ku-contents {
+    margin-block: 1.75rem 2.75rem;
+    padding: 1.25rem 1.4rem;
+    border: 1px solid rgba(138, 28, 48, 0.18);
+    border-top: 3px solid #8a1c30;
+    border-radius: 0.5rem;
+    background: linear-gradient(180deg, #fbf7f0, #ffffff);
+    text-align: center;
+  }
+
+  .article-prose .ku-contents__lead {
+    margin: 0 0 0.85rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8a1c30;
+  }
+
+  .article-prose .ku-contents__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.4rem;
+  }
+
+  .article-prose .ku-contents a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    color: #6b1422;
+    text-decoration: none;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1rem;
+    transition: color 0.18s ease;
+  }
+
+  .article-prose .ku-contents a .rn {
+    color: #b08d3f;
+    font-weight: 700;
+  }
+
+  .article-prose .ku-contents a:hover {
+    color: #8a1c30;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── Chapter + Roman-numeral crest header ── */
+  .article-prose .ku-chapter {
+    scroll-margin-top: 90px;
+    margin-top: 3.5rem;
+  }
+
+  .article-prose .ku-chapter__head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 0.85rem;
+    margin-bottom: 1.4rem;
+    border-bottom: 1px solid rgba(176, 141, 63, 0.5);
+  }
+
+  /* crimson medallion with a gold ring + gold serif numeral */
+  .article-prose .ku-chapter__medal {
+    flex-shrink: 0;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(circle at 35% 30%, #a8324a, #7c1426);
+    border: 2px solid #b08d3f;
+    color: #e7c879;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    box-shadow: 0 6px 18px rgba(124, 20, 38, 0.35);
+  }
+
+  .article-prose .ku-chapter__eyebrow {
+    display: block;
+    margin: 0 0 0.15rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: #8a1c30;
+  }
+
+  .article-prose .ku-chapter__title {
+    margin: 0;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.55rem;
+    line-height: 1.15;
+    color: #111827;
+  }
+
+  .article-prose .ku-chapter > p {
+    margin-top: 1.25rem;
+  }
+
+  .article-prose .ku-chapter > p.photo-cap {
+    margin-top: 0.5rem;
+  }
+
+  /* KU sliders use the crimson accent */
+  .article-prose .ku-chapter .flicking-page--active {
+    background: #8a1c30;
+    box-shadow: 0 2px 8px rgba(138, 28, 48, 0.3);
+  }
+
+  .article-prose .ku-chapter .flicking-page:hover:not(:disabled):not(.flicking-page--active) {
+    background: rgba(138, 28, 48, 0.09);
+    color: #8a1c30;
+  }
+
+  /* ── Feature image with a "museum placard" caption ── */
+  .article-prose .ku-feature {
+    margin-block: 1.5rem;
+    border-radius: 0.6rem;
+    overflow: hidden;
+    box-shadow: 0 16px 36px -18px rgba(17, 24, 39, 0.5);
+  }
+
+  .article-prose .ku-feature img {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .article-prose .ku-feature:hover img {
+    transform: scale(1.03);
+  }
+
+  .article-prose .ku-feature--tall img {
+    aspect-ratio: 3 / 4;
+  }
+
+  .article-prose .ku-feature figcaption {
+    margin: 0;
+    padding: 0.6rem 1rem;
+    background: #f7f1e6;
+    border-left: 3px solid #8a1c30;
+    color: #6b4a2e;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+
+  /* ── Two-up / three-up rows (thin gold frame) ── */
+  .article-prose .ku-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+    margin-block: 1.5rem;
+  }
+
+  .article-prose .ku-trio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.65rem;
+    margin-block: 1.5rem;
+  }
+
+  @media (max-width: 560px) {
+    .article-prose .ku-trio {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .article-prose .ku-duo figure,
+  .article-prose .ku-trio figure {
+    position: relative;
+    margin: 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(176, 141, 63, 0.4);
+  }
+
+  .article-prose .ku-duo img,
+  .article-prose .ku-trio img {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+  }
+
+  .article-prose .ku-duo figure:hover img,
+  .article-prose .ku-trio figure:hover img {
+    transform: scale(1.05);
+  }
+
+  .article-prose .ku-duo figcaption,
+  .article-prose .ku-trio figcaption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 1.4rem 0.6rem 0.5rem;
+    font-size: 0.72rem;
+    color: #fff;
+    background: linear-gradient(to top, rgba(40, 8, 14, 0.78), transparent);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .article-prose .ku-duo figure:hover figcaption,
+  .article-prose .ku-trio figure:hover figcaption {
+    opacity: 1;
+  }
+
+  /* ── Heritage plaque (crimson + gold callout) ── */
+  .article-prose .ku-plaque {
+    margin-block: 1.75rem;
+    padding: 1.15rem 1.4rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(135deg, #7c1426, #a8324a);
+    color: #fdf6ea;
+    border-left: 4px solid #d4b56a;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .article-prose .ku-plaque strong {
+    color: #e7c879;
+    font-style: normal;
+  }
+
+  /* ============================================================
+     Yonsei journey — a deep-navy modern-editorial style with large
+     OUTLINE / GHOST numerals (distinct from SKKU circles, KAIST
+     squares and Korea U's gold Roman medallions). Also powers the
+     small Yonsei dinner coda page.
+     ============================================================ */
+
+  /* ── Section nav (clean underline tabs) ── */
+  .article-prose .yon-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem 1.5rem;
+    margin-block: 1.75rem 2.75rem;
+    padding: 0.6rem 0 0.9rem;
+    border-top: 2px solid #0a2e6e;
+    border-bottom: 1px solid rgba(10, 46, 110, 0.18);
+  }
+
+  .article-prose .yon-nav__lead {
+    width: 100%;
+    margin: 0.4rem 0 0.2rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #0a2e6e;
+  }
+
+  .article-prose .yon-nav a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    color: #334155;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 0.1rem;
+    transition: color 0.18s ease, border-color 0.18s ease;
+  }
+
+  .article-prose .yon-nav a .n {
+    color: #1e5bb8;
+    font-weight: 800;
+  }
+
+  .article-prose .yon-nav a:hover {
+    color: #0a2e6e;
+    border-bottom-color: #0a2e6e;
+  }
+
+  /* ── Section + ghost-numeral header ── */
+  .article-prose .yon-section {
+    scroll-margin-top: 90px;
+    margin-top: 3.5rem;
+  }
+
+  .article-prose .yon-section__head {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.4rem;
+    border-bottom: 2px solid rgba(10, 46, 110, 0.16);
+  }
+
+  /* big OUTLINE numeral — transparent fill, navy stroke */
+  .article-prose .yon-section__num {
+    flex-shrink: 0;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3.1rem;
+    font-weight: 800;
+    line-height: 0.9;
+    color: transparent;
+    -webkit-text-stroke: 1.5px #0a2e6e;
+    text-stroke: 1.5px #0a2e6e;
+  }
+
+  .article-prose .yon-section__titles {
+    min-width: 0;
+  }
+
+  .article-prose .yon-section__eyebrow {
+    display: block;
+    margin: 0 0 0.15rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #1e5bb8;
+  }
+
+  .article-prose .yon-section__title {
+    margin: 0;
+    font-size: 1.55rem;
+    line-height: 1.15;
+    color: #0f172a;
+  }
+
+  .article-prose .yon-section > p {
+    margin-top: 1.25rem;
+  }
+
+  .article-prose .yon-section > p.photo-cap {
+    margin-top: 0.5rem;
+  }
+
+  /* Yonsei sliders use the navy accent */
+  .article-prose .yon-section .flicking-page--active {
+    background: #0a2e6e;
+    box-shadow: 0 2px 8px rgba(10, 46, 110, 0.3);
+  }
+
+  .article-prose .yon-section .flicking-page:hover:not(:disabled):not(.flicking-page--active) {
+    background: rgba(10, 46, 110, 0.09);
+    color: #0a2e6e;
+  }
+
+  /* ── Feature image with a clean caption-below + navy tick ── */
+  .article-prose .yon-feature {
+    margin-block: 1.5rem;
+  }
+
+  .article-prose .yon-feature img {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 0.4rem;
+    box-shadow: 0 16px 36px -18px rgba(15, 23, 42, 0.5);
+    transition: transform 0.6s ease;
+  }
+
+  .article-prose .yon-feature:hover img {
+    transform: scale(1.02);
+  }
+
+  .article-prose .yon-feature--tall img {
+    aspect-ratio: 3 / 4;
+  }
+
+  .article-prose .yon-feature figcaption {
+    margin: 0.6rem 0 0;
+    padding-left: 0.7rem;
+    border-left: 3px solid #1e5bb8;
+    font-size: 0.85rem;
+    color: #475569;
+  }
+
+  /* ── Image + text split ── */
+  .article-prose .yon-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 1.5rem;
+    align-items: center;
+    margin-block: 1.75rem;
+  }
+
+  .article-prose .yon-split--flip {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .article-prose .yon-split--flip .yon-split__media {
+    order: 2;
+  }
+
+  .article-prose .yon-split__media {
+    margin: 0;
+    border-radius: 0.4rem;
+    overflow: hidden;
+    box-shadow: 0 16px 36px -18px rgba(15, 23, 42, 0.5);
+  }
+
+  .article-prose .yon-split__media img {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    display: block;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .article-prose .yon-split__text {
+    color: #334155;
+    font-size: 0.98rem;
+  }
+
+  @media (max-width: 640px) {
+    .article-prose .yon-split,
+    .article-prose .yon-split--flip {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .article-prose .yon-split--flip .yon-split__media {
+      order: 0;
+    }
+  }
+
+  /* ── Even rows + dense gallery ── */
+  .article-prose .yon-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    margin-block: 1.5rem;
+  }
+
+  .article-prose .yon-trio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    margin-block: 1.5rem;
+  }
+
+  .article-prose .yon-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+    margin-block: 1.5rem;
+  }
+
+  @media (min-width: 680px) {
+    .article-prose .yon-gallery {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .article-prose .yon-trio {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .article-prose .yon-duo figure,
+  .article-prose .yon-trio figure,
+  .article-prose .yon-gallery figure {
+    position: relative;
+    margin: 0;
+    border-radius: 0.4rem;
+    overflow: hidden;
+  }
+
+  .article-prose .yon-duo img,
+  .article-prose .yon-trio img {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+  }
+
+  .article-prose .yon-gallery img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    margin: 0;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+  }
+
+  .article-prose .yon-duo figure:hover img,
+  .article-prose .yon-trio figure:hover img,
+  .article-prose .yon-gallery figure:hover img {
+    transform: scale(1.05);
+  }
+
+  .article-prose .yon-duo figcaption,
+  .article-prose .yon-trio figcaption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 1.4rem 0.6rem 0.5rem;
+    font-size: 0.72rem;
+    color: #fff;
+    background: linear-gradient(to top, rgba(8, 18, 40, 0.8), transparent);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .article-prose .yon-duo figure:hover figcaption,
+  .article-prose .yon-trio figure:hover figcaption {
+    opacity: 1;
+  }
+
+  /* ── Navy pull-quote / fact band ── */
+  .article-prose .yon-quote {
+    margin-block: 1.75rem;
+    padding: 0.4rem 0 0.4rem 1.4rem;
+    border-left: 4px solid #0a2e6e;
+    font-size: 1.15rem;
+    line-height: 1.45;
+    color: #1e293b;
+    font-style: italic;
+  }
+
+  .article-prose .yon-quote strong {
+    color: #0a2e6e;
+    font-style: normal;
+  }
+
+  /* ── Dinner coda — a compact intro note ── */
+  .article-prose .din-note {
+    margin-block: 1.5rem 2rem;
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+    background: rgba(10, 46, 110, 0.05);
+    border-left: 4px solid #1e5bb8;
+    font-size: 1rem;
+    color: #334155;
+  }
+
+  /* ============================================================
+     Seoul Gallery — a bright, playful "exhibition" theme
+     (teal + coral, chunky rounded badges; the fun stop).
+     ============================================================ */
+  .article-prose .gal-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-block: 1.75rem 2.75rem;
+    padding: 1rem 1.1rem;
+    border-radius: 1.1rem;
+    background: linear-gradient(135deg, rgba(16, 185, 199, 0.1), rgba(255, 93, 115, 0.1));
+  }
+
+  .article-prose .gal-nav__lead {
+    width: 100%;
+    margin: 0 0 0.4rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #0a9ca8;
+  }
+
+  .article-prose .gal-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 9999px;
+    background: #fff;
+    border: 2px solid #10b9c7;
+    color: #0a7f8a;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  }
+
+  .article-prose .gal-nav a:hover {
+    background: #10b9c7;
+    color: #fff;
+    transform: translateY(-2px) rotate(-1deg);
+  }
+
+  .article-prose .gal-section {
+    scroll-margin-top: 90px;
+    margin-top: 3.5rem;
+  }
+
+  .article-prose .gal-section__head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.3rem;
+  }
+
+  /* chunky rounded badge, playful tilt */
+  .article-prose .gal-section__badge {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.9rem;
+    display: grid;
+    place-items: center;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, #10b9c7, #ff5d73);
+    box-shadow: 0 8px 18px rgba(16, 185, 199, 0.35);
+    transform: rotate(-4deg);
+  }
+
+  .article-prose .gal-section__eyebrow {
+    display: inline-block;
+    margin: 0 0 0.25rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 9999px;
+    background: rgba(255, 93, 115, 0.14);
+    color: #e63956;
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .article-prose .gal-section__title {
+    margin: 0;
+    font-size: 1.55rem;
+    line-height: 1.12;
+    color: #0f172a;
+  }
+
+  .article-prose .gal-section > p {
+    margin-top: 1.25rem;
+  }
+
+  .article-prose .gal-section > p.photo-cap {
+    margin-top: 0.5rem;
+  }
+
+  .article-prose .gal-section .flicking-page--active {
+    background: #10b9c7;
+    box-shadow: 0 2px 8px rgba(16, 185, 199, 0.35);
+  }
+
+  .article-prose .gal-section .flicking-page:hover:not(:disabled):not(.flicking-page--active) {
+    background: rgba(16, 185, 199, 0.12);
+    color: #0a7f8a;
+  }
+
+  .article-prose .gal-feature {
+    margin-block: 1.5rem;
+    border-radius: 1.1rem;
+    overflow: hidden;
+    box-shadow: 0 16px 36px -16px rgba(16, 185, 199, 0.5);
+  }
+
+  .article-prose .gal-feature img {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .article-prose .gal-feature:hover img {
+    transform: scale(1.03);
+  }
+
+  .article-prose .gal-feature figcaption {
+    margin: 0;
+    padding: 0.55rem 1rem;
+    background: #10b9c7;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .article-prose .gal-duo,
+  .article-prose .gal-trio {
+    display: grid;
+    gap: 0.7rem;
+    margin-block: 1.5rem;
+  }
+
+  .article-prose .gal-duo {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .article-prose .gal-trio {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 560px) {
+    .article-prose .gal-trio {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .article-prose .gal-duo figure,
+  .article-prose .gal-trio figure {
+    position: relative;
+    margin: 0;
+    border-radius: 0.9rem;
+    overflow: hidden;
+    box-shadow: 0 6px 16px -8px rgba(15, 23, 42, 0.35);
+  }
+
+  .article-prose .gal-duo img,
+  .article-prose .gal-trio img {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+  }
+
+  .article-prose .gal-duo figure:hover img,
+  .article-prose .gal-trio figure:hover img {
+    transform: scale(1.06);
+  }
+
+  .article-prose .gal-duo figcaption,
+  .article-prose .gal-trio figcaption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 1.3rem 0.6rem 0.5rem;
+    font-size: 0.72rem;
+    color: #fff;
+    background: linear-gradient(to top, rgba(8, 70, 78, 0.82), transparent);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .article-prose .gal-duo figure:hover figcaption,
+  .article-prose .gal-trio figure:hover figcaption {
+    opacity: 1;
+  }
+
+  /* ============================================================
+     Seoul TOPIS — a dark "mission-control" theme: dark monitor
+     panels, cyan data-glow, monospace labels (the techy stop).
+     ============================================================ */
+  .article-prose .topis-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-block: 1.75rem 2.75rem;
+    padding: 0.9rem 1.1rem;
+    border-radius: 0.75rem;
+    background: #0b1322;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+  }
+
+  .article-prose .topis-nav__lead {
+    width: 100%;
+    margin: 0 0 0.35rem;
+    font-family: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #38bdf8;
+  }
+
+  .article-prose .topis-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: 0.4rem;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    color: #cbd5e1;
+    font-family: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  }
+
+  .article-prose .topis-nav a:hover {
+    background: rgba(56, 189, 248, 0.16);
+    border-color: #38bdf8;
+    color: #e0f2fe;
+  }
+
+  /* each section is a dark monitor panel */
+  .article-prose .topis-panel {
+    scroll-margin-top: 90px;
+    margin-top: 1.5rem;
+    padding: 1.5rem 1.4rem 1.6rem;
+    border-radius: 0.85rem;
+    background:
+      linear-gradient(180deg, #0d1626, #0a1120),
+      repeating-linear-gradient(90deg, rgba(56, 189, 248, 0.04) 0 1px, transparent 1px 24px);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    color: #b8c6da;
+  }
+
+  .article-prose .topis-panel__head {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.22);
+  }
+
+  .article-prose .topis-panel__code {
+    flex-shrink: 0;
+    font-family: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0a1120;
+    background: #38bdf8;
+    padding: 0.3rem 0.55rem;
+    border-radius: 0.35rem;
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.5);
+  }
+
+  .article-prose .topis-panel__eyebrow {
+    display: block;
+    margin: 0 0 0.15rem;
+    font-family: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #38bdf8;
+  }
+
+  .article-prose .topis-panel__title {
+    margin: 0;
+    font-size: 1.45rem;
+    line-height: 1.15;
+    color: #f1f5f9;
+  }
+
+  .article-prose .topis-panel > p {
+    margin-top: 1.1rem;
+    color: #b8c6da;
+  }
+
+  .article-prose .topis-panel strong {
+    color: #e0f2fe;
+  }
+
+  /* live indicator */
+  .article-prose .topis-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-left: auto;
+    font-family: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    color: #4ade80;
+  }
+
+  .article-prose .topis-live::before {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 8px #4ade80;
+    animation: topis-pulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes topis-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .article-prose .topis-live::before { animation: none; }
+  }
+
+  .article-prose .topis-feature {
+    margin-block: 1.3rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    box-shadow: 0 0 24px -6px rgba(56, 189, 248, 0.4);
+  }
+
+  .article-prose .topis-feature img {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .article-prose .topis-feature figcaption {
+    margin: 0;
+    padding: 0.5rem 0.9rem;
+    background: #0a1120;
+    color: #7dd3fc;
+    font-family: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
+    font-size: 0.76rem;
+  }
+
+  .article-prose .topis-duo,
+  .article-prose .topis-trio {
+    display: grid;
+    gap: 0.55rem;
+    margin-block: 1.3rem;
+  }
+
+  .article-prose .topis-duo {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .article-prose .topis-trio {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 560px) {
+    .article-prose .topis-trio {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .article-prose .topis-duo figure,
+  .article-prose .topis-trio figure {
+    margin: 0;
+    border-radius: 0.4rem;
+    overflow: hidden;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+  }
+
+  .article-prose .topis-duo img,
+  .article-prose .topis-trio img {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* cyan data stat band */
+  .article-prose .topis-stat {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin-block: 1.3rem;
+    padding: 1rem 1.2rem;
+    border-radius: 0.5rem;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px dashed rgba(56, 189, 248, 0.45);
+  }
+
+  .article-prose .topis-stat__big {
+    flex-shrink: 0;
+    font-family: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #38bdf8;
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+  }
+
+  .article-prose .topis-stat__text {
+    font-size: 0.92rem;
+    color: #cbd5e1;
   }
 }

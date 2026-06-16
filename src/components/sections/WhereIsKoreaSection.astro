@@ -2,17 +2,9 @@
 import Icon from '../Icon.astro';
 import DisplayHeading from '../ui/DisplayHeading.astro';
 import SectionEyebrow from '../ui/SectionEyebrow.astro';
-import { trip } from '../../data/trip';
+import { mapVenuePayloads } from '../../data/trip';
 
-const mapVenues = trip.venues.map((venue, index) => ({
-  index: index + 1,
-  name: venue.name,
-  label: venue.mapLabel,
-  mapQuery: venue.mapQuery,
-  url: venue.url,
-  lat: venue.lat,
-  lng: venue.lng,
-}));
+const mapVenues = mapVenuePayloads;
 ---
 
 <section id="where-is-korea" class="py-14 md:py-20 relative bg-white border-t border-gray-100">

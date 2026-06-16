@@ -71,10 +71,10 @@ export const trip = {
       name: 'Graduate School of AI at KAIST',
       listName: 'KAIST AI',
       mapLabel: 'Graduate School of AI at KAIST',
-      mapQuery: '141 Umyeon-dong, Seocho-gu, Seoul, South Korea',
+      mapQuery: '114 Taebong-ro, Seocho-gu, Seoul, South Korea',
       url: institutionLinks.kaistAi.href,
-      lat: 37.4648,
-      lng: 127.0189,
+      lat: 37.4668,
+      lng: 127.0283,
     },
     {
       name: 'Korea University',
@@ -123,6 +123,15 @@ export type TripVenueKey =
   | 'seoulGallery'
   | 'seoulTopis';
 
+const tripVenueKeys: readonly TripVenueKey[] = [
+  'skku',
+  'kaistAi',
+  'koreaUniversity',
+  'yonsei',
+  'seoulGallery',
+  'seoulTopis',
+];
+
 export const tripVenuesByKey: Record<TripVenueKey, TripVenue> = {
   skku: trip.venues[0],
   kaistAi: trip.venues[1],
@@ -131,3 +140,33 @@ export const tripVenuesByKey: Record<TripVenueKey, TripVenue> = {
   seoulGallery: trip.venues[4],
   seoulTopis: trip.venues[5],
 };
+
+export type MapVenuePayload = {
+  index: number;
+  name: string;
+  label: string;
+  mapQuery: string;
+  url?: string;
+  lat: number;
+  lng: number;
+};
+
+/** Shared map pin data for the home page and visit article maps. */
+export function getMapVenuePayload(venueKey: TripVenueKey): MapVenuePayload {
+  const venue = tripVenuesByKey[venueKey];
+  const index = tripVenueKeys.indexOf(venueKey) + 1;
+
+  return {
+    index,
+    name: venue.name,
+    label: venue.mapLabel,
+    mapQuery: venue.mapQuery,
+    url: venue.url,
+    lat: venue.lat,
+    lng: venue.lng,
+  };
+}
+
+export const mapVenuePayloads: readonly MapVenuePayload[] = tripVenueKeys.map((venueKey) =>
+  getMapVenuePayload(venueKey),
+);

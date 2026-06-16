@@ -5,8 +5,9 @@ import Container from '../../components/ui/Container.astro';
 import GradientText from '../../components/ui/GradientText.astro';
 import InnerPage from '../../components/layout/InnerPage.astro';
 import PageIntro from '../../components/layout/PageIntro.astro';
-import { visitSchedule } from '../../data/schedule';
+import { visitSchedule, tripTeam } from '../../data/schedule';
 import { trip } from '../../data/trip';
+import TeamRail from '../../components/sections/TeamRail.astro';
 
 const allEvents = visitSchedule.flatMap((day) => day.events);
 
@@ -44,7 +45,7 @@ const dayNav = visitSchedule.map((day) => {
         </Fragment>
         <Fragment slot="lead">
           The {trip.title} schedule follows our full five-day journey, covering academic visits,
-          city learning, and the final split between return travel and optional extended exploration.
+          city explorations, and cultural activities.
         </Fragment>
         <p slot="body">
           Expand each day to view clear time blocks, event titles, and short descriptions for quick reference.
@@ -61,6 +62,12 @@ const dayNav = visitSchedule.map((day) => {
           ))
         }
       </div>
+
+      <TeamRail
+        students={tripTeam}
+        eyebrow="The travelling team"
+        title={`${tripTeam.length} of us made the trip — every visit, together.`}
+      />
 
       <nav class="schedule-nav" aria-label="Jump to a day">
         {

@@ -21,7 +21,7 @@ const scheduleEvents = defineCollection({
     draft: z.boolean().default(false),
     // Photo gallery. Add real photos here when they are ready, e.g.
     //   gallery:
-    //     - src: /images/visit/kaist/01.jpg
+    //     - src: /images/visit/kaist/hero.jpg
     //       caption: Welcome session on the 6th floor
     // While `gallery` is empty, `galleryPlaceholders` empty frames are shown
     // so the team can see where the photos will go.

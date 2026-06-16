@@ -5,64 +5,211 @@ interface Props {
   year: string;
   image: string;
   reflection: string;
-  variant?: 'default' | 'featured';
+  /** index used to pick this student's personal accent colour */
+  accent?: number;
 }
 
-const { name, nickname = '', year, image, reflection, variant = 'default' } = Astro.props;
+const { name, nickname = '', year, image, reflection, accent = 0 } = Astro.props;
+
+// Every student gets their OWN accent colour — a lively, equal mosaic where no
+// one is singled out. Deterministic by position so the wall stays balanced.
+const palette: [string, string][] = [
+  ['#e8411a', '#c8102e'], // brand red-orange
+  ['#2b7fd4', '#0a4d93'], // blue
+  ['#10b9c7', '#0a7f8a'], // teal
+  ['#8b5cf6', '#6d28d9'], // violet
+  ['#10b981', '#047857'], // emerald
+  ['#f59e0b', '#d97706'], // amber
+  ['#ec4899', '#be185d'], // pink
+  ['#6366f1', '#4338ca'], // indigo
+  ['#0ea5e9', '#0369a1'], // sky
+];
+const [c1, c2] = palette[((accent % palette.length) + palette.length) % palette.length];
+
 const isPlaceholder = name === 'Your Full Name' || reflection.trim().length === 0;
 const displayName = isPlaceholder ? 'Student Profile' : nickname ? `${name} (${nickname})` : name;
 const subtitle = `${year} · Computer Science`;
 const displayReflection = isPlaceholder ? 'Reflection coming soon.' : reflection;
 ---
 
-{
-  variant === 'featured' ? (
-    <article
-      class="break-inside-avoid mb-6 group relative rounded-3xl p-7 overflow-hidden hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 bg-brand-gradient"
-    >
-      <div
-        class="absolute inset-0 opacity-15 pointer-events-none"
-        style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 20px 20px;"
-      ></div>
-      <div class="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-white/10 blur-2xl pointer-events-none"></div>
+<article class="takeaway-card" style={`--c1:${c1};--c2:${c2};`}>
+  <button
+    type="button"
+    class="takeaway-card__trigger"
+    data-takeaway-trigger
+    data-name={displayName}
+    data-subtitle={subtitle}
+    data-image={image}
+    data-reflection={displayReflection}
+    data-c1={c1}
+    data-c2={c2}
+    data-placeholder={isPlaceholder ? 'true' : 'false'}
+    aria-haspopup="dialog"
+    aria-label={`Read ${displayName}'s full reflection`}
+  >
+    <span class="takeaway-card__band">
+      <span class="takeaway-card__avatar">
+        <img src={image} alt="" loading="lazy" />
+      </span>
+      <span class="takeaway-card__id">
+        <span class="takeaway-card__name">{displayName}</span>
+        <span class="takeaway-card__sub">{subtitle}</span>
+      </span>
+    </span>
+    <span class="takeaway-card__body">
+      <span class="takeaway-card__quote" aria-hidden="true">&ldquo;</span>
+      <span class="takeaway-card__text">{displayReflection}</span>
+      {!isPlaceholder && (
+        <span class="takeaway-card__more" aria-hidden="true">Read more &rarr;</span>
+      )}
+    </span>
+  </button>
+</article>
 
-      <div class="relative flex items-center gap-4 mb-5">
-        <div class="relative rounded-full overflow-hidden ring-2 ring-white/80 shadow-md shrink-0 w-14 h-14">
-          <img src={image} alt={displayName} class="w-full h-full object-cover" />
-        </div>
-        <div class="min-w-0 flex-1">
-          <h3 class="font-bold text-white truncate">{displayName}</h3>
-          <p class="text-xs text-white/80 mt-0.5">{subtitle}</p>
-        </div>
-      </div>
-      <div class="relative">
-        <div class="absolute -top-2 -left-1 text-6xl leading-none select-none pointer-events-none text-white/30 font-display">
-          &ldquo;
-        </div>
-        <p class="relative text-sm text-white/95 leading-relaxed pl-5 pt-2">{displayReflection}</p>
-      </div>
-    </article>
-  ) : (
-    <article class="break-inside-avoid mb-6 group relative bg-white rounded-3xl p-7 border border-gray-100 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300">
-      <div class="absolute top-0 left-7 right-7 h-1 rounded-b-full opacity-0 group-hover:opacity-100 transition-opacity bg-brand-gradient"></div>
-      <div class="flex items-center gap-4 mb-5">
-        <div class="relative rounded-full overflow-hidden ring-2 ring-white shadow-md shrink-0 w-16 h-16">
-          <img src={image} alt={displayName} class="w-full h-full object-cover" />
-        </div>
-        <div class="min-w-0 flex-1">
-          <h3 class="font-bold text-gray-900 truncate">{displayName}</h3>
-          <p class="text-xs text-gray-500 mt-0.5">
-            <span class="inline-block w-1.5 h-1.5 rounded-full bg-primary mr-1.5 align-middle"></span>
-            {subtitle}
-          </p>
-        </div>
-      </div>
-      <div class="relative">
-        <div class="absolute -top-2 -left-1 text-6xl leading-none select-none pointer-events-none text-primary/15 font-display">
-          &ldquo;
-        </div>
-        <p class="relative text-sm text-gray-600 leading-relaxed pl-5 pt-2">{displayReflection}</p>
-      </div>
-    </article>
-  )
-}
+<style>
+  .takeaway-card {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 8px 24px -16px rgba(15, 23, 42, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .takeaway-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 42px -20px var(--c2);
+  }
+
+  /* The whole card is a single accessible button. Reset native button styling. */
+  .takeaway-card__trigger {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .takeaway-card__trigger:focus-visible {
+    outline: 3px solid var(--c1);
+    outline-offset: 3px;
+    border-radius: 1.25rem;
+  }
+
+  .takeaway-card__band {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1.05rem 1.2rem;
+    background: linear-gradient(135deg, var(--c1), var(--c2));
+  }
+
+  .takeaway-card__band::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.16;
+    pointer-events: none;
+    background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+    background-size: 18px 18px;
+  }
+
+  .takeaway-card__avatar {
+    position: relative;
+    z-index: 1;
+    width: 3.25rem;
+    height: 3.25rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9), 0 4px 10px rgba(0, 0, 0, 0.25);
+  }
+
+  .takeaway-card__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .takeaway-card__id {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+  }
+
+  .takeaway-card__name {
+    display: block;
+    margin: 0;
+    font-weight: 700;
+    font-size: 0.98rem;
+    line-height: 1.2;
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .takeaway-card__sub {
+    display: block;
+    margin: 0.15rem 0 0;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .takeaway-card__body {
+    position: relative;
+    display: block;
+    padding: 1.05rem 1.2rem 1.2rem;
+  }
+
+  .takeaway-card__quote {
+    position: absolute;
+    top: 0.1rem;
+    left: 0.7rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3.4rem;
+    line-height: 1;
+    color: var(--c1);
+    opacity: 0.18;
+    user-select: none;
+  }
+
+  .takeaway-card__text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    overflow: hidden;
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #374151;
+  }
+
+  .takeaway-card__more {
+    display: inline-block;
+    margin: 0.7rem 0 0;
+    padding-left: 1.1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--c2);
+    transition: transform 0.2s ease;
+  }
+
+  .takeaway-card__trigger:hover .takeaway-card__more,
+  .takeaway-card__trigger:focus-visible .takeaway-card__more {
+    transform: translateX(3px);
+  }
+</style>

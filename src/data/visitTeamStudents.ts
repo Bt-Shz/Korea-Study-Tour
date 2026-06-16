@@ -8,6 +8,8 @@ export type VisitTeamStudent = {
   email: string;
   image: string;
   reflection: string;
+  /** Stayed behind in Korea after the main group flew home (featured on Day 5). */
+  stayingBehind?: boolean;
 };
 
 export type VisitTeamGroup = {
@@ -122,6 +124,9 @@ const team2Students: Partial<VisitTeamStudent>[] = [
     nickname: 'Beka',
     email: 'bkarimtay2-c@my.cityu.edu.hk',
     image: '/images/team/bexultan-karimtayev.jpg',
+    stayingBehind: true,
+    reflection:
+      "For me the Seoul tour was equal parts research and reunion. The campus visits stacked up fast, SKKU and KAIST's AI Hub, Korea University in the rain, and the genuinely two-way exchange at Yonsei, where we traded research with students our own age. TOPIS was a quiet favourite: a whole city run on live data, exactly the kind of system I like to build. And honestly, just as memorable were the evenings, Korean BBQ with new friends, and time with Kazakh students already studying in Seoul. When most of the group flew home, a few of us stayed behind to keep exploring Korea, and the city gave us every reason to. Grateful to the CS Department and our professors for the trip of the year.",
   },
   {
     name: 'Mei Yan LAI',

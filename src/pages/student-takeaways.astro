@@ -26,26 +26,324 @@ import { trip } from '../data/trip';
         <Fragment slot="lead">
           he {trip.title} wasn't just about visiting labs and museums &mdash;
           it was about expanding perspectives, building global networks, and experiencing firsthand
-          how innovation ecosystems thrive at the intersection of technology, culture, and
-          collaboration.
+          how innovation ecosystems thrive at the intersection of technology and culture.
         </Fragment>
         <p slot="body">
           Students returned not only with new knowledge, but with a renewed sense of what's possible
-          in their own academic and professional journeys. What follows are their words -
-          unfiltered, personal, and varied.
+          in their own academic and professional journeys. This page shows their unfiltered, personal, and varied words. 
         </p>
       </PageIntro>
 
       <div class="columns-1 md:columns-2 lg:columns-3" style="column-gap: 24px;">
         {
           studentTakeaways.map((student, index) => (
-            <StudentTakeawayCard
-              {...student}
-              variant={(index + 1) % 7 === 0 ? 'featured' : 'default'}
-            />
+            <StudentTakeawayCard {...student} accent={index} />
           ))
         }
       </div>
     </Container>
   </InnerPage>
+
+  <dialog
+    id="takeaway-dialog"
+    class="takeaway-dialog"
+    aria-labelledby="takeaway-dialog-name"
+  >
+    <div class="takeaway-dialog__inner">
+      <header class="takeaway-dialog__header">
+        <span class="takeaway-dialog__avatar">
+          <img id="takeaway-dialog-image" src="" alt="" />
+        </span>
+        <div class="takeaway-dialog__id">
+          <h2 id="takeaway-dialog-name"></h2>
+          <p id="takeaway-dialog-subtitle"></p>
+        </div>
+        <button
+          type="button"
+          class="takeaway-dialog__close"
+          data-takeaway-close
+          aria-label="Close reflection"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path
+              d="M6 6l12 12M18 6L6 18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </header>
+      <div id="takeaway-dialog-body" class="takeaway-dialog__body"></div>
+    </div>
+  </dialog>
 </BaseLayout>
+
+<style is:global>
+  .takeaway-dialog {
+    width: min(92vw, 44rem);
+    max-width: 44rem;
+    max-height: min(88vh, 52rem);
+    margin: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 40px 80px -24px rgba(15, 23, 42, 0.55);
+    color: #1f2937;
+  }
+
+  .takeaway-dialog::backdrop {
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(2px);
+  }
+
+  .takeaway-dialog[open] {
+    animation: takeaway-dialog-in 0.2s ease;
+  }
+
+  @keyframes takeaway-dialog-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .takeaway-dialog[open] {
+      animation: none;
+    }
+  }
+
+  .takeaway-dialog__inner {
+    display: flex;
+    flex-direction: column;
+    max-height: inherit;
+  }
+
+  .takeaway-dialog__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+    padding: 1.5rem 1.75rem;
+    background: linear-gradient(135deg, var(--dc1, #e8411a), var(--dc2, #c8102e));
+  }
+
+  .takeaway-dialog__header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.16;
+    pointer-events: none;
+    background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+    background-size: 18px 18px;
+  }
+
+  .takeaway-dialog__avatar {
+    position: relative;
+    z-index: 1;
+    width: 4rem;
+    height: 4rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9), 0 6px 14px rgba(0, 0, 0, 0.3);
+  }
+
+  .takeaway-dialog__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .takeaway-dialog__id {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+  }
+
+  .takeaway-dialog__id h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+  }
+
+  .takeaway-dialog__id p {
+    margin: 0.25rem 0 0;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .takeaway-dialog__close {
+    position: relative;
+    z-index: 1;
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.18);
+    transition: background 0.2s ease;
+  }
+
+  .takeaway-dialog__close:hover {
+    background: rgba(255, 255, 255, 0.32);
+  }
+
+  .takeaway-dialog__close:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+  }
+
+  .takeaway-dialog__body {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 1.75rem;
+  }
+
+  .takeaway-dialog__body p {
+    max-width: 65ch;
+    margin: 0 auto 1.1rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #374151;
+  }
+
+  .takeaway-dialog__body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Lock background scroll while the dialog is open. */
+  :global(body.takeaway-dialog-open) {
+    overflow: hidden;
+  }
+
+  @media (max-width: 480px) {
+    .takeaway-dialog__header {
+      padding: 1.25rem 1.25rem;
+    }
+
+    .takeaway-dialog__body {
+      padding: 1.25rem;
+    }
+
+    .takeaway-dialog__body p {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  const dialog = document.getElementById('takeaway-dialog') as HTMLDialogElement | null;
+
+  if (dialog) {
+    const nameEl = document.getElementById('takeaway-dialog-name');
+    const subtitleEl = document.getElementById('takeaway-dialog-subtitle');
+    const imageEl = document.getElementById('takeaway-dialog-image') as HTMLImageElement | null;
+    const bodyEl = document.getElementById('takeaway-dialog-body');
+
+    let lastTrigger: HTMLElement | null = null;
+
+    const lockScroll = () => document.body.classList.add('takeaway-dialog-open');
+    const unlockScroll = () => document.body.classList.remove('takeaway-dialog-open');
+
+    const open = (trigger: HTMLElement) => {
+      lastTrigger = trigger;
+
+      const name = trigger.dataset.name ?? '';
+      const subtitle = trigger.dataset.subtitle ?? '';
+      const image = trigger.dataset.image ?? '';
+      const reflection = trigger.dataset.reflection ?? '';
+      const c1 = trigger.dataset.c1 ?? '#e8411a';
+      const c2 = trigger.dataset.c2 ?? '#c8102e';
+
+      if (nameEl) nameEl.textContent = name;
+      if (subtitleEl) subtitleEl.textContent = subtitle;
+      if (imageEl) {
+        imageEl.src = image;
+        imageEl.alt = name;
+      }
+
+      dialog.style.setProperty('--dc1', c1);
+      dialog.style.setProperty('--dc2', c2);
+
+      if (bodyEl) {
+        bodyEl.innerHTML = '';
+        // Treat double-newlines as paragraph breaks; otherwise a single paragraph.
+        const paragraphs = reflection
+          .split(/\n\s*\n/)
+          .map((p) => p.trim())
+          .filter((p) => p.length > 0);
+
+        const blocks = paragraphs.length > 0 ? paragraphs : [reflection];
+        for (const block of blocks) {
+          const p = document.createElement('p');
+          p.textContent = block;
+          bodyEl.appendChild(p);
+        }
+        bodyEl.scrollTop = 0;
+      }
+
+      lockScroll();
+      if (typeof dialog.showModal === 'function') {
+        dialog.showModal();
+      } else {
+        dialog.setAttribute('open', '');
+      }
+    };
+
+    const close = () => {
+      if (dialog.open) {
+        if (typeof dialog.close === 'function') {
+          dialog.close();
+        } else {
+          dialog.removeAttribute('open');
+          unlockScroll();
+        }
+      }
+    };
+
+    // Wire up every card trigger.
+    document.querySelectorAll<HTMLElement>('[data-takeaway-trigger]').forEach((trigger) => {
+      trigger.addEventListener('click', () => open(trigger));
+    });
+
+    // Close button.
+    dialog.querySelectorAll<HTMLElement>('[data-takeaway-close]').forEach((btn) => {
+      btn.addEventListener('click', () => close());
+    });
+
+    // Click on the backdrop (clicks that land on the dialog element itself,
+    // outside the inner content, are backdrop clicks).
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) close();
+    });
+
+    // Escape is handled natively by <dialog>, which fires the 'close' event.
+    // Restore scroll + focus whenever the dialog closes (Escape, close(), etc.).
+    dialog.addEventListener('close', () => {
+      unlockScroll();
+      if (lastTrigger) {
+        lastTrigger.focus();
+        lastTrigger = null;
+      }
+    });
+  }
+</script>

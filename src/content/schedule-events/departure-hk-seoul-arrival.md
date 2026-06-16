@@ -18,18 +18,16 @@ And we're off! The trip kicked off bright and early at **Hong Kong International
 
 Once everyone had checked in, we cleared immigration together and boarded the morning flight, **CX410**, bound for Seoul.
 
-<div class="photo-carousel__stage">
-  <div class="photo-carousel__row">
-    <button class="photo-carousel__btn photo-carousel__btn--prev" aria-label="Previous slide">&#8249;</button>
-    <div class="keen-slider photo-carousel__viewport">
-      <div class="keen-slider__slide photo-carousel__slide"><img src="/images/visit/airport/row1-a.jpg" alt="" loading="lazy" /></div>
-      <div class="keen-slider__slide photo-carousel__slide"><img src="/images/visit/airport/row1-b.jpg" alt="" loading="lazy" /></div>
-      <div class="keen-slider__slide photo-carousel__slide"><img src="/images/visit/airport/row1-c.jpeg" alt="" loading="lazy" /></div>
-      <div class="keen-slider__slide photo-carousel__slide"><img src="/images/visit/airport/row1-d.jpeg" alt="" loading="lazy" /></div>
+<div class="flicking-carousel" data-flicking>
+  <div class="flicking-viewport">
+    <div class="flicking-camera">
+      <div class="flicking-panel"><img src="/images/visit/airport/row1-a.jpg" alt="" loading="lazy" /></div>
+      <div class="flicking-panel"><img src="/images/visit/airport/row1-b.jpg" alt="" loading="lazy" /></div>
+      <div class="flicking-panel"><img src="/images/visit/airport/row1-c.jpeg" alt="" loading="lazy" /></div>
+      <div class="flicking-panel"><img src="/images/visit/airport/row1-d.jpeg" alt="" loading="lazy" /></div>
     </div>
-    <button class="photo-carousel__btn photo-carousel__btn--next" aria-label="Next slide">&#8250;</button>
   </div>
-  <div class="photo-carousel__dots"></div>
+  <nav class="flicking-pagination" aria-label="Carousel pagination"></nav>
 </div>
 
 ## Touchdown in Seoul

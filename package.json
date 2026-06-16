@@ -12,9 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@egjs/flicking": "^4.15.0",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.3.6",
-    "embla-carousel": "^8.6.0",
     "keen-slider": "^6.8.6",
     "leaflet": "^1.9.4",
     "tailwindcss": "^4.3.0"
