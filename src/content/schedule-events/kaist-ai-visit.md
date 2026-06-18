@@ -86,7 +86,7 @@ During our Seoul Study Tour, our group had the privilege of visiting KAIST (Kore
   <p>After the initial welcome, our hosts began by providing an overview of KAIST's AI programs, highlighting the institute's interdisciplinary approach that blends machine learning, robotics, computer vision, and natural language processing. They emphasized KAIST's strong industry partnerships and its mission to nurture world-class talent capable of tackling real-world challenges. As we toured the AI Hub, the researchers introduced us to several ongoing projects, ranging from autonomous systems to large-scale language models, giving us a vivid picture of cutting-edge AI research in action.</p>
 
   <div class="kaist-stat">
-    <span class="kaist-stat__big">5<sup>th</sup></span>
+    <span class="kaist-stat__label">Ranking highlight</span>
     <span class="kaist-stat__text">One slide stopped us in our tracks: KAIST ranks <strong>5th in the world for AI — and 1st in Asia</strong> (by AI &amp; ML publications, 2020–24).</span>
   </div>
 

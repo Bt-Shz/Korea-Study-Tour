@@ -43,10 +43,15 @@ On 20 May 2026, our group had the opportunity to visit the campus of Korea Unive
     <figcaption>The Science &amp; Engineering campus — all glass and grey on a wet morning.</figcaption>
   </figure>
 
-  <div class="ku-trio">
-    <figure><img src="/images/visit/koreau/entrance/approach.jpeg" alt="Approaching the Korea University campus from the street" loading="lazy" /></figure>
-    <figure><img src="/images/visit/koreau/entrance/walkway.jpeg" alt="Crossing a covered walkway under umbrellas" loading="lazy" /></figure>
-    <figure><img src="/images/visit/koreau/entrance/road.jpeg" alt="The rain-soaked campus road lined with trees" loading="lazy" /></figure>
+  <div class="flicking-carousel ku-media-carousel" data-flicking>
+    <div class="flicking-viewport">
+      <div class="flicking-camera">
+        <div class="flicking-panel"><img src="/images/visit/koreau/entrance/approach.jpeg" alt="Approaching the Korea University campus from the street" loading="lazy" /></div>
+        <div class="flicking-panel"><img src="/images/visit/koreau/entrance/walkway.jpeg" alt="Crossing a covered walkway under umbrellas" loading="lazy" /></div>
+        <div class="flicking-panel"><img src="/images/visit/koreau/entrance/road.jpeg" alt="The rain-soaked campus road lined with trees" loading="lazy" /></div>
+      </div>
+    </div>
+    <nav class="flicking-pagination" aria-label="Carousel pagination"></nav>
   </div>
 </section>
 
@@ -91,9 +96,14 @@ On 20 May 2026, our group had the opportunity to visit the campus of Korea Unive
     <figcaption>The historic main hall — castle-grey granite, even greyer in the rain.</figcaption>
   </figure>
 
-  <div class="ku-duo">
-    <figure><img src="/images/visit/koreau/campus/lawn.jpeg" alt="The grand main building across the central lawn" loading="lazy" /><figcaption>The main building across the central lawn.</figcaption></figure>
-    <figure><img src="/images/visit/koreau/campus/group.jpeg" alt="The group lined up for a photo in front of the historic hall" loading="lazy" /><figcaption>Umbrellas up, for the group photo.</figcaption></figure>
+  <div class="flicking-carousel ku-media-carousel" data-flicking>
+    <div class="flicking-viewport">
+      <div class="flicking-camera">
+        <div class="flicking-panel"><figure><img src="/images/visit/koreau/campus/lawn.jpeg" alt="The grand main building across the central lawn" loading="lazy" /><figcaption>The main building across the central lawn.</figcaption></figure></div>
+        <div class="flicking-panel"><figure><img src="/images/visit/koreau/campus/group.jpeg" alt="The group lined up for a photo in front of the historic hall" loading="lazy" /><figcaption>Umbrellas up, for the group photo.</figcaption></figure></div>
+      </div>
+    </div>
+    <nav class="flicking-pagination" aria-label="Carousel pagination"></nav>
   </div>
 </section>
 
@@ -113,15 +123,25 @@ On 20 May 2026, our group had the opportunity to visit the campus of Korea Unive
     <figcaption>Looking up through the great glass dome.</figcaption>
   </figure>
 
-  <div class="ku-trio">
-    <figure><img src="/images/visit/koreau/museum/tiger.jpeg" alt="A traditional painting of a tiger, Korea University's emblem" loading="lazy" /><figcaption>The tiger — the university's emblem.</figcaption></figure>
-    <figure><img src="/images/visit/koreau/museum/history.jpeg" alt="A museum panel on the history of the student newspaper" loading="lazy" /><figcaption>A century of the student paper.</figcaption></figure>
-    <figure><img src="/images/visit/koreau/museum/models.jpeg" alt="Scale architectural models of the campus under glass" loading="lazy" /><figcaption>The campus, in miniature.</figcaption></figure>
+  <div class="flicking-carousel ku-media-carousel" data-flicking>
+    <div class="flicking-viewport">
+      <div class="flicking-camera">
+        <div class="flicking-panel"><figure><img src="/images/visit/koreau/museum/tiger.jpeg" alt="A traditional painting of a tiger, Korea University's emblem" loading="lazy" /><figcaption>The tiger — the university's emblem.</figcaption></figure></div>
+        <div class="flicking-panel"><figure><img src="/images/visit/koreau/museum/history.jpeg" alt="A museum panel on the history of the student newspaper" loading="lazy" /><figcaption>A century of the student paper.</figcaption></figure></div>
+        <div class="flicking-panel"><figure><img src="/images/visit/koreau/museum/models.jpeg" alt="Scale architectural models of the campus under glass" loading="lazy" /><figcaption>The campus, in miniature.</figcaption></figure></div>
+      </div>
+    </div>
+    <nav class="flicking-pagination" aria-label="Carousel pagination"></nav>
   </div>
 
-  <div class="ku-duo">
-    <figure><img src="/images/visit/koreau/museum/floor-1905.jpeg" alt="The group gathered on the atrium floor marked 1905" loading="lazy" /><figcaption>Standing on 1905.</figcaption></figure>
-    <figure><img src="/images/visit/koreau/museum/atrium-group.jpeg" alt="A group photo in the glass atrium" loading="lazy" /><figcaption>Regrouping under the dome.</figcaption></figure>
+  <div class="flicking-carousel ku-media-carousel" data-flicking>
+    <div class="flicking-viewport">
+      <div class="flicking-camera">
+        <div class="flicking-panel"><figure><img src="/images/visit/koreau/museum/floor-1905.jpeg" alt="The group gathered on the atrium floor marked 1905" loading="lazy" /><figcaption>Standing on 1905.</figcaption></figure></div>
+        <div class="flicking-panel"><figure><img src="/images/visit/koreau/museum/atrium-group.jpeg" alt="A group photo in the glass atrium" loading="lazy" /><figcaption>Regrouping under the dome.</figcaption></figure></div>
+      </div>
+    </div>
+    <nav class="flicking-pagination" aria-label="Carousel pagination"></nav>
   </div>
 </section>
 
@@ -141,10 +161,15 @@ On 20 May 2026, our group had the opportunity to visit the campus of Korea Unive
     <figcaption>Prof. Paul Seo.</figcaption>
   </figure>
 
-  <div class="ku-trio">
-    <figure><img src="/images/visit/koreau/souvenir/stewart.jpeg" alt="Presenting a souvenir to Dr. William Stewart in front of the main hall" loading="lazy" /><figcaption>Our thanks to Dr. William Stewart.</figcaption></figure>
-    <figure><img src="/images/visit/koreau/souvenir/stewart2.jpeg" alt="A second souvenir handover under umbrellas by the main building" loading="lazy" /><figcaption>Umbrellas and gratitude.</figcaption></figure>
-    <figure><img src="/images/visit/koreau/souvenir/student.jpeg" alt="A thank-you gift handed to one of the student presenters" loading="lazy" /><figcaption>A thank-you to the student hosts.</figcaption></figure>
+  <div class="flicking-carousel ku-media-carousel" data-flicking>
+    <div class="flicking-viewport">
+      <div class="flicking-camera">
+        <div class="flicking-panel"><figure><img src="/images/visit/koreau/souvenir/stewart.jpeg" alt="Presenting a souvenir to Dr. William Stewart in front of the main hall" loading="lazy" /><figcaption>Our thanks to Dr. William Stewart.</figcaption></figure></div>
+        <div class="flicking-panel"><figure><img src="/images/visit/koreau/souvenir/stewart2.jpeg" alt="A second souvenir handover under umbrellas by the main building" loading="lazy" /><figcaption>Umbrellas and gratitude.</figcaption></figure></div>
+        <div class="flicking-panel"><figure><img src="/images/visit/koreau/souvenir/student.jpeg" alt="A thank-you gift handed to one of the student presenters" loading="lazy" /><figcaption>A thank-you to the student hosts.</figcaption></figure></div>
+      </div>
+    </div>
+    <nav class="flicking-pagination" aria-label="Carousel pagination"></nav>
   </div>
 
   <p>In conclusion, our visit to Korea University was an enriching experience. We had a great time learning about the professors' research and Korean culture, broadening our horizons.</p>

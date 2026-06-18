@@ -34,7 +34,7 @@ const { title, description, time, location, image, date, summary, gallery, galle
     eyebrow={headerEyebrow}
     extraChip={extraChip}
   />
-  <ArticleBody>
+  <ArticleBody class={`article-prose--${entry.id}`}>
     <Content />
   </ArticleBody>
   {mapVenue && <ArticleVenueMap venueKey={mapVenue} />}
@@ -47,7 +47,7 @@ const { title, description, time, location, image, date, summary, gallery, galle
 
 <script>
   // Photo carousels powered by keen-slider
-  import KeenSlider from 'keen-slider';
+  import KeenSlider, { type KeenSliderInstance } from 'keen-slider';
   // Flicking carousels (with MUI-style numbered pagination)
   import { initFlickingCarousels } from '../../scripts/flicking-carousel';
 
@@ -70,9 +70,9 @@ const { title, description, time, location, image, date, summary, gallery, galle
       nextBtn.classList.toggle('photo-carousel__btn--disabled', rel === total - 1);
     }
 
-    function applyTween(s: KeenSlider) {
+    function applyTween(s: KeenSliderInstance) {
       const details = s.track.details.slides;
-      s.slides.forEach((el, i) => {
+      s.slides.forEach((el: HTMLElement, i: number) => {
         const dist = Math.abs(details[i]?.distance ?? 0);
         el.style.transform = `scale(${Math.max(1 - dist * 0.16, 0.84).toFixed(3)})`;
         el.style.opacity = Math.max(1 - dist * 0.7, 0.36).toFixed(2);
