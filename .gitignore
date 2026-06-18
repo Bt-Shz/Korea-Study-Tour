@@ -5,5 +5,8 @@ media/
 .DS_Store
 .astro/
 .claude/
+.codex/
+.agents/
+AGENTS.md
 .vercel/
 .vercel
