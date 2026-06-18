@@ -1,6 +1,8 @@
 ---
 // A single sideways (horizontally scrollable) view of the travelling team —
 // shown once, instead of repeating everyone's avatar under every activity.
+import { withBase } from '../../utils/paths';
+
 interface Person {
   name: string;
   image: string;
@@ -26,7 +28,7 @@ const { students, eyebrow = 'Who came', title } = Astro.props;
       students.map((s) => (
         <div class="team-rail__item" role="listitem" title={s.name}>
           <span class="team-rail__avatar">
-            <img src={s.image} alt={s.name} loading="lazy" />
+            <img src={withBase(s.image)} alt={s.name} loading="lazy" />
           </span>
           <span class="team-rail__name">{s.name}</span>
         </div>

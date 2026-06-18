@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../../utils/paths';
+
 interface Props {
   name: string;
   nickname?: string;
@@ -30,6 +32,7 @@ const isPlaceholder = name === 'Your Full Name' || reflection.trim().length === 
 const displayName = isPlaceholder ? 'Student Profile' : nickname ? `${name} (${nickname})` : name;
 const subtitle = `${year} · Computer Science`;
 const displayReflection = isPlaceholder ? 'Reflection coming soon.' : reflection;
+const imageSrc = withBase(image);
 ---
 
 <article class="takeaway-card" style={`--c1:${c1};--c2:${c2};`}>
@@ -39,7 +42,7 @@ const displayReflection = isPlaceholder ? 'Reflection coming soon.' : reflection
     data-takeaway-trigger
     data-name={displayName}
     data-subtitle={subtitle}
-    data-image={image}
+    data-image={imageSrc}
     data-reflection={displayReflection}
     data-c1={c1}
     data-c2={c2}
@@ -49,7 +52,7 @@ const displayReflection = isPlaceholder ? 'Reflection coming soon.' : reflection
   >
     <span class="takeaway-card__band">
       <span class="takeaway-card__avatar">
-        <img src={image} alt="" loading="lazy" />
+        <img src={imageSrc} alt="" loading="lazy" />
       </span>
       <span class="takeaway-card__id">
         <span class="takeaway-card__name">{displayName}</span>

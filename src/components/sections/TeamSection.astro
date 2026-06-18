@@ -5,6 +5,7 @@ import DisplayHeading from '../ui/DisplayHeading.astro';
 import SectionEyebrow from '../ui/SectionEyebrow.astro';
 import { teamMembers } from '../../data/team';
 import { trip } from '../../data/trip';
+import { withBase } from '../../utils/paths';
 ---
 
 <section id="team" class="py-14 md:py-20 relative">
@@ -38,7 +39,7 @@ import { trip } from '../../data/trip';
 
     <div class="mt-10 max-w-2xl mx-auto relative z-10">
       <a
-        href="/visit-team"
+        href={withBase('/visit-team')}
         class="block group rounded-2xl p-6 text-center shadow-lg relative overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 bg-brand-gradient"
       >
         <div

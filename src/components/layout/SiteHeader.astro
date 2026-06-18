@@ -1,18 +1,21 @@
 ---
 import Icon from '../Icon.astro';
 import { cityuLinks, cityuLogos, navItems, site } from '../../config/site';
+import { stripBase, withBase } from '../../utils/paths';
 
 interface Props {
   isHome: boolean;
 }
 
 const { isHome } = Astro.props;
-const currentPath = Astro.url.pathname;
+const currentPath = stripBase(Astro.url.pathname);
 
 const isActive = (href: string) => {
   if (href === '/') return currentPath === '/';
   return currentPath === href || currentPath.startsWith(`${href}/`);
 };
+
+const homeHref = withBase('/');
 ---
 
 <header
@@ -36,7 +39,7 @@ const isActive = (href: string) => {
           </div>
         </div>
       </a>
-      <a href="/" class="hidden md:block text-sm font-semibold tracking-wide text-white group-data-[scrolled=true]:text-gray-700">
+      <a href={homeHref} class="hidden md:block text-sm font-semibold tracking-wide text-white group-data-[scrolled=true]:text-gray-700">
         {site.shortTitle}
       </a>
       <button
@@ -57,7 +60,7 @@ const isActive = (href: string) => {
     <div class="max-w-7xl mx-auto px-5 h-12 flex items-center justify-between">
       <nav class="hidden md:flex items-center gap-1">
         <a
-          href="/"
+          href={homeHref}
           aria-current={isActive('/') ? 'page' : undefined}
           data-active={isActive('/') ? 'true' : undefined}
           class="px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 text-white/90 hover:bg-white/15 group-data-[scrolled=true]:text-gray-700 group-data-[scrolled=true]:hover:bg-gray-100 data-[active=true]:bg-primary data-[active=true]:text-white"
@@ -75,7 +78,7 @@ const isActive = (href: string) => {
               const active = isActive(item.href);
               return (
                 <a
-                  href={item.href}
+                  href={withBase(item.href)}
                   aria-current={active ? 'page' : undefined}
                   data-active={active ? 'true' : undefined}
                   class="px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 text-white/90 hover:bg-white/15 group-data-[scrolled=true]:text-gray-700 group-data-[scrolled=true]:hover:bg-gray-100 data-[active=true]:bg-primary data-[active=true]:text-white"
@@ -87,7 +90,7 @@ const isActive = (href: string) => {
         }
       </nav>
 
-      <a href="/" class="md:hidden text-sm font-semibold tracking-wide text-white group-data-[scrolled=true]:text-gray-700 truncate">
+      <a href={homeHref} class="md:hidden text-sm font-semibold tracking-wide text-white group-data-[scrolled=true]:text-gray-700 truncate">
         {site.shortTitle}
       </a>
     </div>
@@ -97,7 +100,7 @@ const isActive = (href: string) => {
     {
       navItems.map((item) => (
         <a
-          href={item.href}
+          href={withBase(item.href)}
           class="w-full text-left px-5 py-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors flex items-center justify-between"
         >
           {item.label}

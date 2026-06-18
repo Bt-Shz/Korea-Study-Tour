@@ -1,5 +1,6 @@
 ---
 import Icon from '../Icon.astro';
+import { withBase } from '../../utils/paths';
 
 interface GalleryPhoto {
   src: string;
@@ -40,7 +41,7 @@ const placeholderItems = Array.from({ length: Math.max(0, placeholders) });
       <div class="photo-gallery-grid">
         {photos.map((photo) => (
           <figure class="photo-gallery-item">
-            <img src={photo.src} alt={photo.alt ?? photo.caption ?? title} loading="lazy" />
+            <img src={withBase(photo.src)} alt={photo.alt ?? photo.caption ?? title} loading="lazy" />
             {photo.caption && <figcaption>{photo.caption}</figcaption>}
           </figure>
         ))}

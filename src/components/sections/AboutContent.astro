@@ -1,5 +1,6 @@
 ---
 import { institutionLinks, trip } from '../../data/trip';
+import { withBase } from '../../utils/paths';
 
 const linkClass = 'text-primary hover:underline';
 const { cityu, cityuCs, skku, kaistAi, koreaUniversity, yonsei, seoulGallery, seoulTopis } =
@@ -27,7 +28,7 @@ const { cityu, cityuCs, skku, kaistAi, koreaUniversity, yonsei, seoulGallery, se
   </p>
   <p>
     The tour was led by the esteemed{' '}
-    <a href="/visit-team" class={linkClass}>Dr. Howard Leung, Dr. Kenneth Lee, and Mr. Jacky Tam</a>
+    <a href={withBase('/visit-team')} class={linkClass}>Dr. Howard Leung, Dr. Kenneth Lee, and Mr. Jacky Tam</a>
     from the Department of Computer Science at City University of Hong Kong.
   </p>
   <p class="font-medium text-gray-900">{trip.about.closing}</p>

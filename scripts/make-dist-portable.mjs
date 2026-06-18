@@ -1,9 +1,11 @@
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { siteBase } from '../src/config/base.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const distDir = path.join(root, 'dist');
+const normalizedBase = siteBase === '/' ? '' : siteBase.replace(/\/$/, '');
 
 if (!existsSync(distDir)) {
   throw new Error('dist/ does not exist. Run astro build before making dist portable.');
@@ -38,11 +40,18 @@ function relativeUrl(fromFile, targetFile) {
   return relative;
 }
 
+function stripBase(pathname) {
+  if (!normalizedBase) return pathname;
+  if (pathname === normalizedBase || pathname === `${normalizedBase}/`) return '/';
+  if (pathname.startsWith(`${normalizedBase}/`)) return pathname.slice(normalizedBase.length) || '/';
+  return pathname;
+}
+
 function resolveInternalUrl(url, fromFile) {
   if (!url.startsWith('/') || url.startsWith('//')) return url;
 
   const { pathname, suffix } = splitSuffix(url);
-  const cleanPath = decodeURIComponent(pathname);
+  const cleanPath = stripBase(decodeURIComponent(pathname));
   const directTarget = path.join(distDir, cleanPath);
   const routeTarget = path.join(distDir, cleanPath, 'index.html');
 

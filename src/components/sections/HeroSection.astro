@@ -2,6 +2,7 @@
 import Icon from '../Icon.astro';
 import { heroImages } from '../../data/hero';
 import { trip } from '../../data/trip';
+import { withBase } from '../../utils/paths';
 ---
 
 <section class="relative h-screen min-h-[600px] flex items-end overflow-hidden" data-hero>
@@ -13,7 +14,7 @@ import { trip } from '../../data/trip';
         data-hero-slide
         data-caption={img.caption}
       >
-        <img src={img.url} alt={img.caption} class="w-full h-full object-cover" />
+        <img src={withBase(img.url)} alt={img.caption} class="w-full h-full object-cover" />
       </div>
     ))
   }

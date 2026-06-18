@@ -3,6 +3,7 @@ import DisplayHeading from '../ui/DisplayHeading.astro';
 import GradientText from '../ui/GradientText.astro';
 import SectionEyebrow from '../ui/SectionEyebrow.astro';
 import { trip } from '../../data/trip';
+import { withBase } from '../../utils/paths';
 ---
 
 <section id="about" class="pt-14 md:pt-20 pb-8 md:pb-10 relative">
@@ -36,7 +37,7 @@ import { trip } from '../../data/trip';
           Our itinerary covered {trip.venues.map((venue) => venue.listName ?? venue.name).join(', ')}, with sessions focused on academic
           exchange, smart-city systems, and cross-cultural learning.
         </p>
-        <a href="/about" class="mt-5 inline-flex text-sm font-semibold text-primary hover:underline">
+        <a href={withBase('/about')} class="mt-5 inline-flex text-sm font-semibold text-primary hover:underline">
           Read the full story &rarr;
         </a>
       </div>
@@ -44,19 +45,19 @@ import { trip } from '../../data/trip';
 
     <div class="grid grid-cols-5 grid-rows-2 gap-3 h-[460px]">
       <img
-        src="/images/home/about-main.jpg"
+        src={withBase('/images/home/about-main.jpg')}
         alt="Students on the Korea Study Tour during a campus visit"
         class="rounded-2xl object-cover w-full h-full col-span-3 row-span-2 shadow-md"
         loading="lazy"
       />
       <img
-        src="/images/home/about-topis.jpg"
+        src={withBase('/images/home/about-topis.jpg')}
         alt="Inside Seoul's TOPIS smart-city control centre"
         class="rounded-2xl object-cover w-full h-full col-span-2 row-span-1 shadow-md"
         loading="lazy"
       />
       <img
-        src="/images/home/about-group.jpg"
+        src={withBase('/images/home/about-group.jpg')}
         alt="The study tour group together during the trip"
         class="rounded-2xl object-cover w-full h-full col-span-2 row-span-1 shadow-md"
         loading="lazy"

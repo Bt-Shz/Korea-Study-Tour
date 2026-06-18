@@ -2,6 +2,7 @@
 import SiteFooter from '../components/layout/SiteFooter.astro';
 import SiteHeader from '../components/layout/SiteHeader.astro';
 import { site } from '../config/site';
+import { stripBase } from '../utils/paths';
 import '../styles/global.css';
 
 interface Props {
@@ -11,7 +12,7 @@ interface Props {
 
 const { title = site.title, description = site.description } = Astro.props;
 const pageTitle = title ? `${title} | ${site.title}` : site.title;
-const isHome = Astro.url.pathname === '/';
+const isHome = stripBase(Astro.url.pathname) === '/';
 ---
 
 <!doctype html>
