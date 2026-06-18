@@ -1,20 +1,22 @@
-const SCRIPT_CACHE: Record<string, Promise<HTMLScriptElement>> = {};
+const SCRIPT_CACHE: Partial<Record<string, Promise<HTMLScriptElement>>> = {};
 
 export function loadScriptOnce(
   src: string,
   attrs?: Record<string, string>,
 ): Promise<HTMLScriptElement> {
-  if (SCRIPT_CACHE[src]) {
-    return SCRIPT_CACHE[src];
+  const cached = SCRIPT_CACHE[src];
+  if (cached) {
+    return cached;
   }
 
   const existing = document.querySelector<HTMLScriptElement>(`script[src="${src}"]`);
   if (existing) {
-    SCRIPT_CACHE[src] = Promise.resolve(existing);
-    return SCRIPT_CACHE[src];
+    const promise = Promise.resolve(existing);
+    SCRIPT_CACHE[src] = promise;
+    return promise;
   }
 
-  SCRIPT_CACHE[src] = new Promise((resolve, reject) => {
+  const promise = new Promise<HTMLScriptElement>((resolve, reject) => {
     const script = document.createElement('script');
     script.src = src;
     script.async = true;
@@ -30,5 +32,6 @@ export function loadScriptOnce(
     document.head.appendChild(script);
   });
 
-  return SCRIPT_CACHE[src];
+  SCRIPT_CACHE[src] = promise;
+  return promise;
 }

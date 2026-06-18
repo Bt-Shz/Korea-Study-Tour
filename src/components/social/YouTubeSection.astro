@@ -1,24 +1,14 @@
 ---
-import { youtubeEmbeds } from '../../data/social-embeds';
-import SocialEmbedSlot from './SocialEmbedSlot.astro';
+import { youtubeFallback } from '../../data/social-fallbacks';
+import SocialFallbackGrid from './SocialFallbackGrid.astro';
 ---
 
 <div class="social-platform-section" aria-labelledby="us-on-youtube">
   <h3 id="us-on-youtube" class="sr-only">Us on YouTube</h3>
 
-  <div id="youtube-embeds" class="scrolling-wrapper cv-auto">
-    {
-      youtubeEmbeds.map((embed, index) => (
-        <SocialEmbedSlot href={embed.watchUrl} label="View on YouTube">
-          <iframe
-            src={`https://www.youtube.com/embed/${embed.videoId}`}
-            title={`Embedded YouTube video ${index + 1}`}
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          />
-        </SocialEmbedSlot>
-      ))
-    }
-  </div>
+  <SocialFallbackGrid
+    id="youtube-fallback"
+    message={youtubeFallback.message}
+    cards={youtubeFallback.cards}
+  />
 </div>

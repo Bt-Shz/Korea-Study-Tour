@@ -1,19 +1,22 @@
 ---
 import type { SocialFallbackCard } from '../../data/social-fallbacks';
+import { withBase } from '../../utils/paths';
 
 interface Props extends SocialFallbackCard {}
 
 const { href, image, imageAlt, title, meta, external = false } = Astro.props;
+const cardHref = external ? href : withBase(href);
+const imageSrc = withBase(image);
 ---
 
 <a
-  href={href}
+  href={cardHref}
   target={external ? '_blank' : undefined}
   rel={external ? 'noopener noreferrer' : undefined}
   class="social-card group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
 >
   <img
-    src={image}
+    src={imageSrc}
     alt={imageAlt}
     loading="lazy"
     decoding="async"

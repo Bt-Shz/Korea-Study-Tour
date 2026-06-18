@@ -1,4 +1,4 @@
-import { facebookEmbeds, instagramEmbeds, twitterEmbeds } from './social-embeds';
+import { instagramEmbeds, twitterEmbeds } from './social-embeds';
 
 export type SocialFallbackCard = {
   href: string;
@@ -25,7 +25,59 @@ const studentsImg = '/images/visit/kaist/entrance/group.jpeg';
 
 const instagramFallbackImages = [palaceImg, campusImg, studentsImg];
 const twitterFallbackImages = [skylineImg, kaistImg, campusImg];
-const facebookFallbackImages = [topisImg, scheduleImg, studentsImg];
+const youtubeHighlightCards: SocialFallbackCard[] = [
+  {
+    href: '/visit-schedule/kaist-ai-visit',
+    image: kaistImg,
+    imageAlt: 'CityU CS delegation visiting KAIST AI',
+    title: 'KAIST AI visit highlights',
+    meta: 'Tour story',
+  },
+  {
+    href: '/visit-schedule/topis',
+    image: skylineImg,
+    imageAlt: 'Seoul TOPIS visit highlights',
+    title: 'Seoul TOPIS visit highlights',
+    meta: 'Tour story',
+  },
+  {
+    href: '/visit-schedule/yonsei',
+    image: campusImg,
+    imageAlt: 'CityU CS delegation visiting Yonsei University',
+    title: 'Yonsei University visit highlights',
+    meta: 'Tour story',
+  },
+];
+
+const facebookHighlightCards: SocialFallbackCard[] = [
+  {
+    href: '/visit-schedule/topis',
+    image: topisImg,
+    imageAlt: 'Seoul TOPIS control room screens',
+    title: 'Seoul TOPIS highlights',
+    meta: 'Tour story',
+  },
+  {
+    href: '/visit-schedule/skku-visit',
+    image: scheduleImg,
+    imageAlt: 'CityU CS delegation visiting SKKU',
+    title: 'SKKU visit highlights',
+    meta: 'Tour story',
+  },
+  {
+    href: '/visit-schedule/kaist-ai-visit',
+    image: studentsImg,
+    imageAlt: 'CityU CS delegation group photo at KAIST AI',
+    title: 'KAIST AI group highlights',
+    meta: 'Tour story',
+  },
+];
+
+export const youtubeFallback: PlatformFallback = {
+  message:
+    'YouTube embeds may be unavailable in some regions or when third-party frames are blocked. Browse tour highlights here instead.',
+  cards: youtubeHighlightCards,
+};
 
 export const instagramFallback: PlatformFallback = {
   message:
@@ -59,15 +111,6 @@ export const twitterFallback: PlatformFallback = {
 
 export const facebookFallback: PlatformFallback = {
   message:
-    'Facebook embeds could not be loaded in your browser. Open the posts on Facebook or see tour highlights below.',
-  cards: [
-    ...facebookEmbeds.map((embed, index) => ({
-      href: embed.href,
-      external: true,
-      image: facebookFallbackImages[index]!,
-      imageAlt: 'CityU CS on Facebook',
-      title: index === 0 ? 'View post on CityU CS Department' : 'View post on CityU CS',
-      meta: 'Facebook',
-    })),
-  ],
+    'Facebook embeds may be unavailable in some regions or when third-party frames are blocked. Browse tour highlights here instead.',
+  cards: facebookHighlightCards,
 };

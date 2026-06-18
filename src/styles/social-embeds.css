@@ -1,14 +1,13 @@
 /* [hidden] overrides — keep in sync with JS toggleGroupFallback */
 #instagram-fallback[hidden],
 #twitter-fallback[hidden],
+#youtube-fallback[hidden],
 #fb-fallback[hidden] {
   display: none !important;
 }
 
 #instagram-embeds[hidden],
-#twitter-embeds[hidden],
-#facebook-embeds[hidden],
-#youtube-embeds[hidden] {
+#twitter-embeds[hidden] {
   display: none !important;
 }
 
@@ -60,11 +59,6 @@
   padding: 0 !important;
   border: 0 !important;
   border-radius: 0.75rem;
-}
-
-/* YouTube has no auto height — fill the card like other platforms */
-.social-embed-frame iframe[src*='youtube.com'] {
-  height: 100%;
 }
 
 .social-embed-link {

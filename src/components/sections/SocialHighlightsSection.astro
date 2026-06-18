@@ -7,8 +7,6 @@ import YouTubeSection from '../social/YouTubeSection.astro';
 import DisplayHeading from '../ui/DisplayHeading.astro';
 import SectionEyebrow from '../ui/SectionEyebrow.astro';
 import { platformAccentColor, socialFilters } from '../../data/social';
-
-const defaultFilter = socialFilters[0].key;
 ---
 
 <section id="social" class="pt-8 md:pt-10 pb-14 md:pb-20 relative">
@@ -76,19 +74,19 @@ const defaultFilter = socialFilters[0].key;
       }
     </div>
 
-    <div data-social-panel data-platform="youtube" hidden={defaultFilter !== 'youtube' || undefined}>
+    <div data-social-panel data-platform="youtube">
       <YouTubeSection />
     </div>
 
-    <div data-social-panel data-platform="facebook" hidden={defaultFilter !== 'facebook' || undefined}>
+    <div data-social-panel data-platform="facebook" hidden>
       <FacebookSection />
     </div>
 
-    <div data-social-panel data-platform="instagram" hidden={defaultFilter !== 'instagram' || undefined}>
+    <div data-social-panel data-platform="instagram" hidden>
       <InstagramSection />
     </div>
 
-    <div data-social-panel data-platform="x" hidden={defaultFilter !== 'x' || undefined}>
+    <div data-social-panel data-platform="x" hidden>
       <TwitterSection />
     </div>
   </div>

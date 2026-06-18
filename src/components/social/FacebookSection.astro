@@ -1,35 +1,14 @@
 ---
-import { facebookEmbeds } from '../../data/social-embeds';
 import { facebookFallback } from '../../data/social-fallbacks';
-import SocialEmbedSlot from './SocialEmbedSlot.astro';
 import SocialFallbackGrid from './SocialFallbackGrid.astro';
 ---
 
 <div class="social-platform-section" aria-labelledby="us-on-facebook">
   <h3 id="us-on-facebook" class="sr-only">Us on Facebook</h3>
 
-  <div id="facebook-embeds" class="scrolling-wrapper cv-auto">
-    {
-      facebookEmbeds.map((embed, index) => (
-        <SocialEmbedSlot href={embed.href} label="View on Facebook">
-          <iframe
-            src={embed.postUrl}
-            title={`Embedded Facebook post ${index + 1}`}
-            style="border:none;overflow:hidden"
-            scrolling="no"
-            frameborder="0"
-            allowfullscreen="true"
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          />
-        </SocialEmbedSlot>
-      ))
-    }
-  </div>
-
   <SocialFallbackGrid
     id="fb-fallback"
     message={facebookFallback.message}
     cards={facebookFallback.cards}
-    hidden
   />
 </div>
