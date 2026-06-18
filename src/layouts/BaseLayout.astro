@@ -2,6 +2,7 @@
 import SiteFooter from '../components/layout/SiteFooter.astro';
 import SiteHeader from '../components/layout/SiteHeader.astro';
 import { site } from '../config/site';
+import { siteBase } from '../config/base.mjs';
 import { stripBase } from '../utils/paths';
 import '../styles/global.css';
 
@@ -23,6 +24,8 @@ const isHome = stripBase(Astro.url.pathname) === '/';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="author" content={site.university} />
+    <link rel="icon" href={`${siteBase}favicon.ico`} sizes="any" />
+    <link rel="icon" href={`${siteBase}favicon.svg`} type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>

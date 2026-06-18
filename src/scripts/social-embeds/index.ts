@@ -2,14 +2,15 @@
  * Social embed fallback detection
  *
  * - Instagram: embed.js only (no host probe); render poll 400ms, timeout 15s
- * - Twitter/X: embed iframes only (no favicon/CDN host probe); timeout 12s
- * - YouTube/Facebook: native iframes; fallback only on iframe error
+ * - Twitter/X: host probe + iframe render check; timeout 12s
+ * - YouTube/Facebook: host probe before trusting the iframe
  *
  * Lazy init when panel is visible via IntersectionObserver rootMargin 400px
  */
+import { setupFacebook } from './facebook';
 import { setupInstagram } from './instagram';
 import { setupTwitter } from './twitter';
-import { toggleGroupFallback } from './toggle';
+import { setupYouTube } from './youtube';
 
 let initialized = false;
 
@@ -18,24 +19,8 @@ function init(): void {
   initialized = true;
   setupInstagram();
   setupTwitter();
-  setupNativeIframeFallbacks();
-}
-
-function setupNativeIframeFallbacks(): void {
-  document
-    .querySelectorAll<HTMLIFrameElement>('iframe[data-fallback-target][data-embed-wrapper]')
-    .forEach((iframe) => {
-      iframe.addEventListener(
-        'error',
-        () => {
-          const fallbackId = iframe.dataset.fallbackTarget;
-          const wrapperId = iframe.dataset.embedWrapper;
-          if (!fallbackId || !wrapperId) return;
-          toggleGroupFallback(fallbackId, wrapperId, true);
-        },
-        { once: true },
-      );
-    });
+  setupYouTube();
+  setupFacebook();
 }
 
 if (document.readyState === 'loading') {

@@ -1,4 +1,5 @@
 import { isPlatformPanelVisible, whenPlatformReady } from './panel';
+import { probeUrl } from './probe';
 import { toggleGroupFallback } from './toggle';
 
 const RENDER_TIMEOUT_MS = 12000;
@@ -53,20 +54,20 @@ export function setupTwitter(): void {
       }
     };
 
-    timeoutId = window.setTimeout(() => {
-      if (settled) return;
-      if (countRendered(iframes) > 0) {
-        showEmbeds();
-      } else {
+    timeoutId = window.setTimeout(showFallback, RENDER_TIMEOUT_MS);
+
+    void probeUrl('https://platform.twitter.com/', RENDER_TIMEOUT_MS).then((ok) => {
+      if (!ok) {
         showFallback();
+        return;
       }
-    }, RENDER_TIMEOUT_MS);
 
-    iframes.forEach((iframe) => {
-      iframe.addEventListener('load', evaluate);
+      iframes.forEach((iframe) => {
+        iframe.addEventListener('load', evaluate);
+      });
+
+      pollId = window.setInterval(evaluate, POLL_INTERVAL_MS);
+      evaluate();
     });
-
-    pollId = window.setInterval(evaluate, POLL_INTERVAL_MS);
-    evaluate();
   });
 }
